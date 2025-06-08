@@ -1,4 +1,13 @@
+#ifndef ManejadorInmobiliaria
+#define ManejadorInmobiliaria
 
+
+#include "DTUsuario.h"
+#include "DTInmuebleAdministrado.h"
+#include "DTPublicacion.h"
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
+#include "Inmobiliaria.h"
 
 
 
@@ -17,3 +26,5 @@ class ManejadorInmobiliaria{
 
         ~ManejadorInmobiliaria();
 };
+
+#endif

@@ -1,3 +1,13 @@
+#ifndef ManejadorInmueble
+#define ManejadorInmueble
+
+#include "DTUsuario.h"
+#include "DTInmuebleAdministrado.h"
+#include "DTPublicacion.h"
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
+#include "Inmueble.h"
+
 
 
 class ManejadorInmueble {
@@ -16,3 +26,5 @@ public:
 
     ~ManejadorInmueble();
 };
+
+#endif

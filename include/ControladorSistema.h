@@ -1,12 +1,15 @@
-#include <DTUsuario.h>
-#include <DTInmuebleAdministrado.h>
-#include <DTPublicacion.h>
-#include <TipoPublicacion.h>
-#include <TipoInmueble.h>
-#include <ManejadorPublicacion.h>
-#include <ManejadorInmobiliaria.h>
-#include <ManejadorInmueble.h>
-#include <ManejadorUsuario.h>
+#ifndef ControladorSistema
+#define ControladorSistema
+
+#include "DTUsuario.h"
+#include "DTInmuebleAdministrado.h"
+#include "DTPublicacion.h"
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
+#include "ManejadorPublicacion.h"
+#include "ManejadorInmobiliaria.h"
+#include "ManejadorInmueble.h"
+#include "ManejadorUsuario.h"
 
 
 class ControladorSistema{
@@ -40,3 +43,5 @@ class ControladorSistema{
         ~ControladorSistema();
 
 };
+
+#endif

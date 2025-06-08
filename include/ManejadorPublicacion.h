@@ -1,3 +1,13 @@
+#ifndef ManejadorPublicacion
+#define ManejadorPublicacion
+
+#include "DTUsuario.h"
+#include "DTInmuebleAdministrado.h"
+#include "DTPublicacion.h"
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
+#include "Publicacion.h"
+
 
 
 class ManejadorPublicacion {
@@ -14,3 +24,5 @@ public:
 
     ~ManejadorPublicacion();
 };
+
+#endif
