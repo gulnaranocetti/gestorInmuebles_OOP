@@ -10,8 +10,11 @@ class Apartamento : public Inmueble {
         float gastosComunes;
 
     public:
-        Apartamento(int piso, bool tieneAscensor, float gastosComunes);
-        ~Apartamento();
+        Apartamento(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes);
+        int getPiso();
+        bool getTieneAscensor();
+        float getGastosComunes();
+        virtual ~Apartamento();
 };
 
 #endif

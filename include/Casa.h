@@ -9,7 +9,9 @@ class Casa : public Inmueble {
         TipoTecho techo;
 
     public:
-        Casa(bool esPH, TipoTecho techo);
+        Casa(bool esPH, TipoTecho techo,int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
+        bool getEsPH();
+        TipoTecho getTecho();
         ~Casa();
 };
 
