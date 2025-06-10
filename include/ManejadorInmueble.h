@@ -1,5 +1,5 @@
-#ifndef ManejadorInmueble
-#define ManejadorInmueble
+#ifndef MANEJADORINMUEBLE_H
+#define MANEJADORINMUEBLE_H
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
@@ -7,22 +7,21 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Inmueble.h"
-
-
+#include <set>
 
 class ManejadorInmueble {
 private:
-    ICollection* inmuebles; // Colección de punteros a Inmueble
+    std::set<Inmueble> inmuebles;
     static ManejadorInmueble* instancia;
 
-    ManejadorInmueble(); // constructor privado
+    ManejadorInmueble();
 
 public:
     static ManejadorInmueble* getInstance();
 
     void agregarInmueble(Inmueble* in);
     Inmueble* getInmueble(int codigo);
-    ICollection* getInmuebles(); // opcional: devolver todos
+    std::set<Inmueble> getInmuebles(); 
 
     ~ManejadorInmueble();
 };

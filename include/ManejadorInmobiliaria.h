@@ -1,6 +1,5 @@
-#ifndef ManejadorInmobiliaria
-#define ManejadorInmobiliaria
-
+#ifndef MANEJADORINMOBILIARIA_H
+#define MANEJADORINMOBILIARIA_H
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
@@ -8,12 +7,11 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Inmobiliaria.h"
-
-
+#include <set>
 
 class ManejadorInmobiliaria{
     private: 
-        ICollection* inmobiliarias;
+        std::set<Inmobiliaria> inmobiliarias;
         static ManejadorInmobiliaria * instancia;
         ManejadorInmobiliaria();
     public:
@@ -22,7 +20,7 @@ class ManejadorInmobiliaria{
         
         void agregarInmobiliaria(Inmueble *in);
 
-        ICollection* getInmobiliarias();
+        std::set<Inmobiliaria> getInmobiliarias();
 
         ~ManejadorInmobiliaria();
 };

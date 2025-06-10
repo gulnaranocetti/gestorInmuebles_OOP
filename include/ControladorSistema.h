@@ -1,5 +1,5 @@
-#ifndef ControladorSistema
-#define ControladorSistema
+#ifndef CONTROLADOR_SISTEMA
+#define CONTROLADOR_SISTEMA
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
@@ -10,7 +10,8 @@
 #include "ManejadorInmobiliaria.h"
 #include "ManejadorInmueble.h"
 #include "ManejadorUsuario.h"
-
+#include <set>
+#include <string>
 
 class ControladorSistema{
     private:
@@ -22,23 +23,23 @@ class ControladorSistema{
 
         void eliminarInmueble(int codigoInmueble);
 
-        set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
+        std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 
-        set<DTInmuebleAdministrado> listarInmueblesAdministrados(string nicknameInmobiliaria);
+        std::set<DTInmuebleAdministrado> listarInmueblesAdministrados(std::string nicknameInmobiliaria);
         
-        set<DTUsuario> listarInmobiliaria();
+        std::set<DTUsuario> listarInmobiliaria();
 
-        bool altaPublicacion(string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio);
+        bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
 
-        bool altaCliente(string nickname, string contraseña, string nombre, string email, string apellido, string documento);
+        bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento);
 
-        bool altaPropietario(string nickname, string contraseña, string nombre, string email, string cuentaBancaria, string telefono);
+        bool altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
 
-        bool altaInmobiliaria(string nickname, string contraseña, string nombre, string email, string direccion, string url, string telefono);
+        bool altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
 
-        set<DTUsuario> newSetUsuario();
+        std::set<DTUsuario> newSetUsuario();
 
-        set<DTPublicacion> newSetPublicaciones();
+        std::set<DTPublicacion> newSetPublicaciones();
 
         ~ControladorSistema();
 

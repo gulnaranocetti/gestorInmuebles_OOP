@@ -1,5 +1,5 @@
-#ifndef ManejadorPublicacion
-#define ManejadorPublicacion
+#ifndef MANEJADORPUBLICACION_H
+#define MANEJADORPUBLICACION_H
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
@@ -7,12 +7,11 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Publicacion.h"
-
-
+#include <set>
 
 class ManejadorPublicacion {
 private:
-    ICollection* publicaciones; // Colección de punteros a Inmueble
+    std::set<Publicacion> publicaciones; // Colección de punteros a Inmueble
     static ManejadorPublicacion* instancia;
 
     ManejadorPublicacion(); // constructor privado
@@ -20,7 +19,7 @@ private:
 public:
     static ManejadorPublicacion* getInstance();
 
-    set<DTPublicacion> getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaxion, TipoInmueble tipoInmueble);
+    std::set<DTPublicacion> getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaxion, TipoInmueble tipoInmueble);
 
     ~ManejadorPublicacion();
 };
