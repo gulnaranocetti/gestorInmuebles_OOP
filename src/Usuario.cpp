@@ -38,5 +38,5 @@ void Usuario::setNickname(std::string _nickname){
     }
 
     bool Usuario::esIgual(Usuario& other){
-        return getNickname() = other.getNickname();
+        return getNickname() == other.getNickname();
     }
