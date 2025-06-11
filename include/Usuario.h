@@ -5,13 +5,22 @@
 class Usuario {
     private:
         std::string nickname;
-        std::string contrasena;
         std::string nombre;
+        std::string contrasena;
         std::string email;
 
     public:
-        Usuario(std::string nickname, std::string contrasena, std::string nombre, std::string email);
-        virtual ~Usuario();
+        Usuario(std::string _nickname, std::string _nombre, std::string _contrasena, std::string _email);
+
+        void setNickname(std::string _nickname);
+        void setNombre(std::string _nombre);
+        void setContrasena(std::string _contrasena);
+        void setEmail(std::string _email);
+
+        std::string getNickname();
+        std::string getNombre();
+        bool operator<(DTUsuario& other);
 };
 
+    
 #endif
