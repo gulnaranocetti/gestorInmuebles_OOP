@@ -19,8 +19,8 @@ class Usuario {
 
         std::string getNickname();
         std::string getNombre();
-        bool operator<(DTUsuario& other);
-};
+        
+        bool operator<(Usuario& other);
+        bool esIgual(usuario& other);
 
-    
 #endif
