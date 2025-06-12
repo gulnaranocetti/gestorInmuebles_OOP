@@ -1,4 +1,7 @@
 #include "AdministraPropiedad.h"
+#include "DTInmuebleAdministrado.h"
+#include "Inmobiliaria.h"
+#include "Publicacion.h"
 
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha, Inmobiliaria* inmobiliaria, Inmueble* inmueble) {
     this->fecha = fecha;
