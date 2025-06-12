@@ -7,6 +7,7 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Inmobiliaria.h"
+#include "string" 
 #include <set>
 
 class ManejadorInmobiliaria{
@@ -22,7 +23,7 @@ class ManejadorInmobiliaria{
 
         std::set<Inmobiliaria> getInmobiliarias();
 
-        Inmobiliaria getInmobiliaria(String nicknameInmobiliaria);
+        Inmobiliaria getInmobiliaria(std::string nicknameInmobiliaria);
 
         ~ManejadorInmobiliaria();
 };
