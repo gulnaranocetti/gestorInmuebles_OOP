@@ -22,7 +22,7 @@ class ManejadorInmobiliaria{
 
         std::set<Inmobiliaria> getInmobiliarias();
 
-        Inmobiliaria getInmobiliaria(String nicknameInmobiliaria);
+        Inmobiliaria* getInmobiliaria(std::string nicknameInmobiliaria);
 
         ~ManejadorInmobiliaria();
 };
