@@ -6,25 +6,25 @@
 #include "DTUsuario.h"
 #include "DTInmuebleListado.h"
 #include <string>
-#include <vector>
+#include <set>
 
 class Inmobiliaria : public Usuario {
     private:
         std::string direccion;
         std::string url;
         std::string telefono;
-        std::vector<AdministraPropiedad*> administradores;
+        std::set<AdministraPropiedad*> administradores;
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
 
-        std::vector<DTInmuebleAdministrado> listarInmueble(); //como no es un set perdemos orden y unicidad. 
-
+        std::set<DTInmuebleAdministrado> listarInmueble(); 
+        
         void unlinkAP(AdministraPropiedad ap);
 
         DTUsuario getDTUsuario(); //altaAdministraPropiedad
 
-        std::vector<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
+        std::set<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 
         void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
 
