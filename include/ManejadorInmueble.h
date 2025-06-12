@@ -11,7 +11,7 @@
 
 class ManejadorInmueble {
 private:
-    std::set<Inmueble> inmuebles;
+    std::set<Inmueble*> inmuebles;
     static ManejadorInmueble* instancia;
 
     ManejadorInmueble();

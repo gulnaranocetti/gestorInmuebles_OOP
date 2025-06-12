@@ -11,7 +11,7 @@
 
 class ManejadorInmobiliaria{
     private: 
-        std::set<Inmobiliaria> inmobiliarias;
+        std::set<Inmobiliaria*> inmobiliarias;
         static ManejadorInmobiliaria * instancia;
         ManejadorInmobiliaria();
     public:
@@ -21,6 +21,8 @@ class ManejadorInmobiliaria{
         void agregarInmobiliaria(Inmueble *in);
 
         std::set<Inmobiliaria> getInmobiliarias();
+
+        Inmobiliaria getInmobiliaria(String nicknameInmobiliaria);
 
         ~ManejadorInmobiliaria();
 };
