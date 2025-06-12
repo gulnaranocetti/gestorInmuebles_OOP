@@ -20,9 +20,9 @@ std::set<Inmobiliaria> ManejadorInmobiliaria::getInmobiliarias(){
 
 }
 
-Inmobiliaria ManejadorInmobiliaria::getInmobiliaria(String nicknameInmobiliaria){
+Inmobiliaria* ManejadorInmobiliaria::getInmobiliaria(std::string nicknameInmobiliaria){
     Inmobiliaria inmoBuscada = NULL;
-    for (set<Inmobiliaria*>::iterator i = this.inmobiliarias.begin(); i == this.inmobiliarias.end(); ++i){
+    for (std::set<Inmobiliaria*>::iterator i = this.inmobiliarias.begin(); i != this.inmobiliarias.end(); ++i){
         if((*i)->getNickname() == nicknameInmobiliaria){
             inmoBuscada = (*i);
         }
