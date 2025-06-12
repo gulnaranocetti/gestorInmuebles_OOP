@@ -10,6 +10,7 @@
 #include "ManejadorInmobiliaria.h"
 #include "ManejadorInmueble.h"
 #include "ManejadorUsuario.h"
+#include "DTInmuebleListado.h"
 #include <set>
 #include <string>
 
@@ -19,15 +20,19 @@ class ControladorSistema{
         ControladorSistema();
     public:
 
-        static ControladorSistema * getInstancia();
+        static ControladorSistema * getInstance();
 
         void eliminarInmueble(int codigoInmueble);
 
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 
+        std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria); //CU alta de administra propiedad
+        
+        std::set<DTUsuario> listarInmobiliarias(); //CU alta de administra propiedad
+        
         std::set<DTInmuebleAdministrado> listarInmueblesAdministrados(std::string nicknameInmobiliaria);
         
-        std::set<DTUsuario> listarInmobiliaria();
+        void altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble); //CU alta de administra propiedad
 
         bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
 
