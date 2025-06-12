@@ -21,7 +21,7 @@ class ManejadorInmobiliaria{
         
         void agregarInmobiliaria(Inmueble *in);
 
-        std::set<Inmobiliaria> getInmobiliarias();
+        std::set<Inmobiliaria*> getInmobiliarias();
 
         Inmobiliaria* getInmobiliaria(std::string nicknameInmobiliaria);
 

@@ -14,7 +14,7 @@ static ManejadorInmobiliaria* ManejadorInmobiliaria::getInstance(){
 }
 
 
-std::set<Inmobiliaria> ManejadorInmobiliaria::getInmobiliarias(){
+std::set<Inmobiliaria*> ManejadorInmobiliaria::getInmobiliarias(){
 
     return this.inmobiliarias;
 
