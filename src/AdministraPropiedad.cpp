@@ -26,6 +26,11 @@ bool AdministraPropiedad::es_tipo(TipoPublicacion tipo, std::string texto, float
     return false;
 }
 
+bool AdministraPropiedad::administra(Inmobiliaria i){
+    return (this->inmobiliaria->getNickname() == i.getNickname());
+}
+
 AdministraPropiedad::~AdministraPropiedad() {
     delete fecha;
+    fecha = NULL;
 }
