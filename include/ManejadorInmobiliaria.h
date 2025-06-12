@@ -7,7 +7,7 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Inmobiliaria.h"
-#include "string" 
+#include <string> 
 #include <set>
 
 class ManejadorInmobiliaria{
