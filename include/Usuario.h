@@ -21,6 +21,6 @@ class Usuario {
         std::string getNombre();
         
         bool operator<(Usuario& other);
-        bool esIgual(usuario& other);
-
+        bool esIgual(Usuario& other);
+};
 #endif

@@ -1,5 +1,5 @@
-#ifndef CONTROLADOR_SISTEMA
-#define CONTROLADOR_SISTEMA
+#ifndef CONTROLADORSISTEMA_H
+#define CONTROLADORSISTEMA_H
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
