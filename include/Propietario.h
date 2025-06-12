@@ -4,6 +4,7 @@
 #include "Notificacion.h"
 #include "Inmobiliaria.h"
 #include "Inmueble.h"
+#include "DTInmuebleListado.h"
 #include <list>
 #include <string>
 #include <vector>
@@ -24,6 +25,8 @@ class Propietario : public Usuario {
         void eliminarSuscripcion(Inmobiliaria i);
 
         void unlinkInmueble(int codigoInmueble);
+
+        std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
 };
 
 #endif
