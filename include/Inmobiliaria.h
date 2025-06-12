@@ -3,6 +3,8 @@
 #include "Usuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "AdministraPropiedad.h"
+#include "DTUsuario.h"
+#include "DTInmuebleListado.h"
 #include <string>
 #include <vector>
 
@@ -19,6 +21,12 @@ class Inmobiliaria : public Usuario {
         std::vector<DTInmuebleAdministrado> listarInmueble(); //como no es un set perdemos orden y unicidad. 
 
         void unlinkAP(AdministraPropiedad ap);
+
+        DTUsuario getDTUsuario(); //altaAdministraPropiedad
+
+        std::vector<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
+
+        void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
 
         ~Inmobiliaria();
 };
