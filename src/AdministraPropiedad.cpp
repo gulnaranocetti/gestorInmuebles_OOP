@@ -40,6 +40,10 @@ void AdministraPropiedad::agregarPublicacion(Publicacion* p){
     if(p != NULL){ this.publicaciones.append(p); }
 }
 
+TipoInmueble AdministraPropiedad::getTipoInmueble(){
+    return inmueble->getTipo();
+}
+
 AdministraPropiedad::~AdministraPropiedad() {
     delete fecha;
     fecha = NULL;

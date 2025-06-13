@@ -21,9 +21,12 @@ public:
     void datosInmueble(TipoInmueble tipoInmueble); // tendria que retornar algo o es un void?
 
     bool es_tipo(TipoPublicacion tipoPublicacion);
-
     bool existe(TipoPublicacion TipoPublicacion);
 
+    int getCodigo();
+    DTFecha* getFecha();
+    TipoPublicacion getTipoPublicacion();
+    std::string getTexto();
     DTPublicacion createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm);
 
     ~Publicacion();

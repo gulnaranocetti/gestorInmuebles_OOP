@@ -35,6 +35,10 @@ int Inmueble::getAnioConstruccion() {
     return anoConstruccion;
 }
 
+TipoInmueble Inmueble::getTipo(){
+    return Todos;
+}
+
 Inmueble::~Inmueble(){
     
 }

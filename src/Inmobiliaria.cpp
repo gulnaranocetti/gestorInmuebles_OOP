@@ -36,7 +36,7 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoIn
     bool igualInmueble = false;
     while(itAP != this.administradores.end() && !igualInmueble){
         igualInmueble = (*itAP)->es_Igual(codigoInmueble);
-        ++it;
+        ++itAP;
     }
     Publicacion* p = NULL;
 
@@ -63,7 +63,19 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoIn
 }
 
 void Inmobiliaria::notificarPublicacion(Publicacion* p){
-    std::set<>
+    if(p != NULL){
+        bool igualInmueble = false;
+        std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
+        while(itAP != this.administradores.end() && !igualInmueble){
+            igualInmueble = (*itAP)->es_Igual(codigoInmueble);
+            ++itAP;
+        }
+        TipoInmueble tipoInmueble = (*itAP)->getTipoInmueble();
+        Notificacion n = new Notificacion(p.getFecha(), p.getTexto(), this.nickname, p.getCodigo(), p.getTipoPublicacio(), tipoInmueble);
+        for(std::set<ISuscriptor>::iterator it = this.suscriptores.begin(); it != this.suscriptores.end(); ++it){
+            (*it)->recibirNotificacion(n);
+        }
+    }
 }
 
 Inmobiliaria::~Inmobiliaria(){}

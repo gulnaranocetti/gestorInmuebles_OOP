@@ -14,8 +14,11 @@ private:
     int codigoPublicacion;
     TipoPublicacion tipoPublicacion;
     TipoInmueble tipoInmueble;
-};
 
+public:
+    Notificacion(DTFecha* fecha, std::string texto, std::string nickInmobiliaria, int codigoPublicacion, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble);
+    ~Notificacion();
+};
 #endif 
 
 
