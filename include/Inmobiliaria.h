@@ -4,6 +4,7 @@
 #include "DTInmuebleAdministrado.h"
 #include "AdministraPropiedad.h"
 #include "DTUsuario.h"
+#include "ISuscriptor.h"
 #include "DTInmuebleListado.h"
 #include <string>
 #include <set>
@@ -15,6 +16,7 @@ class Inmobiliaria : public Usuario {
         std::string telefono;
         std::set<AdministraPropiedad*> administradores;
         std::set<Propietario*> propietarios;
+        std::set<ISuscriptor*> suscriptores;
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
@@ -28,6 +30,13 @@ class Inmobiliaria : public Usuario {
         std::set<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 
         void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
+
+        //patron observer
+        void agragarSuscriptor(ISuscriptor* s);
+        void eliminarSuscripcion(Inmobiliaria* i);
+        void notificarPublicacion(const Notificacion& n);
+        ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);
+        std::set<ISuscriptor*> getSuscriptores();
 
         ~Inmobiliaria();
 };
