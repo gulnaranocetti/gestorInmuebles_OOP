@@ -34,6 +34,10 @@
         suscripciones.erase(i);
     }
 
+    std::string Cliente::getNickname() const {
+        return Usuario::getNickname();
+    }
+
     Cliente::~Cliente(){
         for (Notificacion* n : notificaciones){
             delete n;

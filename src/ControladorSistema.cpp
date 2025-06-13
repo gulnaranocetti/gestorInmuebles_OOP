@@ -30,3 +30,15 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     std::set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
     return listInmuebles;
 }
+
+std::set<Inmobiliaria*> ControladorSistema::listarInmobiliariasNoSuscripto(std::string nicknameSuscriptor) {
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    std::set<Inmobiliaria*> li = m->getInmobiliarias();
+    std::set<Inmobiliaria*> result;
+    for (std::set<Inmobiliaria*>::iterator it = li.begin(); it != li.end(); ++it) {
+        if (!(*it)->suscrito(nicknameSuscriptor)) {
+            result.insert(*it);
+        }
+    }    
+    return result;
+}

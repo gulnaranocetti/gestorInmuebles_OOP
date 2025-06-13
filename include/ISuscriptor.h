@@ -11,6 +11,8 @@ public:
     virtual std::set<Notificacion> consultarNotificaciones() const = 0;
     virtual void eliminarSuscripcion(Inmobiliaria* i) = 0;
 
+    virtual std::string getNickname() const = 0; // Para poder buscar al suscriptor por su nickname
+
     virtual ~ISuscriptor() {}
 };
 

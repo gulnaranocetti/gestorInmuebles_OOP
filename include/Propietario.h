@@ -5,11 +5,12 @@
 #include "Inmobiliaria.h"
 #include "Inmueble.h"
 #include "DTInmuebleListado.h"
+#include "ISuscriptor.h"
 #include <list>
 #include <string>
 #include <vector>
 
-class Propietario : public Usuario {
+class Propietario : public Usuario, public ISuscriptor {
     private:
         std::string cuentaBancaria;
         std::string telefono;
@@ -25,6 +26,8 @@ class Propietario : public Usuario {
         void eliminarSuscripcion(Inmobiliaria i);
 
         void unlinkInmueble(int codigoInmueble);
+
+        std::string getNickname() const override;
 
         std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
 };
