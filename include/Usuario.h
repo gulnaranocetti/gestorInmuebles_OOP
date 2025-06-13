@@ -20,6 +20,8 @@ class Usuario {
         std::string getNickname() const;
         std::string getNombre() const;
         
+        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor); // NO implementar
+
         bool operator<(Usuario& other);
         bool esIgual(Usuario& other);
 };

@@ -19,3 +19,7 @@ std::string Propietario::getNickname() const {
 std::vector<DTInmuebleListado> Propietario::getInmueblesNoAdmin(Propietario thisProp) {
     
 }
+
+ISuscriptor* Propietario::buscarSuscriptor(const std::string& nicknameSuscriptor) {
+    return ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
+}

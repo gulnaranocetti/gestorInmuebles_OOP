@@ -42,3 +42,17 @@ std::set<Inmobiliaria*> ControladorSistema::listarInmobiliariasNoSuscripto(std::
     }    
     return result;
 }
+
+void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknameInmobiliaria, std::string nicknameSuscriptor) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Usuario* us = mu->getUsuario(nicknameSuscriptor);
+    ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    std::set<Inmobiliaria*> inmobiliarias = m->getInmobiliarias();
+    for(std::set<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        bool b = nicknameInmobiliaria.find((*it)->getNickname()) != nicknameInmobiliaria.end();
+        if (b) {
+            (*it)->agragarSuscriptor(suscriptor);
+        }
+    }
+}

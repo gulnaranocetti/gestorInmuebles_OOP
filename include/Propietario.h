@@ -29,6 +29,8 @@ class Propietario : public Usuario, public ISuscriptor {
 
         std::string getNickname() const override;
 
+        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
+
         std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
 };
 

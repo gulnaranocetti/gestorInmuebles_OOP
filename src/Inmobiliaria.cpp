@@ -33,4 +33,8 @@ bool Inmobiliaria::suscrito(std::string nicknameUsuario) {
     return false;
 } //CU Suscribirse a Notificaciones
 
+void Inmobiliaria::agragarSuscriptor(ISuscriptor* s) {
+    this->suscriptores.insert(s);
+} 
+
 Inmobiliaria::~Inmobiliaria(){}

@@ -43,3 +43,7 @@
             delete n;
         }//no se si esta bien
     }
+
+    ISuscriptor* Cliente::buscarSuscriptor(const std::string& nicknameSuscriptor) {
+        return ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
+    }
