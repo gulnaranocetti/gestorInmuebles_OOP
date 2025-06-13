@@ -30,5 +30,53 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActu
     this->administradores.insert(ap);
     cin.asociarAdministracionPropiedad(ap);
 } //altaAdministraPropiedad
+
+bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoInmueble, std::string texto, float precio){
+    std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
+    bool igualInmueble = false;
+    while(itAP != this.administradores.end() && !igualInmueble){
+        igualInmueble = (*itAP)->es_Igual(codigoInmueble);
+        ++itAP;
+    }
+    Publicacion* p = NULL;
+
+    if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
+    
+    if(!res){
+        p = new Publicacion(tipoPublicacion, texto, precio);
+        std::set<Publicacion*>::iterator itP = (*itAP)->getPublicaciones().begin();
+        bool existePublicacion = false;
+        for(itP; itP != (*itAP)->getPublicaciones().end(); ++itP){
+            existePublicacion = (*itP)->existe(tipoPublicacion);
+            if (existePublicacion && p.getFecha() > (*itP)->getFecha()){
+                (*itP)->setActiva(false);
+                p.setActiva(true);
+            }
+        }
+        (*itAP)->agregarPublicacion(p);
+        ManejadorPublicacion m = ManejadorPublicacion.getInstance();
+        m.agregarPublicacion(p);
+        notificarPublicacion(p);
+    }
+
+    return (!res);
+}
+
+void Inmobiliaria::notificarPublicacion(Publicacion* p){
+    if(p != NULL){
+        bool igualInmueble = false;
+        std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
+        while(itAP != this.administradores.end() && !igualInmueble){
+            igualInmueble = (*itAP)->es_Igual(codigoInmueble);
+            ++itAP;
+        }
+        TipoInmueble tipoInmueble = (*itAP)->getTipoInmueble();
+        Notificacion n = new Notificacion(p.getFecha(), p.getTexto(), this.nickname, p.getCodigo(), p.getTipoPublicacio(), tipoInmueble);
+        for(std::set<ISuscriptor>::iterator it = this.suscriptores.begin(); it != this.suscriptores.end(); ++it){
+            (*it)->recibirNotificacion(n);
+        }
+    }
+}
+
 Inmobiliaria::~Inmobiliaria(){}
 
