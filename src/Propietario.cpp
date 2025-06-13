@@ -12,6 +12,14 @@ void Propietario::eliminarSuscripcion(Inmobiliaria i) {}
 
 void Propietario::unlinkInmueble(int codigoInmueble) {}
 
+std::string Propietario::getNickname() const {
+    return Usuario::getNickname();
+}
+
 std::vector<DTInmuebleListado> Propietario::getInmueblesNoAdmin(Propietario thisProp) {
     
+}
+
+ISuscriptor* Propietario::buscarSuscriptor(const std::string& nicknameSuscriptor) {
+    return ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
 }

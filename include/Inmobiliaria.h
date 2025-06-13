@@ -32,6 +32,8 @@ class Inmobiliaria : public Usuario {
 
         void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
 
+        bool suscrito(std::string nicknameUsuario); //CU Suscribirse a Notificaciones
+
         //patron observer
         void agragarSuscriptor(ISuscriptor* s);
         void eliminarSuscripcion(Inmobiliaria* i);

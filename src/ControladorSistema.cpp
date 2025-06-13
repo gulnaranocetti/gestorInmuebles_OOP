@@ -36,11 +36,8 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     Inmobiliaria* ci = m->getInmobiliaria(nicknameInmobiliaria);
     std::set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
     return listInmuebles;
-
 }
-
 std::set<DTUsuario> ControladorSistema::listarInmobiliarias(){
-    
     ManejadorInmobiliaria* m = ManejadorInmobiliaria.getInstance();
     std::set<Inmobiliaria> inmo = m.getInmobiliarias();
     std::set<DTUsuario> setInmo;
@@ -71,4 +68,30 @@ bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int c
     bool res = inmo.es_tipo(tipoPublicacion, codigoInmueble, texto, precio);
     return res;
 
+}
+
+std::set<Inmobiliaria*> ControladorSistema::listarInmobiliariasNoSuscripto(std::string nicknameSuscriptor) {
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    std::set<Inmobiliaria*> li = m->getInmobiliarias();
+    std::set<Inmobiliaria*> result;
+    for (std::set<Inmobiliaria*>::iterator it = li.begin(); it != li.end(); ++it) {
+        if (!(*it)->suscrito(nicknameSuscriptor)) {
+            result.insert(*it);
+        }
+    }    
+    return result;
+}
+
+void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknameInmobiliaria, std::string nicknameSuscriptor) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Usuario* us = mu->getUsuario(nicknameSuscriptor);
+    ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    std::set<Inmobiliaria*> inmobiliarias = m->getInmobiliarias();
+    for(std::set<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        bool b = nicknameInmobiliaria.find((*it)->getNickname()) != nicknameInmobiliaria.end();
+        if (b) {
+            (*it)->agragarSuscriptor(suscriptor);
+        }
+    }
 }
