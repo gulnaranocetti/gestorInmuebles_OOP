@@ -2,6 +2,7 @@
 #define INMOBILIARIA_H
 #include "Usuario.h"
 #include "DTInmuebleAdministrado.h"
+#include "ManejadorPublicacion.h"
 #include "AdministraPropiedad.h"
 #include "DTUsuario.h"
 #include "DTInmuebleListado.h"
@@ -28,6 +29,10 @@ class Inmobiliaria : public Usuario {
         std::set<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 
         void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
+
+        bool es_tipo(TipoPublicacion tipoPublicacion, std::string codigoInmueble, std::string texto, float precio);
+
+        void notificarPublicacion(Publicacion publicacion);
 
         ~Inmobiliaria();
 };
