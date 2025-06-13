@@ -38,7 +38,7 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     return listInmuebles;
 }
 std::set<DTUsuario> ControladorSistema::listarInmobiliarias(){
-    ManejadorInmobiliaria* m = ManejadorInmobiliaria.getInstance();
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     std::set<Inmobiliaria> inmo = m.getInmobiliarias();
     std::set<DTUsuario> setInmo;
     for(std::set<Inmobiliaria>::iterator it = inmo.begin(); it!= inmo.end(); ++i){
@@ -53,7 +53,7 @@ std::set<DTUsuario> ControladorSistema::listarInmobiliarias(){
 
 std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
 
-    ManejadorInmobiliaria* m = ManejadorInmobiliaria.getInstance();
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inm = getInmobiliaria(nicknameInmobiliaria);
     std::set<DTInmuebleAdministrado> lis = inm.listarInmuebles();
     return lis;
@@ -63,7 +63,7 @@ std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrado
 
 bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
 
-    ManejadorInmobiliaria* m = ManejadorInmobiliaria.getInstancia();
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstancia();
     Inmobiliaria* inmo = m.getInmobiliaria(nicknameInmobiliaria);
     bool res = inmo.es_tipo(tipoPublicacion, codigoInmueble, texto, precio);
     return res;
