@@ -10,7 +10,7 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::
 void Publicacion::datosInmueble(TipoInmueble tipoInmueble){} // tendria que retornar algo o es un void?
 
 bool Publicacion::es_tipo(TipoPublicacion tipoPublicacion){
-    Factory* fabrica = Factory.getInstance();
+    Factory* fabrica = Factory::getInstance();
     IControladorFechaActual controlador = fabrica->getControladorFechaActual();
     DTFecha* fechaActual = controlador.getFechaActual();
     return (this.fecha == fechaActual && this.tipo == tipoPublicacion);

@@ -48,6 +48,8 @@ class ControladorSistema{
 
         //Caso de uso: Suscribirse a Notificaciones
 
+        bool suscribirseNotificaciones(std::string nicknameInmobiliaria, std::string nicknameSuscriptor);
+
         void suscribirseAInmobiliarias(std::set<std::string> nicknameInmobiliaria, std::string nicknameSuscriptor);
 
         std::set<Inmobiliaria*> listarInmobiliariasNoSuscripto(std::string nicknameSuscriptor);

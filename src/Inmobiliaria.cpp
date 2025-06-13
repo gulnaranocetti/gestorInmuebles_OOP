@@ -31,6 +31,18 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActu
     cin.asociarAdministracionPropiedad(ap);
 } //altaAdministraPropiedad
 
+bool Inmobiliaria::suscrito(std::string nicknameUsuario) {
+    for(std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it) {
+        if ((*it)->getNickname() == nicknameUsuario) {
+            return true;
+        }
+    }
+    return false;
+} //CU Suscribirse a Notificaciones
+
+void Inmobiliaria::agragarSuscriptor(ISuscriptor* s) {
+    this->suscriptores.insert(s);
+} 
 bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoInmueble, std::string texto, float precio){
     std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
     bool igualInmueble = false;
