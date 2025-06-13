@@ -14,7 +14,7 @@
 
 class ManejadorUsuario {
 private:
-    std::set<Usuario> usuarios; 
+    std::set<Usuario*> usuarios; 
     static ManejadorUsuario* instancia;
 
     ManejadorUsuario();
@@ -22,8 +22,9 @@ private:
 public:
     static ManejadorUsuario* getInstance();
 
-    Inmueble* getUsuario(std::string nicknameUser);
+    Usuario* getUsuario(std::string nicknameUser);
 
+    std::set<Usuario*> getUsuarios();
 
     ~ManejadorUsuario();
 };

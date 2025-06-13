@@ -4,7 +4,15 @@
 
 
 
-static ManejadorPublicacion* ManejadorPublicacion::getInstance(){}
+ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
+
+ManejadorPublicacion::ManejadorPublicacion(){}
+
+static ManejadorPublicacion* ManejadorPublicacion::getInstance(){
+    if (this.instancia == NULL){this.instancia = new ManejadorPublicacion();}
+
+    return this.instancia;
+}
 
 std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaxion, TipoInmueble tipoInmueble){}
 
