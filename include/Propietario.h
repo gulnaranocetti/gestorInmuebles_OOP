@@ -15,7 +15,7 @@ class Propietario : public Usuario, public ISuscriptor {
     private:
         std::string cuentaBancaria;
         std::string telefono;
-        std::vector<Inmueble> inmuebles;
+        std::set<Inmueble*> inmuebles;
         std::set<Notificacion> notificaciones;
 
     public:
@@ -33,7 +33,7 @@ class Propietario : public Usuario, public ISuscriptor {
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
 
-        std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
 
 };
 

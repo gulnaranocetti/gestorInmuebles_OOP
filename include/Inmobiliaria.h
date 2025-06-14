@@ -15,12 +15,16 @@ class Inmobiliaria : public Usuario {
         std::string direccion;
         std::string url;
         std::string telefono;
-        std::set<AdministraPropiedad*> administradores;
+        std::set<AdministraPropiedad*> administrados;
         std::set<Propietario*> propietarios;
         std::set<ISuscriptor*> suscriptores;
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
+
+        std::set<AdministraPropiedad*> getAdministrados() const;
+
+        std::set<AdministraPropiedad*> getAdministrados() const;
 
         std::set<DTInmuebleAdministrado*> listarInmueble(); 
         
@@ -28,7 +32,7 @@ class Inmobiliaria : public Usuario {
 
         DTUsuario getDTUsuario(); //altaAdministraPropiedad
 
-        std::set<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
+        std::set<DTInmuebleListado*> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 
         void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
 

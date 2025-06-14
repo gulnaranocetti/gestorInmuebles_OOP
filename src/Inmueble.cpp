@@ -35,6 +35,14 @@ int Inmueble::getAnioConstruccion() {
     return anoConstruccion;
 }
 
+void Inmueble::destroyIn() {
+    this->propietario->unlinkInmueble(this->codigo);
+    for(std::set<AdministraPropiedad*>::iterator ap = this->administradores.begin(); ap != this->administradores.end(); ap++) {
+        this->administradores.erase((*ap));
+    }
+}
+
+
 TipoInmueble Inmueble::getTipo(){
     return TipoInmueble::Todos;
 }
