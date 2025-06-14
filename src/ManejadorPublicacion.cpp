@@ -20,4 +20,8 @@ void ManejadorPublicacion::agregarPublicacion(Publicacion* p){
     if(p != NULL){ this.publicaciones.append(p); }
 }
 
+int ManejadorPublicacion::getUltimoCodigoPublicacion(){ return this->ultimoCodigo; }
+
+void ManejadorPublicacion::aumentarUltimoCodigo(){ this->ultimoCodigo++; }
+
 ManejadorPublicacion::~ManejadorPublicacion(){}

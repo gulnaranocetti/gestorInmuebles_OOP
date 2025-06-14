@@ -28,7 +28,7 @@ public:
     TipoPublicacion getTipoPublicacion();
     std::string getTexto();
     DTPublicacion createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm);
-
+    void setActiva(bool activa);
     ~Publicacion();
 };
 

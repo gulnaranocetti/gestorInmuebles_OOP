@@ -33,4 +33,6 @@ std::string Publicacion::getTexto(){ return this->texto; }
 
 DTPublicacion Publicacion::createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm){}
 
+void Publicacion::setActiva(bool activa){ this->activa = activa; }
+
 Publicacion::~Publicacion(){}

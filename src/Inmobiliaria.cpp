@@ -67,20 +67,27 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
     if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
     
     if(!res){
-        p = new Publicacion(tipoPublicacion, texto, precio);
-        std::set<Publicacion*>::iterator itP = (*itAP)->getPublicaciones().begin();
+
+        ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
+        m->aumentarUltimoCodigo();
+        int ultimoCodigoPublicacion = m->getUltimoCodigoPublicacion();
+        DTFecha* fecha = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
+        p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, false);
         bool existePublicacion = false;
-        for(itP; itP != (*itAP)->getPublicaciones().end(); ++itP){
+
+        for(std::set<Publicacion*>::iterator itP = (*itAP)->getPublicaciones().begin(); itP != (*itAP)->getPublicaciones().end(); ++itP){
             existePublicacion = (*itP)->existe(tipoPublicacion);
             if (existePublicacion && p->getFecha() > (*itP)->getFecha()){
                 (*itP)->setActiva(false);
                 p->setActiva(true);
             }
         }
+
         (*itAP)->agregarPublicacion(p);
         ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
         m->agregarPublicacion(p);
         notificarPublicacion(p, codigoInmueble);
+    
     }
 
     return (!res);
