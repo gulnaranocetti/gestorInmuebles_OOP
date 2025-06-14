@@ -13,7 +13,7 @@ class Propietario : public Usuario {
     private:
         std::string cuentaBancaria;
         std::string telefono;
-        std::vector<Inmueble> inmuebles;
+        std::set<Inmueble*> inmuebles;
 
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
@@ -26,7 +26,7 @@ class Propietario : public Usuario {
 
         void unlinkInmueble(int codigoInmueble);
 
-        std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
 };
 
 #endif
