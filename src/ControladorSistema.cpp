@@ -31,22 +31,17 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     return listInmuebles;
 }
 
-<<<<<<< HEAD
 void ControladorSistema::eliminarInmueble(int codigoInmueble) {
-=======
-void eliminarInmueble(int codigoInmueble) {
->>>>>>> 7bef5fa (cambiosFran2)
     ManejadorInmueble* inm = ManejadorInmueble::getInstance();
     Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
     in->destroyIn();
 }
-<<<<<<< HEAD
 
 bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Usuario* u = m->getUsuario(nickname);
     if (u == NULL) {
-        Cliente c =  Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        Cliente* c =  new Cliente(nickname, contrasena, nombre, email, apellido, documento);
         m->addCliente(c);
     }
     u = m->getUsuario(nickname);
@@ -57,7 +52,7 @@ bool ControladorSistema::altaPropietario(std::string nickname, std::string contr
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Usuario* u = m->getUsuario(nickname);
     if (u == NULL) {
-        Propietario p = Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
         m->addPropietario(p);
     }
     u = m->getUsuario(nickname);
@@ -68,11 +63,9 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Usuario* u = m->getUsuario(nickname);
     if (u == NULL) {
-        Inmobiliaria i = Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
         m->addInmobiliaria(i);
     }
     u = m->getUsuario(nickname);
     return (u != NULL);
 }
-=======
->>>>>>> 7bef5fa (cambiosFran2)
