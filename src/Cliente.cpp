@@ -1,4 +1,5 @@
 #include "Cliente.h"
+#include "ManejadorUsuario.h"
     
     void Cliente::setApellido(std::string _apellido){
         apellido = _apellido;
@@ -8,22 +9,22 @@
         documento = _documento;
     }
 
-    std::string: Cliente::getApellido(){
+    std::string Cliente::getApellido(){
         return apellido;
     }
 
-    std::string: Cliente::getDocumento(){
+    std::string Cliente::getDocumento(){
         return documento;
     }
 
-    std::set<Notificacion> Cliente::consultarNotificaciones(){
+    std::set<Notificacion*> Cliente::consultarNotificaciones(){
         return notificaciones;
     }
 
     Cliente::Cliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, 
-            std::string apellido, std::string telefono): DTUsuario(_nickname, _nombre, _contrasena, _email){
-                apellido = _apellido;
-                documento = _documento;
+            std::string apellido, std::string telefono): Usuario(nickname, nombre, contrasena, email){
+                apellido = apellido;
+                documento = documento;
             }
 
     void Cliente::recibirNotificacion(Notificacion* n){
@@ -45,5 +46,7 @@
     }
 
     ISuscriptor* Cliente::buscarSuscriptor(const std::string& nicknameSuscriptor) {
-        return ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
+        Usuario* u = ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
+        ISuscriptor* s = dynamic_cast<ISuscriptor*>(u);
+        return s ? s : nullptr;
     }

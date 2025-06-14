@@ -24,5 +24,7 @@ class Usuario {
 
         bool operator<(Usuario& other);
         bool esIgual(Usuario& other);
+
+        virtual ~Usuario() {}
 };
 #endif

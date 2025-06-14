@@ -22,7 +22,7 @@ class Cliente : public Usuario, public ISuscriptor {
         std::string getNickname() const override;
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
-        std::set<Notificacion> consultarNotificaciones();
+        std::set<Notificacion*> consultarNotificaciones();
 
         void recibirNotificacion(Notificacion* n);
         void eliminarSuscripcion(Inmobiliaria* i);

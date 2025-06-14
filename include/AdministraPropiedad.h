@@ -27,6 +27,7 @@ class AdministraPropiedad {
         std::set<Publicacion*> getPublicaciones();
         void agregarPublicacion(Publicacion* p);
         ~AdministraPropiedad();
+        TipoInmueble getTipoInmueble();
 };
 
 #endif

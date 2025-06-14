@@ -1,25 +1,26 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/DTUsuario.h"
 #include "../include/Publicacion.h"
+#include "../include/AdministraPropiedad.h"
 #include <set>
 
 
 
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
-    this->nickname = nickname;
-    this->contrasena = contrasena;
-    this->nombre = nombre;
-    this->email = email;
-    this->direccion = direccion;
-    this->url = url;
-    this->telefono = telefono;
-    this->administradores = std::set<AdministraPropiedad*>();
-    this->propietarios = std::set<Propietario*>();
-    this->suscriptores = std::set<ISuscriptor*>();
+    nickname = nickname;
+    contrasena = contrasena;
+    nombre = nombre;
+    email = email;
+    direccion = direccion;
+    url = url;
+    telefono = telefono;
+    administradores = std::set<AdministraPropiedad*>();
+    propietarios = std::set<Propietario*>();
+    suscriptores = std::set<ISuscriptor*>();
 }
 
-std::set<DTInmuebleAdministrado> Inmobiliaria::listarInmueble(){
-    std::set<DTInmuebleAdministrado> lis;
+std::set<DTInmuebleAdministrado*> Inmobiliaria::listarInmueble(){
+    std::set<DTInmuebleAdministrado*> lis;
     for(std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it){
         lis.insert((*it)->obtenerDatos());
     }
@@ -36,11 +37,11 @@ std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
     
 } //altaAdministraPropiedad
 
-void Inmobiliaria::altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual){ 
-    AdministraPropiedad* ap =  new AdministraPropiedad(fechaActual, this, cin);
-    this->administradores.insert(ap);
-    cin->asociarAdministracionPropiedad(ap);
-} //altaAdministraPropiedad
+// void Inmobiliaria::altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual){ 
+//     AdministraPropiedad* ap =  new AdministraPropiedad(fechaActual, this, cin);
+//     this->administradores.insert(ap);
+//     cin->asociarAdministracionPropiedad(ap);
+// } //altaAdministraPropiedad
 
 bool Inmobiliaria::suscrito(std::string nicknameUsuario) {
     for(std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it) {
@@ -94,7 +95,7 @@ void Inmobiliaria::notificarPublicacion(Publicacion* p, int codigoInmueble){
             ++itAP;
         }
         TipoInmueble tipoInmueble = (*itAP)->getTipoInmueble();
-        Notificacion* n = new Notificacion(p->getFecha(), p->getTexto(), this->nickname, p->getCodigo(), p->getTipoPublicacion(), tipoInmueble);
+        Notificacion* n = new Notificacion(p->getFecha(), p->getTexto(), this->getNickname(), p->getCodigo(), p->getTipoPublicacion(), tipoInmueble);
         for(std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it){
             (*it)->recibirNotificacion(n);
         }

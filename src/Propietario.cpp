@@ -4,7 +4,7 @@
 
 Propietario::Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {}
 
-void Propietario::recibirNotificacion(Notificacion n) {}
+void Propietario::recibirNotificacion(Notificacion* n) {}
         
 std::list<Notificacion> Propietario::consultarNotificaciones() {}
 

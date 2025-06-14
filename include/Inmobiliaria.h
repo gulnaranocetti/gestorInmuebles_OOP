@@ -22,7 +22,7 @@ class Inmobiliaria : public Usuario {
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
 
-        std::set<DTInmuebleAdministrado> listarInmueble(); 
+        std::set<DTInmuebleAdministrado*> listarInmueble(); 
         
         void unlinkAP(AdministraPropiedad ap);
 
@@ -37,11 +37,11 @@ class Inmobiliaria : public Usuario {
         //patron observer
         void agragarSuscriptor(ISuscriptor* s);
         void eliminarSuscripcion(Inmobiliaria* i);
-        void notificarPublicacion(Publicacion* publicacion, std::string codigoInmueble);
+        void notificarPublicacion(Publicacion* publicacion, int codigoInmueble);
         ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);
         std::set<ISuscriptor*> getSuscriptores();
 
-        bool es_tipo(TipoPublicacion tipoPublicacion, std::string codigoInmueble, std::string texto, float precio);
+        bool es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio);
 
         
 
