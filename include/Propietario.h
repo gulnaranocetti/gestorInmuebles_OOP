@@ -19,7 +19,7 @@ class Propietario : public Usuario, public ISuscriptor {
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
 
-        void recibirNotificacion(Notificacion n);
+        void recibirNotificacion(Notificacion* n);
         
         std::list<Notificacion> consultarNotificaciones();
 
