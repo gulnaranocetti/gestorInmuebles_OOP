@@ -83,3 +83,30 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
         }
     }
 }
+
+std::set<DTUsuario> ControladorSistema::listarInmobiliariasSuscritas(std::string nicknameSuscriptor) {
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    std::set<Inmobiliaria*> inmobiliarias = m->getInmobiliarias();
+    std::set<DTUsuario> result;
+    for (std::set<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        if((*it)->suscrito(nicknameSuscriptor)){
+            DTUsuario dt = (*it)->getDTUsuario();
+            result.insert(dt);
+        }
+    }
+    return result;
+}
+
+void ControladorSistema::eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Usuario* us = mu->getUsuario(nicknameUsuario);
+    ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameUsuario);
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    std::set<Inmobiliaria*> inmobiliarias = m->getInmobiliarias();
+    for (std::set<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        bool b = InmobiliariasAEliminar.find((*it)->getDTUsuario()) != InmobiliariasAEliminar.end();
+        if (b) {
+            (*it)->eliminarSuscripcion(suscriptor);
+        }
+    }
+}
