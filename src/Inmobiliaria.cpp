@@ -14,11 +14,19 @@ std::set<AdministraPropiedad*> Inmobiliaria::getAdministrados() const {
 std::set<DTInmuebleAdministrado> Inmobiliaria::listarInmueble(){} //como no es un set perdemos orden y unicidad. 
 
 void Inmobiliaria::unlinkAP(AdministraPropiedad ap){
+<<<<<<< HEAD
     std::set<AdministraPropiedad*>::iterator it = this->administrados.begin();
     while ((it != this->administrados.end()) && ((*it)->es_Igual(ap.ObtenerDatos().getCodigo()))) { //cómo hago para encontrar la ap que hay que eliminar
         it++;
     }
     this->administrados.erase((*it));
+=======
+    /*std::set<AdministraPropiedad*>::iterator it = this->administrados.begin();
+    while ((it != this->administrados.end()) && ((*it) != ap)) {
+        it++;
+    }
+    this->administrados.erase((*it));*/
+>>>>>>> 7bef5fa (cambiosFran2)
 }
 
 DTUsuario Inmobiliaria::getDTUsuario(){
@@ -29,7 +37,7 @@ std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario(){
     std::set<DTInmuebleListado*> resultado;
 
     for(std::set<Propietario*>::iterator  p = this->propietarios.begin(); p != this->propietarios.end(); p++) {
-        resultado.insert(p.getInmueblesNoAdmin(this).begin(), p.getInmueblesNoAdmin(this).end());
+        resultado.insert(*p.getInmueblesNoAdmin(this).begin(), p.getInmueblesNoAdmin(this).end());
     }
 
     return resultado;

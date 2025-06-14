@@ -31,11 +31,16 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     return listInmuebles;
 }
 
+<<<<<<< HEAD
 void ControladorSistema::eliminarInmueble(int codigoInmueble) {
+=======
+void eliminarInmueble(int codigoInmueble) {
+>>>>>>> 7bef5fa (cambiosFran2)
     ManejadorInmueble* inm = ManejadorInmueble::getInstance();
     Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
     in->destroyIn();
 }
+<<<<<<< HEAD
 
 bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
@@ -69,3 +74,5 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
     u = m->getUsuario(nickname);
     return (u != NULL);
 }
+=======
+>>>>>>> 7bef5fa (cambiosFran2)
