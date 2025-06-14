@@ -1,12 +1,13 @@
 #ifndef ADMINISTRAPROPIEDAD_H
 #define ADMINISTRAPROPIEDAD_H
 #include "DTFecha.h"
-#include "Inmobiliaria.h" 
 #include "Inmueble.h"
-#include "DTInmuebleAdministrado.h"
-#include "Publicacion.h"
 #include <vector>
 #include <string>
+
+class Inmobiliaria;
+class TipoPublicacion;
+class DTInmuebleAdministrado;
 
 class AdministraPropiedad {
     private:
