@@ -6,7 +6,7 @@ ManejadorInmobiliaria* ManejadorInmobiliaria::instancia = NULL;
 
 ManejadorInmobiliaria::ManejadorInmobiliaria(){}
 
-static ManejadorInmobiliaria* ManejadorInmobiliaria::getInstance(){
+ManejadorInmobiliaria* ManejadorInmobiliaria::getInstance(){
 
     if (this->instancia == NULL){this->instancia = new ManejadorInmobiliaria();}
     return this->instancia;

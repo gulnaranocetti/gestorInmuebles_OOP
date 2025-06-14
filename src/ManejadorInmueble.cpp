@@ -5,7 +5,7 @@ ManejadorInmueble* ManejadorInmueble::instancia = NULL;
 
 ManejadorInmueble::ManejadorInmueble(){}
 
-static ManejadorInmueble* ManejadorInmueble::getInstance(){
+ManejadorInmueble* ManejadorInmueble::getInstance(){
 
     if (this->instancia == NULL){this->instancia = new ManejadorInmueble();}
 

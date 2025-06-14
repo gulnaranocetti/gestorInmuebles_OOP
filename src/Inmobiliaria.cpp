@@ -54,7 +54,7 @@ bool Inmobiliaria::suscrito(std::string nicknameUsuario) {
 void Inmobiliaria::agragarSuscriptor(ISuscriptor* s) {
     this->suscriptores.insert(s);
 } 
-bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoInmueble, std::string texto, float precio){
+bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio){
     std::set<AdministraPropiedad*>::iterator itAP = this->administradores.begin();
     bool igualInmueble = false;
     while(itAP != this->administradores.end() && !igualInmueble){
@@ -62,8 +62,8 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoIn
         ++itAP;
     }
     Publicacion* p = NULL;
-
-    if(igualInmueble){ bool res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
+    bool res = true;
+    if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
     
     if(!res){
         p = new Publicacion(tipoPublicacion, texto, precio);
@@ -77,19 +77,19 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoIn
             }
         }
         (*itAP)->agregarPublicacion(p);
-        ManejadorPublicacion m = ManejadorPublicacion::getInstance();
-        m.agregarPublicacion(p);
+        ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
+        m->agregarPublicacion(p);
         notificarPublicacion(p, codigoInmueble);
     }
 
     return (!res);
 }
 
-void Inmobiliaria::notificarPublicacion(Publicacion* p, std::string codigoInmueble){
+void Inmobiliaria::notificarPublicacion(Publicacion* p, int codigoInmueble){
     if(p != NULL){
         bool igualInmueble = false;
-        std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
-        while(itAP != this.administradores.end() && !igualInmueble){
+        std::set<AdministraPropiedad*>::iterator itAP = this->administradores.begin();
+        while(itAP != this->administradores.end() && !igualInmueble){
             igualInmueble = (*itAP)->es_Igual(codigoInmueble);
             ++itAP;
         }

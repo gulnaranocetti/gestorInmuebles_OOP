@@ -8,7 +8,7 @@ ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
 
 ManejadorPublicacion::ManejadorPublicacion(){}
 
-static ManejadorPublicacion* ManejadorPublicacion::getInstance(){
+ManejadorPublicacion* ManejadorPublicacion::getInstance(){
     if (this.instancia == NULL){this.instancia = new ManejadorPublicacion();}
 
     return this.instancia;
