@@ -18,6 +18,8 @@ bool Publicacion::es_tipo(TipoPublicacion tipoPublicacion){
 
 bool Publicacion::existe(TipoPublicacion tipoPublicacion){ return(this.tipo == tipoPublicacion && this.activa); }
 
+float Publicacion::getPrecio(){ return this.precio; }
+
 DTFecha* Publicacion::getFecha(){ return this.fecha; }
 
 TipoPublicacion Publicacion::getTipoPublicacion(){ return this.tipo; }
@@ -27,3 +29,7 @@ std::string Publicacion::getTexto(){ return this.texto; }
 DTPublicacion Publicacion::createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm){}
 
 Publicacion::~Publicacion(){}
+
+AdministraPropiedad* Publicacion::getAdministraPropiedad(){
+    return administraPropiedad;
+}

@@ -95,3 +95,8 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
         }
     }
 }
+
+std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
+    ManejadorPublicacion* mp = ManejadorPublicacion.getInstance();
+    return mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+}

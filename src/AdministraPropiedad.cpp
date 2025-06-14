@@ -48,3 +48,7 @@ AdministraPropiedad::~AdministraPropiedad() {
     delete fecha;
     fecha = NULL;
 }
+
+Inmueble* AdministraPropiedad::getInmueble(){
+    return inmueble;
+}

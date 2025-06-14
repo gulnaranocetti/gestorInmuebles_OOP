@@ -14,7 +14,27 @@ static ManejadorPublicacion* ManejadorPublicacion::getInstance(){
     return this.instancia;
 }
 
-std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaxion, TipoInmueble tipoInmueble){}
+DTInmueble ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion){
+    for (std::set<Publicacion>::iterator it = publicaciones.begin(); it != publicaciones.end; ++it){
+        Publicacion* p = *it;
+        if (p.getCodigo() == codigoPublicacion){
+            AdministraPropiedad* ap = p.getAdministraPropiedad();
+            Inmueble* in = ap.getInmueble();
+        }
+        return DTInmueble(in.getCodigo(), in.getDireccion(), in.getNumeroPuerta(), in.getSuperficie(), in.getAnioConstruccion());
+    }
+}
+
+
+std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaxion, TipoInmueble tipoInmueble){
+    std::set<DTPublicacion> devolver;
+    for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
+        Publicacion* p = *it;
+        if (p.getPrecio() > precioMinimo && p.getPrecio() < precioMaximo && p.getTipoPublicacion == tipoPublicacion){
+            
+        }
+    }
+}
 
 void ManejadorPublicacion::agregarPublicacion(Publicacion* p){
     if(p != NULL){ this.publicaciones.append(p); }
