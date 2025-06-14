@@ -31,8 +31,41 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     return listInmuebles;
 }
 
-void eliminarInmueble(int codigoInmueble) {
+void ControladorSistema::eliminarInmueble(int codigoInmueble) {
     ManejadorInmueble* inm = ManejadorInmueble::getInstance();
     Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
     in->destroyIn();
+}
+
+bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Cliente c =  Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        m->addCliente(c);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
+
+bool ControladorSistema::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Propietario p = Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        m->addPropietario(p);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
+
+bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Inmobiliaria i = Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        m->addInmobiliaria(i);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
 }
