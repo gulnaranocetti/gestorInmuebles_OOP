@@ -37,25 +37,13 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosIn
     std::set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
     return listInmuebles;
 }
-std::set<DTUsuario> ControladorSistema::listarInmobiliarias(){
-    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
-    std::set<Inmobiliaria> inmo = m.getInmobiliarias();
-    std::set<DTUsuario> setInmo;
-    for(std::set<Inmobiliaria>::iterator it = inmo.begin(); it!= inmo.end(); ++i){
 
-        DTUsuario dtu = (*it)->createDTU(inmo.getNickname(),inmo.getNombre());
-        setInmo.append(dtu);
-
-    }
-    return setInmo;
-
-}
 
 std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
-    Inmobiliaria* inm = getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleAdministrado> lis = inm.listarInmuebles();
+    Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
+    std::set<DTInmuebleAdministrado> lis = inm->listarInmuebles();
     return lis;
 
 }
@@ -63,9 +51,9 @@ std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrado
 
 bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
 
-    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstancia();
-    Inmobiliaria* inmo = m.getInmobiliaria(nicknameInmobiliaria);
-    bool res = inmo.es_tipo(tipoPublicacion, codigoInmueble, texto, precio);
+    ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
+    Inmobiliaria* inmo = m->getInmobiliaria(nicknameInmobiliaria);
+    bool res = inmo->es_tipo(tipoPublicacion, codigoInmueble, texto, precio);
     return res;
 
 }
@@ -91,7 +79,7 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
     for(std::set<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
         bool b = nicknameInmobiliaria.find((*it)->getNickname()) != nicknameInmobiliaria.end();
         if (b) {
-            (*it)->agragarSuscriptor(suscriptor);
+            (*it)->agregarSuscriptor(suscriptor);
         }
     }
 }

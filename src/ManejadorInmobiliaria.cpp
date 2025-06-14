@@ -8,22 +8,22 @@ ManejadorInmobiliaria::ManejadorInmobiliaria(){}
 
 static ManejadorInmobiliaria* ManejadorInmobiliaria::getInstance(){
 
-    if (this.instancia == NULL){this.instancia = new ManejadorInmobiliaria();}
-    return this.instancia;
+    if (this->instancia == NULL){this->instancia = new ManejadorInmobiliaria();}
+    return this->instancia;
 
 }
 
 
 std::set<Inmobiliaria*> ManejadorInmobiliaria::getInmobiliarias(){
 
-    return this.inmobiliarias;
+    return this->inmobiliarias;
 
 }
 
 Inmobiliaria* ManejadorInmobiliaria::getInmobiliaria(std::string nicknameInmobiliaria){
 
-    Inmobiliaria inmoBuscada = NULL;
-    for (std::set<Inmobiliaria*>::iterator it = this.inmobiliarias.begin(); it != this.inmobiliarias.end(); ++i){
+    Inmobiliaria* inmoBuscada = NULL;
+    for (std::set<Inmobiliaria*>::iterator it = this->inmobiliarias.begin(); it != this->inmobiliarias.end(); ++it){
         if((*it)->getNickname() == nicknameInmobiliaria){
 
             inmoBuscada = (*it);

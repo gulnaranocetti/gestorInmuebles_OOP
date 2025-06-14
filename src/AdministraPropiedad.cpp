@@ -22,22 +22,22 @@ bool AdministraPropiedad::es_Igual(int CodigoInmueble) {
 
 bool AdministraPropiedad::es_tipo(TipoPublicacion tipo, std::string texto, float precio){
     bool res = false;
-    for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
-        if ((*it)->es_tipo(tipo, texto, precio)) {
+    for (std::set<Publicacion*>::iterator it = this->publicaciones.begin(); it != this->publicaciones.end(); ++it) {
+        if ((*it)->es_tipo(tipo)) {
             res = true;
         }
     }
     return res;
 }
 
-bool AdministraPropiedad::administra(Inmobiliaria i){
-    return (this->inmobiliaria->getNickname() == i.getNickname());
+bool AdministraPropiedad::administra(Inmobiliaria* i){
+    return (this->inmobiliaria->getNickname() == i->getNickname());
 }
 
-std::set<Publicacion*> AdministraPropiedad::getPublicaciones(){ return this.publicaciones; }
+std::set<Publicacion*> AdministraPropiedad::getPublicaciones(){ return this->publicaciones; }
 
 void AdministraPropiedad::agregarPublicacion(Publicacion* p){
-    if(p != NULL){ this.publicaciones.append(p); }
+    if(p != NULL){ this->publicaciones.insert(p); }
 }
 
 TipoInmueble AdministraPropiedad::getTipoInmueble(){

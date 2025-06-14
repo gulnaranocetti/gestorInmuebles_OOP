@@ -37,7 +37,7 @@ class Inmobiliaria : public Usuario {
         //patron observer
         void agragarSuscriptor(ISuscriptor* s);
         void eliminarSuscripcion(Inmobiliaria* i);
-        void notificarPublicacion(Publicacion* publicacion);
+        void notificarPublicacion(Publicacion* publicacion, std::string codigoInmueble);
         ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);
         std::set<ISuscriptor*> getSuscriptores();
 

@@ -5,12 +5,23 @@
 
 
 
-Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {}
+Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
+    this->nickname = nickname;
+    this->contrasena = contrasena;
+    this->nombre = nombre;
+    this->email = email;
+    this->direccion = direccion;
+    this->url = url;
+    this->telefono = telefono;
+    this->administradores = std::set<AdministraPropiedad*>();
+    this->propietarios = std::set<Propietario*>();
+    this->suscriptores = std::set<ISuscriptor*>();
+}
 
 std::set<DTInmuebleAdministrado> Inmobiliaria::listarInmueble(){
     std::set<DTInmuebleAdministrado> lis;
-    for(std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++i){
-        lis.append((*it)->obtenerDatos());
+    for(std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it){
+        lis.insert((*it)->obtenerDatos());
     }
     return lis;
 }  
@@ -28,7 +39,7 @@ std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
 void Inmobiliaria::altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual){ 
     AdministraPropiedad* ap =  new AdministraPropiedad(fechaActual, this, cin);
     this->administradores.insert(ap);
-    cin.asociarAdministracionPropiedad(ap);
+    cin->asociarAdministracionPropiedad(ap);
 } //altaAdministraPropiedad
 
 bool Inmobiliaria::suscrito(std::string nicknameUsuario) {
@@ -44,15 +55,15 @@ void Inmobiliaria::agragarSuscriptor(ISuscriptor* s) {
     this->suscriptores.insert(s);
 } 
 bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoInmueble, std::string texto, float precio){
-    std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
+    std::set<AdministraPropiedad*>::iterator itAP = this->administradores.begin();
     bool igualInmueble = false;
-    while(itAP != this.administradores.end() && !igualInmueble){
+    while(itAP != this->administradores.end() && !igualInmueble){
         igualInmueble = (*itAP)->es_Igual(codigoInmueble);
         ++itAP;
     }
     Publicacion* p = NULL;
 
-    if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
+    if(igualInmueble){ bool res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
     
     if(!res){
         p = new Publicacion(tipoPublicacion, texto, precio);
@@ -60,21 +71,21 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, std::string codigoIn
         bool existePublicacion = false;
         for(itP; itP != (*itAP)->getPublicaciones().end(); ++itP){
             existePublicacion = (*itP)->existe(tipoPublicacion);
-            if (existePublicacion && p.getFecha() > (*itP)->getFecha()){
+            if (existePublicacion && p->getFecha() > (*itP)->getFecha()){
                 (*itP)->setActiva(false);
-                p.setActiva(true);
+                p->setActiva(true);
             }
         }
         (*itAP)->agregarPublicacion(p);
-        ManejadorPublicacion m = ManejadorPublicacion.getInstance();
+        ManejadorPublicacion m = ManejadorPublicacion::getInstance();
         m.agregarPublicacion(p);
-        notificarPublicacion(p);
+        notificarPublicacion(p, codigoInmueble);
     }
 
     return (!res);
 }
 
-void Inmobiliaria::notificarPublicacion(Publicacion* p){
+void Inmobiliaria::notificarPublicacion(Publicacion* p, std::string codigoInmueble){
     if(p != NULL){
         bool igualInmueble = false;
         std::set<AdministraPropiedad*>::iterator itAP = this.administradores.begin();
@@ -83,8 +94,8 @@ void Inmobiliaria::notificarPublicacion(Publicacion* p){
             ++itAP;
         }
         TipoInmueble tipoInmueble = (*itAP)->getTipoInmueble();
-        Notificacion n = new Notificacion(p.getFecha(), p.getTexto(), this.nickname, p.getCodigo(), p.getTipoPublicacio(), tipoInmueble);
-        for(std::set<ISuscriptor>::iterator it = this.suscriptores.begin(); it != this.suscriptores.end(); ++it){
+        Notificacion* n = new Notificacion(p->getFecha(), p->getTexto(), this->nickname, p->getCodigo(), p->getTipoPublicacion(), tipoInmueble);
+        for(std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it){
             (*it)->recibirNotificacion(n);
         }
     }

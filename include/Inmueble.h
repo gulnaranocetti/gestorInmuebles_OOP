@@ -21,7 +21,7 @@ class Inmueble {
         int getNumeroPuerta();
         int getSuperficie();
         int getAnioConstruccion();
-        virtual getTipo();
+        virtual TipoInmueble getTipo();
         virtual ~Inmueble();
 };
 
