@@ -13,7 +13,7 @@ class AdministraPropiedad {
         DTFecha* fecha;
         Inmobiliaria* inmobiliaria;
         Inmueble* inmueble;
-        std::vector<Publicacion*> publicaciones;
+        std::set<Publicacion*> publicaciones;
 
 
     public:
@@ -24,7 +24,8 @@ class AdministraPropiedad {
         bool es_Igual(int CodigoInmueble);
         bool es_tipo(TipoPublicacion tipo, std::string texto, float precio);
         bool administra(Inmobiliaria i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
-    
+        void destroyAP();
+
         ~AdministraPropiedad();
 };
 

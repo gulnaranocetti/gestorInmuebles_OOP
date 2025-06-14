@@ -13,7 +13,13 @@ std::set<AdministraPropiedad*> Inmobiliaria::getAdministrados() const {
 
 std::set<DTInmuebleAdministrado> Inmobiliaria::listarInmueble(){} //como no es un set perdemos orden y unicidad. 
 
-void Inmobiliaria::unlinkAP(AdministraPropiedad ap){}
+void Inmobiliaria::unlinkAP(AdministraPropiedad ap){
+    /*std::set<AdministraPropiedad*>::iterator it = this->administrados.begin();
+    while ((it != this->administrados.end()) && ((*it) != ap)) {
+        it++;
+    }
+    this->administrados.erase((*it));*/
+}
 
 DTUsuario Inmobiliaria::getDTUsuario(){
     return DTUsuario(this->getNickname(), this->getNombre());
@@ -23,7 +29,7 @@ std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario(){
     std::set<DTInmuebleListado*> resultado;
 
     for(std::set<Propietario*>::iterator  p = this->propietarios.begin(); p != this->propietarios.end(); p++) {
-        resultado.insert(p.getInmueblesNoAdmin(this).begin(), p.getInmueblesNoAdmin(this).end());
+        resultado.insert(*p.getInmueblesNoAdmin(this).begin(), p.getInmueblesNoAdmin(this).end());
     }
 
     return resultado;

@@ -12,7 +12,14 @@ std::list<Notificacion> Propietario::consultarNotificaciones() {}
 
 void Propietario::eliminarSuscripcion(Inmobiliaria i) {}
 
-void Propietario::unlinkInmueble(int codigoInmueble) {}
+void Propietario::unlinkInmueble(int codigoInmueble) {
+    // tengo que eliminar el inmueble con el codigoInmueble
+    std::set<Inmueble*>::iterator it = this->inmuebles.begin();
+    while ((it != this->inmuebles.end()) && ((*it)->getCodigo() != codigoInmueble)) {
+        it++;
+    }
+    this->inmuebles.erase((*it)); //asumo que el inmueble con ese código existe. 
+}
 
 bool inmobiliariaAsociada(Inmobiliaria i, Inmueble inm) {
     bool resultado = false;

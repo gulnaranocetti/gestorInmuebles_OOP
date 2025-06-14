@@ -33,6 +33,14 @@ bool AdministraPropiedad::administra(Inmobiliaria i){
     return (this->inmobiliaria->getNickname() == i.getNickname());
 }
 
+void AdministraPropiedad::destroyAP() {
+    for(std::set<Publicacion*>::iterator p = this->publicaciones.begin(); p != this->publicaciones.end(); p++) {
+        this->publicaciones.erase((*p)); 
+        // hay que destruír la publicación aca?
+    }
+}
+
+
 AdministraPropiedad::~AdministraPropiedad() {
     delete fecha;
     fecha = NULL;
