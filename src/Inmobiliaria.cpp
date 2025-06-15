@@ -109,5 +109,11 @@ void Inmobiliaria::notificarPublicacion(Publicacion* p, int codigoInmueble){
     }
 }
 
+void Inmobiliaria::eliminarSuscripcion(ISuscriptor* s) {
+    std::set<ISuscriptor*>::iterator it = this->suscriptores.find(s);
+    if (it != this->suscriptores.end()) {
+        this->suscriptores.erase(it);
+    }
+}
 Inmobiliaria::~Inmobiliaria(){}
 
