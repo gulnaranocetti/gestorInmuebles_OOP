@@ -1,12 +1,22 @@
 #include "../include/Propietario.h"
-//#include "../include/Notificacion.h"
+#include "../include/Notificacion.h"
 
 
 Propietario::Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {}
 
-void Propietario::recibirNotificacion(Notificacion* n) {}
+void Propietario::recibirNotificacion(Notificacion* n){
+    Notificacion _n(n->getFecha(), n->getTextoPublicacion(), n->getInmobiliaria(), n->getCodigoPublicacion(), n->getTipoPublicacion(), n->getTipoInmueble());
+    this->notificaciones.insert(_n);
+}
         
-std::list<Notificacion> Propietario::consultarNotificaciones() {}
+std::set<Notificacion> Propietario::consultarNotificaciones(){
+    std::set<Notificacion> notificacionesSet;
+    for (const Notificacion& n : this->notificaciones) {
+        notificacionesSet.insert(n);
+    }
+    notificacionesSet.clear(); // Limpiar el set antes de devolverlo
+    return notificacionesSet;
+}
 
 void Propietario::eliminarSuscripcion(Inmobiliaria i) {}
 

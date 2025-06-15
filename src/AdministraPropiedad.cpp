@@ -2,6 +2,7 @@
 #include "DTInmuebleAdministrado.h"
 #include "Inmobiliaria.h"
 #include "Publicacion.h"
+#include <set>
 
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha, Inmobiliaria* inmobiliaria, Inmueble* inmueble) {
     this->fecha = fecha;
@@ -12,8 +13,8 @@ DTFecha* AdministraPropiedad::getFecha() {
     return fecha;
 }    
 
-DTInmuebleAdministrado* AdministraPropiedad::obtenerDatos() {
-    return new DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(), fecha);
+DTInmuebleAdministrado AdministraPropiedad::ObtenerDatos() {
+    return DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(),fecha);
 }
 
 bool AdministraPropiedad::es_Igual(int CodigoInmueble) {
@@ -30,8 +31,8 @@ bool AdministraPropiedad::es_tipo(TipoPublicacion tipo, std::string texto, float
     return res;
 }
 
-bool AdministraPropiedad::administra(Inmobiliaria* i){
-    return (this->inmobiliaria->getNickname() == i->getNickname());
+bool AdministraPropiedad::administra(Inmobiliaria &i){
+    return (this->inmobiliaria->getNickname() == i.getNickname());
 }
 
 std::set<Publicacion*> AdministraPropiedad::getPublicaciones(){ return this->publicaciones; }

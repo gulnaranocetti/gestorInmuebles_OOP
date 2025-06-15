@@ -9,19 +9,21 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <set>
 
 class Propietario : public Usuario, public ISuscriptor {
     private:
         std::string cuentaBancaria;
         std::string telefono;
         std::vector<Inmueble> inmuebles;
+        std::set<Notificacion> notificaciones;
 
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
 
         void recibirNotificacion(Notificacion* n);
         
-        std::list<Notificacion> consultarNotificaciones();
+        std::set<Notificacion> consultarNotificaciones();
 
         void eliminarSuscripcion(Inmobiliaria i);
 
@@ -32,6 +34,7 @@ class Propietario : public Usuario, public ISuscriptor {
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
 
         std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
+
 };
 
 #endif

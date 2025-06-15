@@ -83,3 +83,10 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
         }
     }
 }
+
+std::set<Notificacion> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Usuario* us = mu->getUsuario(nicknameSuscriptor);
+    ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
+    return suscriptor->consultarNotificaciones();
+}

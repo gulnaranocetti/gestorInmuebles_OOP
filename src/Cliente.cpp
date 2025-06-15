@@ -28,7 +28,18 @@
             }
 
     void Cliente::recibirNotificacion(Notificacion* n){
-        notificaciones.insert(n);
+        Notificacion no(n->getFecha(), n->getTextoPublicacion(), n->getInmobiliaria(), 
+                        n->getCodigoPublicacion(), n->getTipoPublicacion(), n->getTipoInmueble());
+        notificaciones.insert(no);
+    }
+
+    std::set<Notificacion> Cliente::consultarNotificaciones() {
+        std::set<Notificacion> notificacionesSet;
+        for (const Notificacion& n : notificaciones) {
+            notificacionesSet.insert(n);
+        }
+        notificacionesSet.clear(); // Limpiar el set antes de devolverlo
+        return notificacionesSet;
     }
 
     void Cliente::eliminarSuscripcion(Inmobiliaria* i){

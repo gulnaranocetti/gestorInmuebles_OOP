@@ -13,6 +13,7 @@
 #include "DTInmuebleListado.h"
 #include <set>
 #include <string>
+#include <list>
 
 class ControladorSistema{
     private:
@@ -53,6 +54,12 @@ class ControladorSistema{
         void suscribirseAInmobiliarias(std::set<std::string> nicknameInmobiliaria, std::string nicknameSuscriptor);
 
         std::set<Inmobiliaria*> listarInmobiliariasNoSuscripto(std::string nicknameSuscriptor);
+
+        //caso de uso: Consultar Notificaciones
+
+        std::set<Notificacion> consultarNotificaciones(std::string nicknameSuscriptor);
+
+
 
         ~ControladorSistema();
 

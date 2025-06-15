@@ -17,6 +17,12 @@ private:
 
 public:
     Notificacion(DTFecha* fecha, std::string texto, std::string nickInmobiliaria, int codigoPublicacion, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble);
+    DTFecha* getFecha() const;
+    std::string getTextoPublicacion() const;
+    std::string getInmobiliaria() const;
+    int getCodigoPublicacion() const;
+    TipoPublicacion getTipoPublicacion() const;
+    TipoInmueble getTipoInmueble() const;
     ~Notificacion();
 };
 #endif 
