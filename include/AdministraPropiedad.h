@@ -28,6 +28,7 @@ class AdministraPropiedad {
         bool administra(Inmobiliaria &i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
     
         ~AdministraPropiedad();
+        Inmueble* getInmueble();
 };
 
 #endif

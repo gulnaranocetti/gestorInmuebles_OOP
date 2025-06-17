@@ -14,15 +14,18 @@ private:
     std::string texto;
     float precio;
     bool activa;
+    AdministraPropiedad* administraPropiedad;
 
 public:
-    Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa);
+    Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa, AdministraPropiedad* administraPropiedad);
 
     void datosInmueble(TipoInmueble tipoInmueble); // tendria que retornar algo o es un void?
 
     bool es_tipo(TipoPublicacion tipoPublicacion);
     bool existe(TipoPublicacion TipoPublicacion);
 
+    AdministraPropiedad* getAdministraPropiedad();
+    float getPrecio();
     int getCodigo();
     DTFecha* getFecha();
     TipoPublicacion getTipoPublicacion();
@@ -30,6 +33,7 @@ public:
     DTPublicacion createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm);
     void setActiva(bool activa);
     ~Publicacion();
+
 };
 
 #endif

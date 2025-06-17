@@ -69,6 +69,12 @@ class ControladorSistema{
 
         ~ControladorSistema();
 
+        //Caso de uso: Consulta de Publicaciones
+
+        std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
+
+        DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
+
 };
 
 #endif

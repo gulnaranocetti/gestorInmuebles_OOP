@@ -36,3 +36,7 @@ DTPublicacion Publicacion::createDTP(int cod, DTFecha* fecha, std::string texto,
 void Publicacion::setActiva(bool activa){ this->activa = activa; }
 
 Publicacion::~Publicacion(){}
+
+AdministraPropiedad* Publicacion::getAdministraPropiedad(){
+    return administraPropiedad;
+}

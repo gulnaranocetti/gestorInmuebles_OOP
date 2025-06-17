@@ -18,6 +18,8 @@ private:
     ManejadorPublicacion(); // constructor privado
 
 public:
+    DTInmueble detalleInmueblePublicacion(int codigoPublicacion);
+
     static ManejadorPublicacion* getInstance();
 
     std::set<DTPublicacion> getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaximo, TipoInmueble tipoInmueble);
