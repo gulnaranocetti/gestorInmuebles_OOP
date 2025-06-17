@@ -7,6 +7,7 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Publicacion.h"
+#include "Inmueble.h"
 #include <set>
 
 class ManejadorPublicacion {
@@ -18,7 +19,7 @@ private:
     ManejadorPublicacion(); // constructor privado
 
 public:
-    DTInmueble detalleInmueblePublicacion(int codigoPublicacion);
+    Inmueble detalleInmueblePublicacion(int codigoPublicacion);
 
     static ManejadorPublicacion* getInstance();
 
