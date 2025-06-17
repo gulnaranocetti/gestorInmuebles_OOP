@@ -15,7 +15,7 @@ ManejadorPublicacion* ManejadorPublicacion::getInstance(){
 }
 
 Inmueble ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion){
-    for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end; ++it){
+    for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
         Publicacion* p = *it;
         if (p->getCodigo() == codigoPublicacion){
             AdministraPropiedad* ap = p->getAdministraPropiedad();
