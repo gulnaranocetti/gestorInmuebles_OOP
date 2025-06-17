@@ -33,7 +33,7 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
         if (p->getPrecio() > precioMinimo && p->getPrecio() < precioMaximo && p->getTipoPublicacion() == tipoPublicacion){
             Inmueble in = detalleInmueblePublicacion(p->getCodigo());
             if (tipoInmueble == TipoInmueble::Todos || in.getTipo() == tipoInmueble){
-                DTPublicacion pu = p->createDTP(p->getCodigo(), p->getFecha(), p->getTexto(), p->getPrecio(), p->getAdministraPropiedad());
+                DTPublicacion pu = p->createDTP(p->getCodigo(), p->getFecha(), p->getTexto(), p->getPrecio(), p->getAdministraPropiedad()->getInmobiliaria()->getNickname());
                 devolver.insert(pu);
             }
 

@@ -32,7 +32,9 @@ TipoPublicacion Publicacion::getTipoPublicacion(){ return this->tipo; }
 
 std::string Publicacion::getTexto(){ return this->texto; }
 
-DTPublicacion Publicacion::createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm){}
+DTPublicacion Publicacion::createDTP(int cod, DTFecha* fecha, std::string texto, float precio, std::string nomInm){
+    return DTPublicacion(cod, fecha, texto, std::to_string(precio), nomInm);
+}
 
 void Publicacion::setActiva(bool activa){ this->activa = activa; }
 

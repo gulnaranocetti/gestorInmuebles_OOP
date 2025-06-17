@@ -13,6 +13,10 @@ DTFecha* AdministraPropiedad::getFecha() {
     return fecha;
 }    
 
+Inmobiliaria* AdministraPropiedad::getInmobiliaria() {
+    return inmobiliaria;
+}
+
 DTInmuebleAdministrado* AdministraPropiedad::obtenerDatos() {
     return &DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(),fecha);
 }
