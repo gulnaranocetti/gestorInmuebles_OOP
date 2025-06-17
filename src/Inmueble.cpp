@@ -42,11 +42,6 @@ void Inmueble::destroyIn() {
     }
 }
 
-
-TipoInmueble Inmueble::getTipo(){
-    return TipoInmueble::Todos;
-}
-
 Inmueble::~Inmueble(){
     
 }

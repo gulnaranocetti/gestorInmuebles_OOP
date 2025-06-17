@@ -30,11 +30,11 @@ void ControladorSistema::altaAdministraPropiedad(std::string nicknameInmobiliari
 
 }
 
-std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
+std::set<DTInmuebleListado*> ControladorSistema::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* ci = m->getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
+    std::set<DTInmuebleListado*> listInmuebles = ci->getInmueblesNoAdminPropietario();
     return listInmuebles;
 }
 
@@ -46,11 +46,11 @@ void eliminarInmueble(int codigoInmueble) {
 
 
 
-std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
+std::set<DTInmuebleAdministrado*> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleAdministrado> lis = inm->listarInmuebles();
+    std::set<DTInmuebleAdministrado*> lis = inm->listarInmueble();
     return lis;
 
 }
@@ -91,7 +91,7 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
     }
 }
 
-std::set<Notificacion> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
+std::set<Notificacion*> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     Usuario* us = mu->getUsuario(nicknameSuscriptor);
     ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
@@ -126,7 +126,7 @@ void ControladorSistema::eliminarSuscripcionAInmobiliarias(std::string nicknameU
 }
 
 std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
-    ManejadorPublicacion* mp = ManejadorPublicacion.getInstance();
+    ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
     return mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
 }
 

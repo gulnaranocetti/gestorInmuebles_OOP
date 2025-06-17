@@ -8,6 +8,7 @@
 #include "TipoInmueble.h"
 #include "Inmueble.h"
 #include "Usuario.h"
+#include "Cliente.h"
 #include <string>
 #include <set>
 

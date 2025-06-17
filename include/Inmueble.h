@@ -24,6 +24,9 @@ class Inmueble {
         int getSuperficie();
         int getAnioConstruccion();
         void destroyIn();
+
+        void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
+
         virtual TipoInmueble getTipo();
         virtual ~Inmueble();
 };

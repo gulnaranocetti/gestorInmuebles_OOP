@@ -7,6 +7,7 @@
 #include "DTUsuario.h"
 #include "ISuscriptor.h"
 #include "DTInmuebleListado.h"
+#include "Factory.h"
 #include <string>
 #include <set>
 
@@ -28,7 +29,7 @@ class Inmobiliaria : public Usuario {
 
         std::set<DTInmuebleAdministrado*> listarInmueble(); 
         
-        void unlinkAP(AdministraPropiedad ap);
+        void unlinkAP(AdministraPropiedad* ap);
 
         DTUsuario getDTUsuario(); //altaAdministraPropiedad
 
@@ -39,7 +40,7 @@ class Inmobiliaria : public Usuario {
         bool suscrito(std::string nicknameUsuario); //CU Suscribirse a Notificaciones
 
         //patron observer
-        void agragarSuscriptor(ISuscriptor* s);
+        void agregarSuscriptor(ISuscriptor* s);
         void eliminarSuscripcion(ISuscriptor* s);
         void notificarPublicacion(Publicacion* publicacion, int codigoInmueble);
         ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);

@@ -9,11 +9,11 @@ class IControladorSistema {
 
         virtual std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble) = 0;
 
-        virtual std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) = 0; //CU alta de administra propiedad
+        virtual std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) = 0; //CU alta de administra propiedad
 
         virtual std::set<DTUsuario> listarInmobiliarias() = 0; //CU alta de administra propiedad
 
-        virtual std::set<DTInmuebleAdministrado> listarInmueblesAdministrados(std::string nicknameInmobiliaria) = 0;
+        virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nicknameInmobiliaria) = 0;
 
         virtual void altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) = 0; //CU alta de administra propiedad
 

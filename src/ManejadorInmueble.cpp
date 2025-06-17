@@ -7,13 +7,13 @@ ManejadorInmueble::ManejadorInmueble(){}
 
 ManejadorInmueble* ManejadorInmueble::getInstance(){
 
-    if (this->instancia == NULL){this->instancia = new ManejadorInmueble();}
+    if (instancia == NULL){instancia = new ManejadorInmueble();}
 
-    return this->instancia;
+    return instancia;
 }
 
 
-std::set<Inmueble*> ManejadorInmueble::getInmobiliarias(){
+std::set<Inmueble*> ManejadorInmueble::getInmuebles(){
 
     return this->inmuebles;
 
@@ -21,7 +21,7 @@ std::set<Inmueble*> ManejadorInmueble::getInmobiliarias(){
 
 Inmueble* ManejadorInmueble::getInmueble(int codigo){
     Inmueble* inmuBuscado = NULL;
-    for (set<Inmueble*>::iterator i = this->inmuebles.begin(); i != this->inmuebles.end(); ++i){
+    for (std::set<Inmueble*>::iterator i = this->inmuebles.begin(); i != this->inmuebles.end(); ++i){
         if((*i)->getCodigo() == codigo){
             inmuBuscado = (*i);
         }

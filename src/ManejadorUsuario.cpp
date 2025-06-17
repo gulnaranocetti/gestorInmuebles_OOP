@@ -7,9 +7,9 @@ ManejadorUsuario* ManejadorUsuario::instancia = NULL;
 ManejadorUsuario::ManejadorUsuario(){}
 
 ManejadorUsuario* ManejadorUsuario::getInstance(){
-    if (this->instancia == NULL){this->instancia = new ManejadorUsuario();}
+    if (instancia == NULL){instancia = new ManejadorUsuario();}
 
-    return this->instancia;
+    return instancia;
 }
 
 Usuario* ManejadorUsuario::getUsuario(std::string nicknameUser){

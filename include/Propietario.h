@@ -17,15 +17,16 @@ class Propietario : public Usuario, public ISuscriptor {
         std::string telefono;
         std::set<Inmueble*> inmuebles;
         std::set<Notificacion> notificaciones;
+        std::set<Inmobiliaria*> suscripciones;
 
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
 
-        void recibirNotificacion(Notificacion* n);
+        void recibirNotificacion(Notificacion* n) override;
         
-        std::set<Notificacion> consultarNotificaciones();
+        std::set<Notificacion*> consultarNotificaciones() const override;
 
-        void eliminarSuscripcion(Inmobiliaria i);
+        void eliminarSuscripcion(Inmobiliaria* i) override;
 
         void unlinkInmueble(int codigoInmueble);
 

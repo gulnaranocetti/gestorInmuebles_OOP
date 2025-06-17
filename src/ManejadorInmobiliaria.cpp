@@ -8,8 +8,8 @@ ManejadorInmobiliaria::ManejadorInmobiliaria(){}
 
 ManejadorInmobiliaria* ManejadorInmobiliaria::getInstance(){
 
-    if (this->instancia == NULL){this->instancia = new ManejadorInmobiliaria();}
-    return this->instancia;
+    if (instancia == NULL){instancia = new ManejadorInmobiliaria();}
+    return instancia;
 
 }
 
