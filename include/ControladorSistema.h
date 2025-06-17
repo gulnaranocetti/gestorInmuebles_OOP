@@ -11,6 +11,7 @@
 #include "ManejadorInmueble.h"
 #include "ManejadorUsuario.h"
 #include "DTInmuebleListado.h"
+#include "Usuario.h"
 #include <set>
 #include <string>
 #include <list>
@@ -66,6 +67,13 @@ class ControladorSistema{
 
         void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar); //Elimina las suscripciones del usuario indicado (nicknameUsuario) a las inmobiliarias contenidas en inmobiliariasAEliminar
 
+        //caso de uso: alta de usuario
+
+        bool altaCliente(std::string nickname,std::string contrasena,std::string nombre,std::string email,std::string apellido,std::string documento);
+
+        bool altaPropietario(std::string nickname,std::string contrasena,std::string nombre,std::string email,std::string cuentaBancaria,std::string telefono);
+
+        bool altaInmobiliaria(std::string nickname,std::string contrasena,std::string nombre,std::string email,std::string direccion,std::string url,std::string telefono);
 
         ~ControladorSistema();
 

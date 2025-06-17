@@ -35,7 +35,7 @@ class Inmobiliaria : public Usuario {
         bool suscrito(std::string nicknameUsuario); //CU Suscribirse a Notificaciones
 
         //patron observer
-        void agragarSuscriptor(ISuscriptor* s);
+        void agregarSuscriptor(ISuscriptor* s);
         void eliminarSuscripcion(ISuscriptor* s);
         void notificarPublicacion(Publicacion* publicacion, int codigoInmueble);
         ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);

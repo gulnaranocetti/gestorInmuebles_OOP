@@ -9,7 +9,7 @@ void Propietario::recibirNotificacion(Notificacion* n){
     this->notificaciones.insert(_n);
 }
         
-std::set<Notificacion> Propietario::consultarNotificaciones(){
+std::set<Notificacion> Propietario::consultarNotificaciones() const{
     std::set<Notificacion> notificacionesSet;
     for (const Notificacion& n : this->notificaciones) {
         notificacionesSet.insert(n);
@@ -18,7 +18,7 @@ std::set<Notificacion> Propietario::consultarNotificaciones(){
     return notificacionesSet;
 }
 
-void Propietario::eliminarSuscripcion(Inmobiliaria i) {}
+void Propietario::eliminarSuscripcion(Inmobiliaria* i)const {}
 
 void Propietario::unlinkInmueble(int codigoInmueble) {}
 

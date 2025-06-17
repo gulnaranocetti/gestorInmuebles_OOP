@@ -117,3 +117,38 @@ void ControladorSistema::eliminarSuscripcionAInmobiliarias(std::string nicknameU
         }
     }
 }
+
+// Caso de uso: alta de usuario
+
+bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    if(!mu->existeUsuario(nickname)) {
+        Cliente* nuevoCliente = new Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        mu->agregarUsuario(nuevoCliente);
+        return true;
+    }
+
+    return false; // El usuario ya existe
+        
+
+}
+bool ControladorSistema::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    if(!mu->existeUsuario(nickname)) {
+        Propietario* nuevoPropietario = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        mu->agregarUsuario(nuevoPropietario);
+        return true;
+    }
+
+    return false; // El usuario ya existe
+}
+bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    if(!mu->existeUsuario(nickname)) {
+        Inmobiliaria* nuevaInmobiliaria = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        mu->agregarUsuario(nuevaInmobiliaria);
+        return true;
+    }
+
+    return false; // El usuario ya existe
+}
