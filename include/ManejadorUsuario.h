@@ -24,6 +24,12 @@ public:
 
     Usuario* getUsuario(std::string nicknameUser);
 
+    void addCliente(Cliente* c);
+
+    void addPropietario(Propietario* p);
+
+    void addInmobiliaria(Inmobiliaria* i);
+
     std::set<Usuario*> getUsuarios();
 
     ~ManejadorUsuario();

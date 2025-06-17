@@ -21,6 +21,18 @@ Usuario* ManejadorUsuario::getUsuario(std::string nicknameUser){
     return NULL;
 }
 
+void ManejadorUsuario::addCliente(Cliente* c) {
+    this->usuarios.insert(c);
+}
+
+void ManejadorUsuario::addPropietario(Propietario* p) {
+    this->usuarios.insert(p);
+}
+
+void ManejadorUsuario::addInmobiliaria(Inmobiliaria* i) {
+    this->usuarios.insert(i);
+}
+
 std::set<Usuario*> ManejadorUsuario::getUsuarios(){ return this->usuarios; }
 
 ManejadorUsuario::~ManejadorUsuario(){}
