@@ -129,3 +129,36 @@ std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion ti
     ManejadorPublicacion* mp = ManejadorPublicacion.getInstance();
     return mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
 }
+
+bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Cliente* c =  new Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        m->addCliente(c);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
+
+bool ControladorSistema::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        m->addPropietario(p);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
+
+bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        m->addInmobiliaria(i);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
