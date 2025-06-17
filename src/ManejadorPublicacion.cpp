@@ -31,9 +31,15 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
     for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
         Publicacion* p = *it;
         if (p.getPrecio() > precioMinimo && p.getPrecio() < precioMaximo && p.getTipoPublicacion == tipoPublicacion){
-            
+            DTInmueble in = detalleInmueblePublicacion(p.getCodigo());
+            if (tipoInmueble == Todos || detalle.getTipo == tipoInmueble){
+                DTPublicacion pu = p.createDTP(p.getCodigo(), p.getFecha(), p.getTexto(), p.getPrecio, p.getAdministraPropiedad());
+                devolver.insert(pu);
+            }
+
         }
     }
+    return devolver;
 }
 
 void ManejadorPublicacion::agregarPublicacion(Publicacion* p){
