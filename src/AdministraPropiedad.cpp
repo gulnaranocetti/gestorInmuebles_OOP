@@ -13,8 +13,8 @@ DTFecha* AdministraPropiedad::getFecha() {
     return fecha;
 }    
 
-DTInmuebleAdministrado AdministraPropiedad::ObtenerDatos() {
-    return DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(),fecha);
+DTInmuebleAdministrado* AdministraPropiedad::obtenerDatos() {
+    return &DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(),fecha);
 }
 
 bool AdministraPropiedad::es_Igual(int CodigoInmueble) {
@@ -34,6 +34,14 @@ bool AdministraPropiedad::es_tipo(TipoPublicacion tipo, std::string texto, float
 bool AdministraPropiedad::administra(Inmobiliaria &i){
     return (this->inmobiliaria->getNickname() == i.getNickname());
 }
+
+void AdministraPropiedad::destroyAP() {
+    for(std::set<Publicacion*>::iterator p = this->publicaciones.begin(); p != this->publicaciones.end(); p++) {
+        this->publicaciones.erase((*p)); 
+        // hay que destruír la publicación aca?
+    }
+}
+
 
 std::set<Publicacion*> AdministraPropiedad::getPublicaciones(){ return this->publicaciones; }
 

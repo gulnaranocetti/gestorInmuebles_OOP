@@ -7,6 +7,7 @@
 #include "DTUsuario.h"
 #include "ISuscriptor.h"
 #include "DTInmuebleListado.h"
+#include "Factory.h"
 #include <string>
 #include <set>
 
@@ -15,27 +16,31 @@ class Inmobiliaria : public Usuario {
         std::string direccion;
         std::string url;
         std::string telefono;
-        std::set<AdministraPropiedad*> administradores;
+        std::set<AdministraPropiedad*> administrados;
         std::set<Propietario*> propietarios;
         std::set<ISuscriptor*> suscriptores;
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
 
+        std::set<AdministraPropiedad*> getAdministrados() const;
+
+        std::set<AdministraPropiedad*> getAdministrados() const;
+
         std::set<DTInmuebleAdministrado*> listarInmueble(); 
         
-        void unlinkAP(AdministraPropiedad ap);
+        void unlinkAP(AdministraPropiedad* ap);
 
         DTUsuario getDTUsuario(); //altaAdministraPropiedad
 
-        std::set<DTInmuebleListado> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
+        std::set<DTInmuebleListado*> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 
         void altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual); //altaAdministraPropiedad
 
         bool suscrito(std::string nicknameUsuario); //CU Suscribirse a Notificaciones
 
         //patron observer
-        void agragarSuscriptor(ISuscriptor* s);
+        void agregarSuscriptor(ISuscriptor* s);
         void eliminarSuscripcion(ISuscriptor* s);
         void notificarPublicacion(Publicacion* publicacion, int codigoInmueble);
         ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);

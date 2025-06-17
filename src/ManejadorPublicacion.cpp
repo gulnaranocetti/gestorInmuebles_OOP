@@ -9,9 +9,9 @@ ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
 ManejadorPublicacion::ManejadorPublicacion(){}
 
 ManejadorPublicacion* ManejadorPublicacion::getInstance(){
-    if (this.instancia == NULL){this.instancia = new ManejadorPublicacion();}
+    if (instancia == NULL){instancia = new ManejadorPublicacion();}
 
-    return this.instancia;
+    return instancia;
 }
 
 Inmueble ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion){
@@ -37,13 +37,13 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
                 devolver.insert(pu);
             }
 
-        }
+       }
     }
-    return devolver;
-}
+     return devolver;
+ } 
 
 void ManejadorPublicacion::agregarPublicacion(Publicacion* p){
-    if(p != NULL){ this.publicaciones.append(p); }
+    if(p != NULL){ this->publicaciones.insert(p); }
 }
 
 int ManejadorPublicacion::getUltimoCodigoPublicacion(){ return this->ultimoCodigo; }

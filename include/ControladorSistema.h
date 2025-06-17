@@ -3,6 +3,7 @@
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmueble.h"
 #include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
@@ -11,11 +12,21 @@
 #include "ManejadorInmueble.h"
 #include "ManejadorUsuario.h"
 #include "DTInmuebleListado.h"
+#include "Inmobiliaria.h"
+#include "Notificacion.h"
+#include "IControladorSistema.h"
+#include "ControladorFechaActual.h"
+#include "AdministraPropiedad.h"
+#include "Factory.h"
+#include "Publicacion.h"
+#include "Inmueble.h"
+#include "Cliente.h"
+#include "Propietario.h"
 #include <set>
 #include <string>
 #include <list>
 
-class ControladorSistema{
+class ControladorSistema: public IControladorSistema {
     private:
         static ControladorSistema * instancia;
         ControladorSistema();
@@ -27,11 +38,11 @@ class ControladorSistema{
 
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 
-        std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria); //CU alta de administra propiedad
+        std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria); //CU alta de administra propiedad
         
         std::set<DTUsuario> listarInmobiliarias(); //CU alta de administra propiedad
         
-        std::set<DTInmuebleAdministrado> listarInmueblesAdministrados(std::string nicknameInmobiliaria);
+        std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nicknameInmobiliaria);
         
         void altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble); //CU alta de administra propiedad
 
@@ -57,7 +68,7 @@ class ControladorSistema{
 
         //caso de uso: Consultar Notificaciones
 
-        std::set<Notificacion> consultarNotificaciones(std::string nicknameSuscriptor);
+        std::set<Notificacion*> consultarNotificaciones(std::string nicknameSuscriptor);
 
 
         //Caso de uso: Eliminar Suscripcion a Notificaciones

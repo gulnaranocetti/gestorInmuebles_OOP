@@ -30,20 +30,27 @@ void ControladorSistema::altaAdministraPropiedad(std::string nicknameInmobiliari
 
 }
 
-std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
+std::set<DTInmuebleListado*> ControladorSistema::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* ci = m->getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
+    std::set<DTInmuebleListado*> listInmuebles = ci->getInmueblesNoAdminPropietario();
     return listInmuebles;
 }
 
+void eliminarInmueble(int codigoInmueble) {
+    ManejadorInmueble* inm = ManejadorInmueble::getInstance();
+    Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
+    in->destroyIn();
+}
 
-std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
+
+
+std::set<DTInmuebleAdministrado*> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleAdministrado> lis = inm->listarInmuebles();
+    std::set<DTInmuebleAdministrado*> lis = inm->listarInmueble();
     return lis;
 
 }
@@ -84,7 +91,7 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
     }
 }
 
-std::set<Notificacion> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
+std::set<Notificacion*> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     Usuario* us = mu->getUsuario(nicknameSuscriptor);
     ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
@@ -121,4 +128,37 @@ void ControladorSistema::eliminarSuscripcionAInmobiliarias(std::string nicknameU
 std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
     ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
     return mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+}
+
+bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Cliente* c =  new Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        m->addCliente(c);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
+
+bool ControladorSistema::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        m->addPropietario(p);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
+}
+
+bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Usuario* u = m->getUsuario(nickname);
+    if (u == NULL) {
+        Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        m->addInmobiliaria(i);
+    }
+    u = m->getUsuario(nickname);
+    return (u != NULL);
 }

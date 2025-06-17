@@ -8,6 +8,7 @@
 #include "TipoInmueble.h"
 #include "Inmueble.h"
 #include "Usuario.h"
+#include "Cliente.h"
 #include <string>
 #include <set>
 
@@ -23,6 +24,12 @@ public:
     static ManejadorUsuario* getInstance();
 
     Usuario* getUsuario(std::string nicknameUser);
+
+    void addCliente(Cliente* c);
+
+    void addPropietario(Propietario* p);
+
+    void addInmobiliaria(Inmobiliaria* i);
 
     std::set<Usuario*> getUsuarios();
 

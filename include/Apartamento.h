@@ -14,6 +14,7 @@ class Apartamento : public Inmueble {
         int getPiso();
         bool getTieneAscensor();
         float getGastosComunes();
+        TipoInmueble getTipo() override;
         virtual ~Apartamento();
 };
 

@@ -11,6 +11,8 @@ class Inmueble {
         int superficie;
         int anoConstruccion;
         Propietario* propietario; 
+        std::set<AdministraPropiedad*> administradores;
+
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
@@ -21,6 +23,10 @@ class Inmueble {
         int getNumeroPuerta();
         int getSuperficie();
         int getAnioConstruccion();
+        void destroyIn();
+
+        void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
+
         virtual TipoInmueble getTipo();
         virtual ~Inmueble();
 };

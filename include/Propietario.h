@@ -15,17 +15,18 @@ class Propietario : public Usuario, public ISuscriptor {
     private:
         std::string cuentaBancaria;
         std::string telefono;
-        std::vector<Inmueble> inmuebles;
+        std::set<Inmueble*> inmuebles;
         std::set<Notificacion> notificaciones;
+        std::set<Inmobiliaria*> suscripciones;
 
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
 
-        void recibirNotificacion(Notificacion* n);
+        void recibirNotificacion(Notificacion* n) override;
         
-        std::set<Notificacion> consultarNotificaciones();
+        std::set<Notificacion*> consultarNotificaciones() const override;
 
-        void eliminarSuscripcion(Inmobiliaria i);
+        void eliminarSuscripcion(Inmobiliaria* i) override;
 
         void unlinkInmueble(int codigoInmueble);
 
@@ -33,7 +34,7 @@ class Propietario : public Usuario, public ISuscriptor {
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
 
-        std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
 
 };
 

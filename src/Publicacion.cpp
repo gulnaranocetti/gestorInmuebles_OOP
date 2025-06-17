@@ -5,13 +5,14 @@
 #include "Factory.h"
 
 
-Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa){
+Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa, AdministraPropiedad* administraPropiedad) {
     this->codigo = codigo;
     this->fecha = fecha;
     this->tipo = tipo;
     this->texto = texto;
     this->precio = precio;
     this->activa = activa;
+    administraPropiedad = administraPropiedad;
 }
 
 void Publicacion::datosInmueble(TipoInmueble tipoInmueble){} // tendria que retornar algo o es un void?

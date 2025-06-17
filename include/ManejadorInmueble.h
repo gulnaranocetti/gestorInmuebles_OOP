@@ -21,7 +21,7 @@ public:
 
     void agregarInmueble(Inmueble* in);
     Inmueble* getInmueble(int codigo);
-    std::set<Inmueble> getInmuebles(); 
+    std::set<Inmueble*> getInmuebles(); 
 
     ~ManejadorInmueble();
 };

@@ -8,7 +8,7 @@
 class ISuscriptor {
 public:
     virtual void recibirNotificacion(Notificacion* n) = 0;
-    virtual std::set<Notificacion> consultarNotificaciones() const = 0;
+    virtual std::set<Notificacion*> consultarNotificaciones() const = 0;
     virtual void eliminarSuscripcion(Inmobiliaria* i) = 0;
 
     virtual ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) = 0;
