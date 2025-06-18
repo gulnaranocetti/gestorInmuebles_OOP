@@ -202,3 +202,10 @@ void ControladorSistema::altaRepresentaPropietarioInmobiliaria(std::string nickn
         i->altaRepresentaPropietario(p);
     }
 }
+
+void ControladorSistema::finAltaUsuario() {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    if (ultimoUsuario != NULL) {
+        ultimoUsuario = NULL; // Resetear el último usuario después de agregarlo
+    }
+}

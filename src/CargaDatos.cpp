@@ -135,6 +135,7 @@ CargaDatos::CargaDatos() {
     
     controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome", "vivaurbana"}, "jorge88");
 
+    controladorSistema->finAltaUsuario();
 }
 
 CargaDatos* CargaDatos::getInstance() {

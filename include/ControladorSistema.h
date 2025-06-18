@@ -93,6 +93,8 @@ class ControladorSistema: public IControladorSistema {
 
         void altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario);
 
+        void finAltaUsuario();
+
 };
 
 #endif
