@@ -7,6 +7,7 @@
 #include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
+#include "TipoTecho.h"
 #include "ManejadorPublicacion.h"
 #include "ManejadorInmobiliaria.h"
 #include "ManejadorInmueble.h"
@@ -29,6 +30,9 @@
 class ControladorSistema: public IControladorSistema {
     private:
         static ControladorSistema * instancia;
+        Usuario * ultimoUsuario = nullptr; //Ultimo usuario
+        Inmobiliaria * ultimoInmobiliaria = nullptr; //Ultima inmobiliaria
+
         ControladorSistema();
     public:
 
@@ -75,7 +79,6 @@ class ControladorSistema: public IControladorSistema {
 
         void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar); //Elimina las suscripciones del usuario indicado (nicknameUsuario) a las inmobiliarias contenidas en inmobiliariasAEliminar
 
-
         ~ControladorSistema();
 
         //Caso de uso: Consulta de Publicaciones
@@ -83,6 +86,12 @@ class ControladorSistema: public IControladorSistema {
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 
         DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
+
+        void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes);
+
+        void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
+
+        void altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario);
 
 };
 

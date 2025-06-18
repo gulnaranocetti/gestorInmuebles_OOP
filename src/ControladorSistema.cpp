@@ -3,6 +3,16 @@
 #include <set>
 
 
+ControladorSistema* ControladorSistema::instancia = nullptr;
+
+ControladorSistema* ControladorSistema::getInstance() {
+    if (instancia == nullptr) {
+        instancia = new ControladorSistema();
+    }
+
+    return instancia;
+}
+
 std::set<DTUsuario> ControladorSistema::listarInmobiliarias() {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
@@ -138,6 +148,7 @@ bool ControladorSistema::altaCliente(std::string nickname, std::string contrasen
         m->addCliente(c);
     }
     u = m->getUsuario(nickname);
+    ultimoUsuario = u;
     return (u != NULL);
 }
 
@@ -149,6 +160,7 @@ bool ControladorSistema::altaPropietario(std::string nickname, std::string contr
         m->addPropietario(p);
     }
     u = m->getUsuario(nickname);
+    ultimoUsuario = u;
     return (u != NULL);
 }
 
@@ -160,5 +172,33 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
         m->addInmobiliaria(i);
     }
     u = m->getUsuario(nickname);
+    ultimoInmobiliaria = i;
     return (u != NULL);
+}
+
+void ControladorSistema::altaCasa(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, bool esPH, TipoTecho techo) {
+    ManejadorInmueble* mi = ManejadorInmueble::getInstance();
+    mi->aumentarUltimoCodigo(); // Aumentar el último código para el próximo inmueble
+    int codigo = mi->getUltimoCodigoInmueble();
+    Casa* inmueble = new Casa(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, esPH, techo);
+    mi->addInmueble(inmueble);
+    ultimoUsuario->agregarInmueble(inmueble);
+}
+
+void ControladorSistema::altaApartamento(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor) {
+    ManejadorInmueble* mi = ManejadorInmueble::getInstance();
+    mi->aumentarUltimoCodigo();
+    int codigo = mi->getUltimoCodigoInmueble(); // Asignar un nuevo código
+    Apartamento* inmueble = new Apartamento(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, piso, tieneAscensor);
+    mi->agregarInmueble(inmueble);
+    ultimoUsuario->agregarInmueble(inmueble);
+}
+
+void ControladorSistema::altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario, std::string nicknameInmobiliaria) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Propietario* p = mu->getUsuario(nicknamePropietario);
+    Inmobiliaria* i = mu->getUsuario(nicknameInmobiliaria);
+    if (p != NULL && i != NULL) {
+        i->altaRepresentaPropietario(p);
+    }
 }

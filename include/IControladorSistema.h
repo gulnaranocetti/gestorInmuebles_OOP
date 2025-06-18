@@ -31,8 +31,6 @@ class IControladorSistema {
 
         //Caso de uso: Suscribirse a Notificaciones
 
-        virtual bool suscribirseNotificaciones(std::string nicknameInmobiliaria, std::string nicknameSuscriptor) = 0;
-
         virtual void suscribirseAInmobiliarias(std::set<std::string> nicknameInmobiliaria, std::string nicknameSuscriptor) = 0;
 
         virtual std::set<Inmobiliaria*> listarInmobiliariasNoSuscripto(std::string nicknameSuscriptor) = 0;
@@ -41,6 +39,11 @@ class IControladorSistema {
 
         virtual void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar) = 0;
 
+        virtual void altaApartamento(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes) = 0;
+
+        virtual void altaCasa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho) = 0;
+
+        virtual void altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario) = 0;
 };
 
 #endif

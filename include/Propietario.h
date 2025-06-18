@@ -26,6 +26,8 @@ class Propietario : public Usuario, public ISuscriptor {
         
         std::set<Notificacion*> consultarNotificaciones() const override;
 
+        void agregarInmueble(Inmueble* i);
+
         void eliminarSuscripcion(Inmobiliaria* i) override;
 
         void unlinkInmueble(int codigoInmueble);

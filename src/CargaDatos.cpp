@@ -19,33 +19,30 @@ CargaDatos::CargaDatos() {
 
     //Carga los Propietarios
     controladorSistema->altaPropietario("marcelom","banco123","Marcelo","marcelo.m@gmail.com","099876543", "123456789012");
+    controladorSistema->altaCasa("Av. Rivera", "1011", 120, 1995, true, Plano);
+    controladorSistema->altaApartamento("Av. Brasil", "2031", 75, 1980, 5, true, 3500);
     controladorSistema->altaPropietario("robertarce","pass456","Roberto","roberto.a@yahoo.com","091234567", "987654321001");
+    controladorSistema->altaCasa("Camino Maldonado", "1540", 95, 1988, true, Plano);
     controladorSistema->altaPropietario("soledadf","sole789","Soledad","soledad.f@gmail.com","092345678", "654321987654");
+    controladorSistema->altaApartamento("Colonia", "1542", 60, 1978, 12, true, 2800);
     controladorSistema->altaPropietario("martagal","martA01","Marta","marta.galvez@outlook.com","098765432", "321098765432");
+    controladorSistema->altaCasa("Juan Paullier", "801", 110, 2000, true, Liviano);
     controladorSistema->altaPropietario("jorge88","jorgepass88","Jorge","jorge.rivera@uy.com","097654321", "890123456789");
+    controladorSistema->altaApartamento("Bulevar Artigas", "871", 68, 2002, 3, false, 2200);
+    controladorSistema->altaApartamento("Sarmiento", "1476", 80, 2008, 6, true, 3100);
+    controladorSistema->altaCasa("Cno. Carrasco", "1576", 140, 2007, true, Plano);
 
     //Carga las Inmobiliarias
     controladorSistema->altaInmobiliaria("casasur123","casasur99","Casa Sur","contacto@casasur.com","Canelones 2345","https://casasur.com.uy","24012345");
-    controladorSistema->altaInmobiliaria("idealhome","home2025","IHome","info@idealhome.uy","Av. Italia 4567","https://idealhome.uy","099123456");
-    controladorSistema->altaInmobiliaria("vivaurbana","viva4567","Viva Urbana","contacto@vivaurbana.com","18 de Julio 7890","https://vivaurbana.com","29109876");
-
-    //Carga los Propietarios_Dueño_Inmueble
-    controladorSistema->altaCasa("Av. Rivera", "1011", 120, 1995, true, Plano);
-    controladorSistema->altaApartamento("Av. Brasil", "2031", 75, 1980, 5, true, 3500);
-    controladorSistema->altaCasa("Camino Maldonado", "1540", 95, 1988, true, Plano);
-    controladorSistema->altaApartamento("Colonia", "1542", 60, 1978, 12, true, 2800);
-    controladorSistema->altaCasa("Juan Paullier", "801", 110, 2000, true, Liviano);
-    controladorSistema->altaApartamento("Bulevar Artigas", "871", 68, 2002, 3, false, 2200);
-    controladorSistema->altaApartamento("Sarmiento", "1476", 80, 2008, 6, true, 3100);
-
-    //Carga los Representa_Propietario_Inmobiliaria
     controladorSistema->altaRepresentaPropietarioInmobiliaria("marcelom", "casasur123");
+    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "casasur123");
+    controladorSistema->altaInmobiliaria("idealhome","home2025","IHome","info@idealhome.uy","Av. Italia 4567","https://idealhome.uy","099123456");
     controladorSistema->altaRepresentaPropietarioInmobiliaria("marcelom", "idealhome");
+    controladorSistema->altaRepresentaPropietarioInmobiliaria("martagal", "idealhome");
+    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "idealhome");
+    controladorSistema->altaInmobiliaria("vivaurbana","viva4567","Viva Urbana","contacto@vivaurbana.com","18 de Julio 7890","https://vivaurbana.com","29109876");
     controladorSistema->altaRepresentaPropietarioInmobiliaria("robertarce", "vivaurbana");
     controladorSistema->altaRepresentaPropietarioInmobiliaria("soledadf", "vivaurbana");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("martagal", "idealhome");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "casasur123");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "idealhome");
     controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "vivaurbana");
 
     //Carga los Inmobiliaria_AdministraPropiedad
@@ -124,24 +121,20 @@ CargaDatos::CargaDatos() {
 
 
     //Carga los Suscripcion_Inmobiliaria
-    controladorSistema->suscribirseNotificaciones("casasur123", "luisito23");
-    controladorSistema->suscribirseNotificaciones("idealhome", "luisito23");
+    controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome"}, "luisito23");
 
-    controladorSistema->suscribirseNotificaciones("casasur123", "anarojo88");
-    controladorSistema->suscribirseNotificaciones("idealhome", "anarojo88");
-    controladorSistema->suscribirseNotificaciones("vivaurbana", "anarojo88");
+    controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome", "vivaurbana"}, "anarojo88");
 
-    controladorSistema->suscribirseNotificaciones("idealhome", "marcelom");
+    controladorSistema->suscribirseAInmobiliarias({"idealhome"}, "marcelom");
 
-    controladorSistema->suscribirseNotificaciones("idealhome", "robertarce");
+    controladorSistema->suscribirseAInmobiliarias({"idealhome"}, "robertarce");
 
-    controladorSistema->suscribirseNotificaciones("vivaurbana", "soledadf");
+    controladorSistema->suscribirseAInmobiliarias({"vivaurbana"}, "soledadf");
+    
+    controladorSistema->suscribirseAInmobiliarias({"vivaurbana"}, "martagal");
+    
+    controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome", "vivaurbana"}, "jorge88");
 
-    controladorSistema->suscribirseNotificaciones("vivaurbana", "martagal");
-
-    controladorSistema->suscribirseNotificaciones("casasur123", "jorge88");
-    controladorSistema->suscribirseNotificaciones("idealhome", "jorge88");
-    controladorSistema->suscribirseNotificaciones("vivaurbana", "jorge88");
 }
 
 CargaDatos* CargaDatos::getInstance() {
