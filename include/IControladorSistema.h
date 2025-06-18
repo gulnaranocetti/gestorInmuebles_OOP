@@ -37,6 +37,10 @@ class IControladorSistema {
 
         virtual std::set<Inmobiliaria*> listarInmobiliariasNoSuscripto(std::string nicknameSuscriptor) = 0;
 
+        virtual std::set<DTUsuario> listarInmobiliariasSuscritas(std::string nicknameSuscriptor) = 0;
+
+        virtual void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar) = 0;
+
 };
 
 #endif

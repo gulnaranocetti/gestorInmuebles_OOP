@@ -10,7 +10,7 @@
 #include "../include/DTFecha.h"
 #include "../include/DTInmueble.h"
 #include "../include/DTInmuebleAdministrado.h"
-#include "../include/DTinmuebleListado.h"
+#include "../include/DTInmuebleListado.h"
 #include "../include/DTPublicacion.h"
 #include "../include/DTUsuario.h"
 #include <string>
@@ -24,7 +24,7 @@ void mostrarMenu() {
     std::cout << "4. Eliminar Inmueble" << std::endl;
     std::cout << "5. Suscribirse a Notificaciones" << std::endl;
     std::cout << "6. Consulta de Notificaciones" << std::endl;
-    std::cout << "7. Elimiinar Suscripciones" << std::endl;
+    std::cout << "7. Eliminar Suscripciones" << std::endl;
     std::cout << "8. Alta de Administracion de Propiedad" << std::endl;
     std::cout << "9. Cargar Datos" << std::endl;
     std::cout << "10. Ver fecha actual" << std::endl;
@@ -345,15 +345,85 @@ void eliminarInmueble(){
 }
 
 void suscribirseNotificaciones(){
+    // 0. Inicializar controlador
+    Factory* factory = Factory::getInstance();
+    IControladorSistema* controlador = factory->getControladorSistema();
+    // 0.1. Ingresar el nickname del usuario que se quiere suscribir
+    std::cout << "Nickname del usuario: ";
+    std::string nicknameSuscriptor;
+    std::getline(std::cin, nicknameSuscriptor);
+    //1. Mostrar lista de inmobiliarias a las que no esta suscrito
+    std::set<Inmobiliaria*> inmobiliariasNoSuscripto = controlador->listarInmobiliariasNoSuscripto(nicknameSuscriptor);
+    if(inmobiliariasNoSuscripto.empty()){
+        std::cout << "No hay inmobiliarias a las que suscribirse." << std::endl;
+        return;
+    }
+    std::cout << "Inmobiliarias a las que no esta suscrito:\n";
+    for(std::set<Inmobiliaria*>::iterator it = inmobiliariasNoSuscripto.begin(); it != inmobiliariasNoSuscripto.end(); ++it) {
+        Inmobiliaria* inm = *it;
+        std::cout << "- Nickname: " << inm->getNickname() << ", Nombre: " << inm->getNombre() << std::endl;
+    }
+    //2. Ingresar el nickname de las inmobiliarias a la que se quiere suscribir
+    std::set<std::string> inmobiliariasSeleccionadas;
+    std::cout << "Nickname de las inmobiliarias a las que desea suscribirse (un nickname por linea y 'fin' cuando finalice): ";
+    std::string deseaSuscribirse;
+    std::getline(std::cin, deseaSuscribirse);
+    while (deseaSuscribirse != "fin") {
+        inmobiliariasSeleccionadas.insert(deseaSuscribirse);
+        std::getline(std::cin, deseaSuscribirse);
+    }
+    //3. suscribirse a las inmobiliarias
+    if (!inmobiliariasSeleccionadas.empty()){
+        controlador->suscribirseAInmobiliarias(inmobiliariasSeleccionadas, nicknameSuscriptor);
+        std::cout << "Suscripcion exitosa a las inmobiliarias." << std::endl;
+    } else {
+        std::cout << "No se realizaron suscripciones." << std::endl;
+    }
 
 }
 
 void consultaNotificaciones(){
-
 }
 
 void eliminarSuscripciones(){
-
+    // 0. Inicializar controlador
+    Factory* factory = Factory::getInstance();
+    IControladorSistema* controlador = factory->getControladorSistema();
+    // 1. Ingresar el nickname del usuario que quiere eliminar suscripciones
+    std::cout << "Nickname del usuario: ";
+    std::string nicknameUsuario;
+    std::getline(std::cin, nicknameUsuario);
+    // 2. Mostrar lista de inmobiliarias a las que esta suscrito
+    std::set<DTUsuario> inmobiliariasSuscritas = controlador->listarInmobiliariasSuscritas(nicknameUsuario);
+    if(inmobiliariasSuscritas.empty()){
+        std::cout << "No hay inmobiliarias a las que este suscrito." << std::endl;
+        return;
+    }
+    std::cout << "Inmobiliarias a las que esta suscrito:\n";
+    for(std::set<DTUsuario>::iterator it = inmobiliariasSuscritas.begin(); it != inmobiliariasSuscritas.end(); ++it) {
+        DTUsuario dt = *it;
+        std::cout << "- Nickname: " << dt.getNickname() << ", Nombre: " << dt.getNombre() << std::endl;
+    }
+    // 3. Ingresar el nickname de las inmobiliarias a las que quiere eliminar la suscripcion
+    std::set<DTUsuario> inmobiliariasAEliminar;
+    std::cout << "Nickname de las inmobiliarias a las que desea eliminar la suscripcion (un nickname por linea y 'fin' cuando finalice): ";
+    std::string deseaEliminar;
+    std::getline(std::cin, deseaEliminar);
+    while (deseaEliminar != "fin") {
+        for(std::set<DTUsuario>::iterator it = inmobiliariasSuscritas.begin(); it != inmobiliariasSuscritas.end(); ++it) {
+            if(it->getNickname() == deseaEliminar) {
+                inmobiliariasAEliminar.insert(*it);
+            }
+        }
+        std::getline(std::cin, deseaEliminar);
+    }
+    // 4. Eliminar suscripcion a las inmobiliarias seleccionadas
+    if(!inmobiliariasAEliminar.empty()){
+        controlador->eliminarSuscripcionAInmobiliarias(nicknameUsuario, inmobiliariasAEliminar);
+        std::cout << "Suscripciones eliminadas exitosamente." << std::endl;
+    } else {
+        std::cout << "No se eliminaron suscripciones." << std::endl;
+    }
 }
 
 void altaAdministracionPropiedad(){
