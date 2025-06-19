@@ -212,7 +212,6 @@ void ControladorSistema::finAltaUsuario() {
 
 
 std::set<DTUsuario> ControladorSistema::listarPropietarios() {
-
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     std::set<Usuario*> u = m->getUsuarios();
     std::set<DTUsuario> dtUsuarios;
@@ -237,4 +236,12 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmuebles() {
         inmList.insert(aux);
     }
     return inmList;
+}
+
+DTInmueble ControladorSistema::detalleInmueble(int codigoInmueble) {
+    ManejadorInmueble* m = ManejadorInmueble::getInstance();
+    std::set<Inmueble*> inmuebles = m->getInmuebles();
+    Inmueble* inm = m->getInmueble(codigoInmueble);
+    DTInmueble resultado = DTInmueble(codigoInmueble, (inm)->getDireccion(), (inm)->getNumeroPuerta(), (inm)->getSuperficie(), (inm)->getAnioConstruccion());
+    return resultado;
 }

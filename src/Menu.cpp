@@ -367,6 +367,12 @@ void eliminarInmueble(){
     std::cin.ignore();
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble)
+    DTInmueble inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
+    
+    /*No me doy cuenta como identificar si es Apto o Casa*/
+
+    //std::cout << "Codigo: " << inmuebleElegido.getCodigo() << ", direccion: " << inmuebleElegido.getDireccion() << ", nro. puerta: " << inmuebleElegido.getNumeroPuerta() << ", superficie: " << inmuebleElegido.getSuperficie() << " m2, construccion " << inmuebleElegido.getAnioConstruccion() << ", piso: " << inmuebleElegido.get
+    
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
     // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
@@ -376,6 +382,7 @@ void eliminarInmueble(){
     std::cin.ignore();
     if (deseaEliminar == 1){
         //TODO: Controlador->eliminarInmueble(codigoInmueble)
+        controlador->eliminarInmueble(codigoInmueble);
     }
 
 }

@@ -108,6 +108,8 @@ class ControladorSistema: public IControladorSistema {
 
         std::set<DTInmuebleListado> listarInmuebles();
 
+        DTInmueble detalleInmueble(int codigoInmueble);
+
 
 };
 
