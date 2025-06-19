@@ -194,14 +194,14 @@ void ControladorSistema::altaApartamento(std::string direccion, std::string numP
     ultimoUsuario->agregarInmueble(inmueble);
 }
 
-void ControladorSistema::altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario, std::string nicknameInmobiliaria) {
+/*void ControladorSistema::altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario, std::string nicknameInmobiliaria) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     Propietario* p = mu->getUsuario(nicknamePropietario);
     Inmobiliaria* i = mu->getUsuario(nicknameInmobiliaria);
     if (p != NULL && i != NULL) {
         i->altaRepresentaPropietario(p);
     }
-}
+}*/
 
 void ControladorSistema::finAltaUsuario() {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
@@ -224,7 +224,12 @@ std::set<DTUsuario> ControladorSistema::listarPropietarios() {
 }
 
 void ControladorSistema::representarPropietario(std::string nicknamePropietario) {
-
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Propietario* p = mu->getUsuario(nicknamePropietario);
+    Inmobiliaria* i = ultimoInmobiliaria; // Asumimos que la última inmobiliaria es la que se está representando
+    if (p != NULL && i != NULL) {
+        i->altaRepresentaPropietario(p);
+    }
 }
 
 std::set<DTInmuebleListado> ControladorSistema::listarInmuebles() {

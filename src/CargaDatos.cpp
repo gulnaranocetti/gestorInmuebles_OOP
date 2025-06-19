@@ -34,16 +34,16 @@ CargaDatos::CargaDatos() {
 
     //Carga las Inmobiliarias
     controladorSistema->altaInmobiliaria("casasur123","casasur99","Casa Sur","contacto@casasur.com","Canelones 2345","https://casasur.com.uy","24012345");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("marcelom", "casasur123");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "casasur123");
+    controladorSistema->representarPropietario("marcelom", "casasur123");
+    controladorSistema->representarPropietario("jorge88", "casasur123");
     controladorSistema->altaInmobiliaria("idealhome","home2025","IHome","info@idealhome.uy","Av. Italia 4567","https://idealhome.uy","099123456");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("marcelom", "idealhome");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("martagal", "idealhome");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "idealhome");
+    controladorSistema->representarPropietario("marcelom", "idealhome");
+    controladorSistema->representarPropietario("martagal", "idealhome");
+    controladorSistema->representarPropietario("jorge88", "idealhome");
     controladorSistema->altaInmobiliaria("vivaurbana","viva4567","Viva Urbana","contacto@vivaurbana.com","18 de Julio 7890","https://vivaurbana.com","29109876");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("robertarce", "vivaurbana");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("soledadf", "vivaurbana");
-    controladorSistema->altaRepresentaPropietarioInmobiliaria("jorge88", "vivaurbana");
+    controladorSistema->representarPropietario("robertarce", "vivaurbana");
+    controladorSistema->representarPropietario("soledadf", "vivaurbana");
+    controladorSistema->representarPropietario("jorge88", "vivaurbana");
 
     //Carga los Inmobiliaria_AdministraPropiedad
     controladorFechaActual->setNewFechaActual(12, 12, 2015); 
