@@ -426,6 +426,33 @@ void suscribirseNotificaciones(){
 }
 
 void consultaNotificaciones(){
+    Factory* factory = Factory::getInstance();
+    IControladorSistema* controlador = factory->getControladorSistema();
+
+    // 1. Ingresar el nickname del usuario que quiere consultar sus notificaciones
+    std::cout << "Nickname del usuario: ";
+    std::string nicknameUsuario;
+    std::getline(std::cin, nicknameUsuario);
+
+    // 2. Listar las notificaciones del usuario
+    std::set<Notificacion*> notificaciones = controlador->consultarNotificaciones(nicknameUsuario);
+    if(notificaciones.empty()){
+        std::cout << "No hay notificaciones para este usuario." << std::endl;
+        return;
+    }
+    std::cout << "Notificaciones:\n";   
+    std::cout <<"----------------------------------------------------" << std::endl;
+    for(std::set<Notificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) {
+        Notificacion* noti = *it;
+        std::cout << "-Fecha: " << noti->getFecha() << std::endl 
+                << "-Inmobiliaria: " << noti->getInmobiliaria() << std::endl 
+                << "-Codigo Publicacion: " << noti->getCodigoPublicacion() << std::endl 
+                << "-Texto: " << noti->getTextoPublicacion() << std::endl 
+                << "-Tipo Publicacion: " << (noti->getTipoPublicacion() == Venta ? "Ven ta" : "Alquiler") << std::endl 
+                << "-Tipo Inmueble: " << (noti->getTipoInmueble() == Casa ? "Casa" : "Apartamento") << std::endl; 
+        std::cout <<"----------------------------------------------------" << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 void eliminarSuscripciones(){
@@ -471,21 +498,42 @@ void eliminarSuscripciones(){
 
 void altaAdministracionPropiedad(){
     Factory* factory = Factory::getInstance();
+    IControladorSistema* controlador = factory->getControladorSistema();
 
+    // 1. Mostrar lista de inmobiliarias
     std::cout << "Lista de Inmobiliarias:\n";
-    //TODO: Coleccion de DTUsuario = controlador->listarInmobiliarias();
-    //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
+    std::set<DTUsuario> inmobiliarias = controlador->listarInmobiliarias();
+    if(inmobiliarias.empty()){
+        std::cout << "No hay inmobiliarias disponibles." << std::endl;
+        return;
+    }   
+    for(std::set<DTUsuario>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        DTUsuario dt = *it;
+        std::cout << "- Nickname: " << dt.getNickname() << ", Nombre: " << dt.getNombre() << std::endl;
+    }
+    // 2. Mostrar lista de inmuebles no administrados por la inmobiliaria
     std::cout << "Nickname de la inmobiliaria: ";
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
-    //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
-    //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
+    std::set<DTInmuebleListado*> inmueblesNoAdministrados = controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
+    if(inmueblesNoAdministrados.empty()){
+        std::cout << "No hay inmuebles disponibles para administrar." << std::endl;
+        return;
+    }   
+    std::cout << "Inmuebles no administrados:\n";
+    for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
+        DTInmuebleListado* dt = *it;
+        std::cout << "- Codigo: " << dt->getCodigo() << ", Direccion: " << dt->getDireccion() << ", Propietario: " << dt->getPropietario() << std::endl;
+    }
+    // 3. Dar de alta la administracion de una propiedad
     std::cout << "Codigo del inmueble a administrar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;
     std::cin.ignore();
-    //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+    controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+    std::cout << "Alta Administracion de propiedad exitosa." << std::endl;
 }
+
 
 void cargarDatos(){
     CargaDatos::getInstance();
