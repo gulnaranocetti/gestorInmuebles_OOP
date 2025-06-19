@@ -225,7 +225,7 @@ std::set<DTUsuario> ControladorSistema::listarPropietarios() {
 
 void ControladorSistema::representarPropietario(std::string nicknamePropietario) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
-    Usuario* p = mu->getUsuario(nicknamePropietario);
+    Propietario* p = mu->getUsuario(nicknamePropietario)->getPropietario();
     Inmobiliaria* i = ultimoInmobiliaria; // Asumimos que la última inmobiliaria es la que se está representando
     if (p != NULL && i != NULL) {
         i->altaRepresentaPropietario(p);

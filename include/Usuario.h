@@ -22,6 +22,8 @@ class Usuario {
         
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor); // NO implementar
 
+        virtual Propietario* getPropietario();
+
         bool operator<(Usuario& other);
         bool esIgual(Usuario& other);
 

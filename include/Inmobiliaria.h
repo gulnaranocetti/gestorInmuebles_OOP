@@ -39,7 +39,7 @@ class Inmobiliaria : public Usuario {
 
         bool suscrito(std::string nicknameUsuario); //CU Suscribirse a Notificaciones
 
-        void altaRepresentaPropietario(Usuario* propietario); //CU Representar Propietario
+        void altaRepresentaPropietario(Propietario* propietario); //CU Representar Propietario
 
         //patron observer
         void agregarSuscriptor(ISuscriptor* s);

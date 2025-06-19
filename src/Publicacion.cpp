@@ -40,6 +40,10 @@ void Publicacion::setActiva(bool activa){ this->activa = activa; }
 
 Publicacion::~Publicacion(){}
 
+Propietario* Propietario::getPropietario(){
+    return this;
+}
+
 AdministraPropiedad* Publicacion::getAdministraPropiedad(){
     return administraPropiedad;
 }

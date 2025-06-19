@@ -129,7 +129,7 @@ void Inmobiliaria::eliminarSuscripcion(ISuscriptor* s) {
     }
 }
 
-void Inmobiliaria::altaRepresentaPropietario(Usuario* propietario) {
+void Inmobiliaria::altaRepresentaPropietario(Propietario* propietario) {
     this->propietarios.insert(propietario);
 }
 
