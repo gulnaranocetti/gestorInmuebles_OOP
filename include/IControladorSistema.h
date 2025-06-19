@@ -55,7 +55,9 @@ class IControladorSistema {
 
         virtual std::set<Notificacion*> consultarNotificaciones(std::string nicknameSuscriptor) = 0; // CU consultarNotificaciones
 
+        //Alta Consulta de Publicaciones
 
+        virtual Inmueble detalleInmueblePublicacion(int codigoPublicacion) = 0;
 
 
 };
