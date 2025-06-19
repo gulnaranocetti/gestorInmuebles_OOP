@@ -24,6 +24,9 @@ class Usuario {
 
         virtual Propietario* getPropietario();
 
+        virtual std::string getTipoUsuario() const = 0;
+        virtual DTUsuario getDTUsuario() const = 0; 
+
         bool operator<(Usuario& other);
         bool esIgual(Usuario& other);
 

@@ -254,7 +254,7 @@ void altaUsuario(){
             std::cin.ignore();
         }
         //TODO: controlador->finalizarAltaUsuario();
-        controlador->finAltaUsuario(); 
+        controlador->finalizarAltaUsuario(); 
     }else{
         std::cout << "Error al crear el usuario" << std::endl;
     }

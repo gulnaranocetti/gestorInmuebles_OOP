@@ -40,6 +40,9 @@ class Propietario : public Usuario, public ISuscriptor {
 
         std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
 
+        std::string getTipoUsuario() const override;
+        DTUsuario getDTUsuario() const override; 
+
 };
 
 #endif

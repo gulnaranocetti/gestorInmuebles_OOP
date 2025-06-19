@@ -203,7 +203,7 @@ void ControladorSistema::altaApartamento(std::string direccion, std::string numP
     }
 }*/
 
-void ControladorSistema::finAltaUsuario() {
+void ControladorSistema::finalizarAltaUsuario() {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     if (ultimoUsuario != NULL) {
         ultimoUsuario = NULL; // Resetear el último usuario después de agregarlo
@@ -215,10 +215,12 @@ std::set<DTUsuario> ControladorSistema::listarPropietarios() {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     std::set<Usuario*> u = m->getUsuarios();
     std::set<DTUsuario> dtUsuarios;
-    /*for(std::set<Usuario*>::iterator it = u.begin(); it != u.end(); ++it) {
-        DTUsuario dt = (*it); 
-        dtUsuarios.insert(dt);
-    }*/
+    for(std::set<Usuario*>::iterator it = u.begin(); it != u.end(); ++it) {
+        if((*it)->getTipoUsuario() == "Propietario") {
+            DTUsuario dt = (*it)->getDTUsuario(); 
+            dtUsuarios.insert(dt);        
+        }
+    }
     return dtUsuarios;
 
 }

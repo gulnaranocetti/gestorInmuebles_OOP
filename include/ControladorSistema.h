@@ -91,7 +91,7 @@ class ControladorSistema: public IControladorSistema {
 
         void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
 
-        void finAltaUsuario();
+        void finalizarAltaUsuario();
 
         //Caso de uso: Alta Usuario
 

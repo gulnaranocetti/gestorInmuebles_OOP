@@ -27,6 +27,9 @@ class Cliente : public Usuario, public ISuscriptor {
         void recibirNotificacion(Notificacion* n);
         void eliminarSuscripcion(Inmobiliaria* i);
 
+        std::string getTipoUsuario() const override;
+        DTUsuario getDTUsuario() const override; 
+
         Cliente(std::string _nickname, std::string _contrasena, std::string _nombre, std::string _email, std::string _apellido, std::string _documento);
         ~Cliente();
 };

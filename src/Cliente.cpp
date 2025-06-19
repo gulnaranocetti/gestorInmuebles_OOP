@@ -59,3 +59,11 @@
         ISuscriptor* s = dynamic_cast<ISuscriptor*>(u);
         return s ? s : nullptr;
     }
+
+    std::string Cliente::getTipoUsuario() const {
+        return "Cliente";
+    }
+
+    DTUsuario Cliente::getDTUsuario() const {
+        return DTUsuario(getNickname(), getNombre());
+    }

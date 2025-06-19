@@ -43,7 +43,7 @@ class IControladorSistema {
 
         virtual void altaCasa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho) = 0;
 
-        virtual void finAltaUsuario() = 0;
+        virtual void finalizarAltaUsuario() = 0;
 
         virtual std::set<DTUsuario> listarPropietarios() = 0; //CU altaUsuario
 

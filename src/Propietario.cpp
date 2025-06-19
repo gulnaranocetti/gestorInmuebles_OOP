@@ -70,3 +70,15 @@ void Propietario::agregarInmueble(Inmueble* i){
 Propietario* Propietario::getPropietario() {
     return this;
 }
+
+std::string Propietario::getNickname() const {
+    return Usuario::getNickname();
+}
+
+std::string Propietario::getTipoUsuario() const {
+    return "Propietario";
+}
+
+DTUsuario Propietario::getDTUsuario() const {
+    return DTUsuario(this->getNickname(), this->getNombre());
+}
