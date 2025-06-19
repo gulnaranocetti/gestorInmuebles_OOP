@@ -66,3 +66,7 @@ void Propietario::agregarInmueble(Inmueble* i){
     this->inmuebles.insert(i);
     i->setPropietario(this);
 }
+
+Propietario* Propietario::getPropietario() {
+    return this;
+}
