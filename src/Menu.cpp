@@ -135,6 +135,8 @@ void altaUsuario(){
         std::cout << "Documento: ";
         std::getline(std::cin, documento);
         //TODO: usuarioOk = ci->altaCliente(nickname, contrasena, nombre, email, apellido, documento);
+        IControladorSistema* ci = factory->getControladorSistema();
+        usuarioOk = ci->altaCliente(nickname, contrasena, nombre, email, apellido, documento);
 
     }else if (tipoUsuario == 1){
         std::cout << "Direccion: ";
@@ -144,6 +146,8 @@ void altaUsuario(){
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
         //TODO: usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        IControladorSistema* ci = factory->getControladorSistema();
+        usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
 
     }else if (tipoUsuario == 2){
         std::cout << "Cuenta Bancaria: ";
@@ -151,9 +155,12 @@ void altaUsuario(){
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
         //TODO: usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        IControladorSistema* ci = factory->getControladorSistema();
+        usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
 
     }
     if (usuarioOk){
+    IControladorSistema* controlador = factory->getControladorSistema();
         if (tipoUsuario == 1 || tipoUsuario == 2){
             int salir = 1;
             std::cout << "¿Quiere ingresar los datos relacionados? (1: Si, 0: No): ";
@@ -168,10 +175,23 @@ void altaUsuario(){
                     std::cout << "Lista de Propietarios:\n";
                     //TODO: Coleccion de DTUsuario = controlador->listarPropietarios();
                     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
+                    std::set<DTUsuario> listProp = controlador->listarPropietarios();
+                    if(listProp.empty()) {
+                        std::cout << "No hay propietarios en la lista." << std::endl;
+                        return;
+                    } else {
+                        for(std::set<DTUsuario>::iterator it = listProp.begin(); it != listProp.end(); ++it) {
+                            DTUsuario dt = *it;
+                            std::cout << "- Nickname: " << dt.getNickname() << ", Nombre: " << dt.getNombre() << std::endl;
+                        }
+                    }
+
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
                     //TODO: controlador->representarPropietario(nicknamePropietario)
+                    controlador->representarPropietario(nicknamePropietario); // qué hace esta funcion?
+
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";
@@ -207,6 +227,8 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
+                        int codigo;
+                        controlador->altaCasa(codigo, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                     }else{
                         int piso;
                         std::cout << "Piso: ";
@@ -222,6 +244,8 @@ void altaUsuario(){
                         std::cin >> gastosComunes;
                         std::cin.ignore();
                         //TODO: controlador->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes)
+                        int codigo;
+                        controlador->altaApartamento(codigo, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
             }
@@ -230,6 +254,7 @@ void altaUsuario(){
             std::cin.ignore();
         }
         //TODO: controlador->finalizarAltaUsuario();
+        controlador->finAltaUsuario(); 
     }else{
         std::cout << "Error al crear el usuario" << std::endl;
     }
@@ -322,9 +347,20 @@ void consultaPublicaciones(){
 void eliminarInmueble(){
 
     Factory* factory = Factory::getInstance();
+    IControladorSistema* controlador = factory->getControladorSistema();
     std::cout << "Listado de inmuebles:\n";
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmuebles();
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
+    std::set<DTInmuebleListado> listInmuebles = controlador->listarInmuebles();
+    if(listInmuebles.empty()) {
+        std::cout << "No hay inmuebles en el listado." << std::endl;
+        return;
+    } else {
+        for(std::set<DTInmuebleListado>::iterator it = listInmuebles.begin(); it != listInmuebles.end(); it++) {
+            DTInmuebleListado inmueble = *it;
+            std::cout << "- Codigo: " << inmueble.getCodigo() << ", direccion: " << inmueble.getDireccion() << ", propietario: " << inmueble.getPropietario()  <<std::endl;
+        }
+    }
     std::cout << "Codigo del inmueble a eliminar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;

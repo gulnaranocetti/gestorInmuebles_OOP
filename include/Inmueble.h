@@ -24,6 +24,7 @@ class Inmueble {
         int getSuperficie();
         int getAnioConstruccion();
         void destroyIn();
+        std::string getStringPropietario();
 
         void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
 

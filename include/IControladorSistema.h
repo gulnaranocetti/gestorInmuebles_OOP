@@ -46,6 +46,15 @@ class IControladorSistema {
         virtual void altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario) = 0;
 
         virtual void finAltaUsuario() = 0;
+
+        virtual std::set<DTUsuario> listarPropietarios() = 0; //CU altaUsuario
+
+        virtual void representarPropietario(std::string nicknamePropietario); // que devuelve??? // CU altaUsuario
+
+        virtual std::set<DTInmuebleListado> listarInmuebles(); // CU eliminarInmueble
+
+
+
 };
 
 #endif

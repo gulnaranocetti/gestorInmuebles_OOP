@@ -42,6 +42,11 @@ void Inmueble::destroyIn() {
     }
 }
 
+std::string Inmueble::getStringPropietario() {
+    return this->propietario->getNombre();
+}
+
+
 Inmueble::~Inmueble(){
     
 }

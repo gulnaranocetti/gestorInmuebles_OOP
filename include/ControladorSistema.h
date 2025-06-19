@@ -95,6 +95,20 @@ class ControladorSistema: public IControladorSistema {
 
         void finAltaUsuario();
 
+        //Caso de uso: Alta Usuario
+
+        std::set<DTUsuario> listarPropietarios();
+
+        void representarPropietario(std::string nicknamePropietario); // que devuelve???
+
+            //void finalizarAltaUsuario();
+
+
+        // Caso de uso: Eliminar Inmuebles
+
+        std::set<DTInmuebleListado> listarInmuebles();
+
+
 };
 
 #endif

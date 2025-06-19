@@ -209,3 +209,32 @@ void ControladorSistema::finAltaUsuario() {
         ultimoUsuario = NULL; // Resetear el último usuario después de agregarlo
     }
 }
+
+
+std::set<DTUsuario> ControladorSistema::listarPropietarios() {
+
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    std::set<Usuario*> u = m->getUsuarios();
+    std::set<DTUsuario> dtUsuarios;
+    /*for(std::set<Usuario*>::iterator it = u.begin(); it != u.end(); ++it) {
+        DTUsuario dt = (*it); 
+        dtUsuarios.insert(dt);
+    }*/
+    return dtUsuarios;
+
+}
+
+void ControladorSistema::representarPropietario(std::string nicknamePropietario) {
+
+}
+
+std::set<DTInmuebleListado> ControladorSistema::listarInmuebles() {
+    ManejadorInmueble* m = ManejadorInmueble::getInstance();
+    std::set<Inmueble*> inmuebles = m->getInmuebles();
+    std::set<DTInmuebleListado> inmList;
+    for(std::set<Inmueble*>::iterator it = inmuebles.begin(); it != inmuebles.end(); it++) {
+        DTInmuebleListado aux = DTInmuebleListado((*it)->getCodigo(), (*it)->getDireccion(), (*it)->getStringPropietario());
+        inmList.insert(aux);
+    }
+    return inmList;
+}
