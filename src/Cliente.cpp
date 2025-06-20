@@ -21,6 +21,11 @@
         return notificaciones;
     }
 
+    void Cliente::eliminarNotificaciones(){
+        this->notificaciones.clear(); // Elimina todas las notificaciones del cliente
+    }
+
+
     Cliente::Cliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, 
             std::string apellido, std::string telefono): Usuario(nickname, nombre, contrasena, email){
                 apellido = apellido;
@@ -49,9 +54,7 @@
     }
 
     Cliente::~Cliente(){
-        for (Notificacion* n : notificaciones){
-            delete n;
-        }//no se si esta bien
+        // Destructor vacio, no hay recursos que liberar
     }
 
     ISuscriptor* Cliente::buscarSuscriptor(const std::string& nicknameSuscriptor) {

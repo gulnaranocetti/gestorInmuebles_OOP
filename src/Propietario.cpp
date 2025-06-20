@@ -17,14 +17,13 @@ void Propietario::recibirNotificacion(Notificacion* n){
     this->notificaciones.insert(_n);
 }
         
-// std::set<Notificacion*> Propietario::consultarNotificaciones() const{
-//     std::set<Notificacion> notificacionesSet;
-//     for (const Notificacion& n : this->notificaciones) { // no usamos esta forma de iterar
-//         notificacionesSet.insert(n);
-//     }
-//     notificacionesSet.clear(); // Limpiar el set antes de devolverlo // para que??
-//     return notificacionesSet;
-// }
+std::set<Notificacion*> Propietario::consultarNotificaciones() const {
+    return this->notificaciones;
+}
+
+void Propietario::eliminarNotificaciones(){
+    this->notificaciones.clear(); // Elimina todas las notificaciones del propietario
+}
 
 void Propietario::eliminarSuscripcion(Inmobiliaria* i) {
     suscripciones.erase(i); 
@@ -82,3 +81,4 @@ std::string Propietario::getTipoUsuario() const {
 DTUsuario Propietario::getDTUsuario() const {
     return DTUsuario(this->getNickname(), this->getNombre());
 }
+

@@ -21,7 +21,7 @@ private:
     ManejadorPublicacion(); // constructor privado
 
 public:
-    Inmueble detalleInmueblePublicacion(int codigoPublicacion);
+    Inmueble* detalleInmueblePublicacion(int codigoPublicacion);
 
     static ManejadorPublicacion* getInstance();
 

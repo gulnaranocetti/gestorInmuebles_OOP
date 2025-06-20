@@ -14,15 +14,15 @@ ManejadorPublicacion* ManejadorPublicacion::getInstance(){
     return instancia;
 }
 
-Inmueble ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion){
+Inmueble* ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion){
     for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
         Publicacion* p = *it;
         if (p->getCodigo() == codigoPublicacion){
             AdministraPropiedad* ap = p->getAdministraPropiedad();
             Inmueble* in = ap->getInmueble();
-        return Inmueble(in->getCodigo(), in->getDireccion(), in->getNumeroPuerta(), in->getSuperficie(), in->getAnioConstruccion());
         }
     }
+    return in;
 }
 
 
@@ -31,7 +31,7 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
     for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
         Publicacion* p = *it;
         if (p->getPrecio() > precioMinimo && p->getPrecio() < precioMaximo && p->getTipoPublicacion() == tipoPublicacion){
-            Inmueble in = detalleInmueblePublicacion(p->getCodigo());
+            Inmueble* in = detalleInmueblePublicacion(p->getCodigo());
             if (tipoInmueble == TipoInmueble::Todos || in.getTipo() == tipoInmueble){
                 DTPublicacion pu = p->createDTP(p->getCodigo(), p->getFecha(), p->getTexto(), p->getPrecio(), p->getAdministraPropiedad()->getInmobiliaria()->getNickname());
                 devolver.insert(pu);

@@ -72,7 +72,7 @@ class ControladorSistema: public IControladorSistema {
 
         std::set<Notificacion*> consultarNotificaciones(std::string nicknameSuscriptor);
 
-
+        void eliminarNotificaciones(std::string nicknameUsuario);
         //Caso de uso: Eliminar Suscripcion a Notificaciones
 
         std::set<DTUsuario> listarInmobiliariasSuscritas(std::string nicknameSuscriptor); //Retorna las inmobiliarias a las que el usuario (nicknameSuscriptor) esta suscrito

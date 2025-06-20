@@ -48,7 +48,7 @@ std::set<DTInmuebleListado*> ControladorSistema::listarInmueblesNoAdministradosI
     return listInmuebles;
 }
 
-void eliminarInmueble(int codigoInmueble) {
+void ControladorSistema::eliminarInmueble(int codigoInmueble) {
     ManejadorInmueble* inm = ManejadorInmueble::getInstance();
     Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
     in->destroyIn();
@@ -106,6 +106,13 @@ std::set<Notificacion*> ControladorSistema::consultarNotificaciones(std::string 
     Usuario* us = mu->getUsuario(nicknameSuscriptor);
     ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
     return suscriptor->consultarNotificaciones();
+}
+
+void ControladorSistema::eliminarNotificaciones(std::string nicknameUsuario) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Usuario* us = mu->getUsuario(nicknameUsuario);
+    ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameUsuario);
+    suscriptor->eliminarNotificaciones();
 }
 
 std::set<DTUsuario> ControladorSistema::listarInmobiliariasSuscritas(std::string nicknameSuscriptor) {
@@ -251,4 +258,15 @@ DTInmueble ControladorSistema::detalleInmueble(int codigoInmueble) {
     Inmueble* inm = m->getInmueble(codigoInmueble);
     DTInmueble resultado = DTInmueble(codigoInmueble, (inm)->getDireccion(), (inm)->getNumeroPuerta(), (inm)->getSuperficie(), (inm)->getAnioConstruccion());
     return resultado;
+}
+
+
+DTInmueble ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion) {
+    ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
+    Inmueble* inm = mp->detalleInmueblePublicacion(codigoPublicacion);
+    DTInmueble dtInmueble;
+    if (inm != nullptr) {
+        dtInmueble = DTInmueble(inm->getCodigo(), inm->getDireccion(), inm->getNumeroPuerta(), inm->getSuperficie(), inm->getAnioConstruccion());
+    }
+    return dtInmueble;
 }

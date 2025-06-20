@@ -510,6 +510,7 @@ void consultaNotificaciones(){
         std::cout <<"----------------------------------------------------" << std::endl;
         std::cout << std::endl;
     }
+    controlador->eliminarNotificaciones(nickNameUsuario);
 }
 
 void eliminarSuscripciones(){
