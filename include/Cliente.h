@@ -1,11 +1,16 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
+
 #include "Usuario.h"
+#include "ISuscriptor.h"
 #include "Notificacion.h"
 #include "Inmobiliaria.h"
-#include "ISuscriptor.h"
+#include "DTUsuario.h"
 #include <string>
 #include <set>
+
+class Notificacion;
+class Inmobiliaria;
 
 class Cliente : public Usuario, public ISuscriptor {
     private:
@@ -19,16 +24,16 @@ class Cliente : public Usuario, public ISuscriptor {
 
         std::string getApellido();
         std::string getDocumento();
-        std::string getNickname() const override;
+        std::string getNickname() const;
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
-        std::set<Notificacion*> consultarNotificaciones()const override;
+        std::set<Notificacion*> consultarNotificaciones()const;
 
         void recibirNotificacion(Notificacion* n);
         void eliminarSuscripcion(Inmobiliaria* i);
 
-        std::string getTipoUsuario() const override;
-        DTUsuario getDTUsuario() const override; 
+        std::string getTipoUsuario() const;
+        DTUsuario getDTUsuario() const; 
 
         Cliente(std::string _nickname, std::string _contrasena, std::string _nombre, std::string _email, std::string _apellido, std::string _documento);
         ~Cliente();

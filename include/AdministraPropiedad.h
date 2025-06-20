@@ -2,13 +2,13 @@
 #define ADMINISTRAPROPIEDAD_H
 #include "DTFecha.h"
 #include "Inmueble.h"
+#include "Inmobiliaria.h"
+#include "Publicacion.h"
+#include "DTInmuebleAdministrado.h"
+#include "TipoPublicacion.h"
 #include <set>
 #include <string>
 
-class Inmobiliaria;
-enum TipoPublicacion;
-class DTInmuebleAdministrado;
-class Publicacion;
 
 class AdministraPropiedad {
     private:

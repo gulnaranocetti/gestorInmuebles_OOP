@@ -1,8 +1,5 @@
 #include "AdministraPropiedad.h"
-#include "DTInmuebleAdministrado.h"
-#include "Inmobiliaria.h"
-#include "Publicacion.h"
-#include <set>
+
 
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha, Inmobiliaria* inmobiliaria, Inmueble* inmueble) {
     this->fecha = fecha;
@@ -18,7 +15,8 @@ Inmobiliaria* AdministraPropiedad::getInmobiliaria() {
 }
 
 DTInmuebleAdministrado* AdministraPropiedad::obtenerDatos() {
-    return &DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(),fecha);
+    DTInmuebleAdministrado* res = new DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(), fecha);
+    return res;
 }
 
 bool AdministraPropiedad::es_Igual(int CodigoInmueble) {

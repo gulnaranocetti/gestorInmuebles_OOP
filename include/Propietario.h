@@ -24,7 +24,7 @@ class Propietario : public Usuario, public ISuscriptor {
 
         void recibirNotificacion(Notificacion* n) override;
         
-        std::set<Notificacion*> consultarNotificaciones() const override;
+        std::set<Notificacion*> consultarNotificaciones() const;
 
         void agregarInmueble(Inmueble* i);
 
@@ -32,7 +32,7 @@ class Propietario : public Usuario, public ISuscriptor {
 
         void unlinkInmueble(int codigoInmueble);
 
-        std::string getNickname() const override;
+        std::string getNickname() const;
 
         Propietario* getPropietario() override;
 
@@ -40,8 +40,8 @@ class Propietario : public Usuario, public ISuscriptor {
 
         std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
 
-        std::string getTipoUsuario() const override;
-        DTUsuario getDTUsuario() const override; 
+        std::string getTipoUsuario() const;
+        DTUsuario getDTUsuario() const; 
 
 };
 

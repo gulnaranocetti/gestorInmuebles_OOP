@@ -1,6 +1,8 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
 #include "Inmueble.h"
+#include <string>
+#include "TipoInmueble.h"
 
 
 class Apartamento : public Inmueble {

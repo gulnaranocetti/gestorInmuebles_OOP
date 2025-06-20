@@ -12,6 +12,10 @@
 #include <string>
 #include <set>
 
+class Usuario;
+class Cliente;
+class Propietario;
+class Inmobiliaria;
 
 class ManejadorUsuario {
 private:

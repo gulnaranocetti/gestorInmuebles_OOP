@@ -13,7 +13,7 @@ class ManejadorInmueble {
 private:
     std::set<Inmueble*> inmuebles;
     static ManejadorInmueble* instancia;
-    int ultimoCodigo = 0;
+    int ultimoCodigo;
     ManejadorInmueble();
 
 public:

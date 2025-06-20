@@ -10,6 +10,9 @@
 #include <string> 
 #include <set>
 
+class Inmobiliaria;
+class Inmueble;
+
 class ManejadorInmobiliaria{
     private: 
         std::set<Inmobiliaria*> inmobiliarias;

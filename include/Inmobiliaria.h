@@ -1,5 +1,6 @@
 #ifndef INMOBILIARIA_H
 #define INMOBILIARIA_H
+
 #include "Usuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "ManejadorPublicacion.h"
@@ -10,6 +11,10 @@
 #include "Factory.h"
 #include <string>
 #include <set>
+
+class ISuscriptor;
+class Propietario;
+class Inmueble;
 
 class Inmobiliaria : public Usuario {
     private:
@@ -25,11 +30,11 @@ class Inmobiliaria : public Usuario {
 
         std::set<AdministraPropiedad*> getAdministrados() const;
 
-        std::set<AdministraPropiedad*> getAdministrados() const;
-
         std::set<DTInmuebleAdministrado*> listarInmueble(); 
         
         void unlinkAP(AdministraPropiedad* ap);
+
+        std::string getNickname() const;
 
         DTUsuario getDTUsuario(); //altaAdministraPropiedad
 

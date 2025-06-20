@@ -1,7 +1,29 @@
 #ifndef ICONTROLADORSISTEMA_H
 #define ICONTROLADORSISTEMA_H
 
-#include "DTFecha.h"
+#include "DTUsuario.h"
+#include "DTInmuebleAdministrado.h"
+#include "DTInmueble.h"
+#include "DTPublicacion.h"
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
+#include "TipoTecho.h"
+#include "ManejadorPublicacion.h"
+#include "ManejadorInmobiliaria.h"
+#include "ManejadorInmueble.h"
+#include "ManejadorUsuario.h"
+#include "DTInmuebleListado.h"
+#include "Inmobiliaria.h"
+#include "Notificacion.h"
+#include "ControladorFechaActual.h"
+#include "AdministraPropiedad.h"
+#include "Factory.h"
+#include "Publicacion.h"
+#include "Inmueble.h"
+#include "Cliente.h"
+#include "Propietario.h"
+#include <set>
+#include <string>
 
 class IControladorSistema {
     public:

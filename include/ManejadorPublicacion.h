@@ -12,11 +12,13 @@
 #include "AdministraPropiedad.h"
 #include <set>
 
+class Inmueble;
+
 class ManejadorPublicacion {
 private:
     std::set<Publicacion*> publicaciones; // Colección de punteros a Publicacion
     static ManejadorPublicacion* instancia;
-    int ultimoCodigo = 0; // Para asignar códigos únicos a las publicaciones
+    int ultimoCodigo; // Para asignar códigos únicos a las publicaciones
 
     ManejadorPublicacion(); // constructor privado
 

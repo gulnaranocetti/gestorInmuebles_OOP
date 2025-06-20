@@ -6,6 +6,8 @@
 
 ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
 
+ManejadorPublicacion::ultimoCodigo = 0; // Inicializar el último código a 0
+
 ManejadorPublicacion::ManejadorPublicacion(){}
 
 ManejadorPublicacion* ManejadorPublicacion::getInstance(){

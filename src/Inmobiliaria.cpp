@@ -135,3 +135,6 @@ void Inmobiliaria::altaRepresentaPropietario(Propietario* propietario) {
 
 Inmobiliaria::~Inmobiliaria(){}
 
+std::string Inmobiliaria::getNickname() const {
+    return Usuario::getNickname();
+}

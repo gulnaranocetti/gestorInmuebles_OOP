@@ -25,7 +25,7 @@
 #include "Propietario.h"
 #include <set>
 #include <string>
-#include <list>
+
 
 class ControladorSistema: public IControladorSistema {
     private:

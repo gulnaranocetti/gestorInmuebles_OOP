@@ -4,7 +4,11 @@
 #include "TipoPublicacion.h"
 #include "DTPublicacion.h"
 #include "TipoInmueble.h"
+#include "AdministraPropiedad.h"
 #include <string>
+
+class AdministraPropiedad;
+class DTFecha;
 
 class Publicacion {
 private:
