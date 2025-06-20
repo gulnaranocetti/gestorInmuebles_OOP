@@ -6,8 +6,6 @@
 
 ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
 
-ManejadorPublicacion::ultimoCodigo = 0; // Inicializar el último código a 0
-
 ManejadorPublicacion::ManejadorPublicacion(){}
 
 ManejadorPublicacion* ManejadorPublicacion::getInstance(){
@@ -17,6 +15,7 @@ ManejadorPublicacion* ManejadorPublicacion::getInstance(){
 }
 
 Inmueble* ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion){
+    Inmueble* in = NULL;
     for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
         Publicacion* p = *it;
         if (p->getCodigo() == codigoPublicacion){
@@ -34,7 +33,7 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
         Publicacion* p = *it;
         if (p->getPrecio() > precioMinimo && p->getPrecio() < precioMaximo && p->getTipoPublicacion() == tipoPublicacion){
             Inmueble* in = detalleInmueblePublicacion(p->getCodigo());
-            if (tipoInmueble == TipoInmueble::Todos || in.getTipo() == tipoInmueble){
+            if (tipoInmueble == TipoInmueble::Todos || in->getTipo() == tipoInmueble){
                 DTPublicacion pu = p->createDTP(p->getCodigo(), p->getFecha(), p->getTexto(), p->getPrecio(), p->getAdministraPropiedad()->getInmobiliaria()->getNickname());
                 devolver.insert(pu);
             }

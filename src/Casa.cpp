@@ -2,7 +2,7 @@
 #include "../include/TipoTecho.h"
 #include "../include/Inmueble.h"   
 
-Casa::Casa(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo) : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion){
+Casa::Casa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo) : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion){
     this->esPH = esPH;
     this->techo = techo;    
 };

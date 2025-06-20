@@ -20,7 +20,7 @@ class Propietario : public Usuario, public ISuscriptor {
         std::string cuentaBancaria;
         std::string telefono;
         std::set<Inmueble*> inmuebles;
-        std::set<Notificacion> notificaciones;
+        std::set<Notificacion*> notificaciones;
         std::set<Inmobiliaria*> suscripciones;
 
     public:

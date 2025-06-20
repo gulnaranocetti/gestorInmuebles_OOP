@@ -38,7 +38,7 @@ class ControladorSistema: public IControladorSistema {
         ControladorSistema();
     public:
 
-        static ControladorSistema * getInstance();
+        static ControladorSistema* getInstance();
 
         void eliminarInmueble(int codigoInmueble);
 
@@ -87,9 +87,9 @@ class ControladorSistema: public IControladorSistema {
 
         DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
 
-        void altaApartamento(std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes);
+        void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes);
 
-        void altaCasa(std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
+        void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
 
         void finalizarAltaUsuario();
 

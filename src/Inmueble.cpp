@@ -1,6 +1,6 @@
 #include "Inmueble.h"
 
-Inmueble::Inmueble(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion) {
+Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion) {
     this->codigo = codigo;
     this->direccion = direccion;
     this->numeroPuerta = numeroPuerta;
@@ -36,17 +36,28 @@ int Inmueble::getAnioConstruccion() {
 }
 
 void Inmueble::destroyIn() {
-    this->propietario->unlinkInmueble(this->codigo);
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Propietario* prop = mu->getUsuario(this->propietario)->getPropietario();
+    prop->unlinkInmueble(this->codigo);
     for(std::set<AdministraPropiedad*>::iterator ap = this->administradores.begin(); ap != this->administradores.end(); ap++) {
         this->administradores.erase((*ap));
     }
 }
 
 std::string Inmueble::getStringPropietario() {
-    return this->propietario();
+    return propietario;
 }
 
 
 Inmueble::~Inmueble(){
     
+}
+
+bool Inmueble::esAdministrado(Inmobiliaria i) {
+    for (std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it) {
+        if ((*it)->inmobiliariaAsociada(i)) {
+            return true;
+        }
+    }
+    return false;
 }

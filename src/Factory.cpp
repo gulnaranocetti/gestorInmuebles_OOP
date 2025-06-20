@@ -1,6 +1,7 @@
 #include "../include/Factory.h"
 #include "../include/ControladorFechaActual.h"
 #include <cstddef>
+#include "../include/ControladorSistema.h"
 
 Factory* Factory::instance = NULL;
 
@@ -20,4 +21,11 @@ IControladorFechaActual* Factory::getControladorFechaActual(){
 
 IControladorSistema* Factory::getControladorSistema(){
     return ControladorSistema::getInstance();
+}
+
+Factory::~Factory() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
 }

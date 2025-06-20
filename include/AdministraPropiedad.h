@@ -32,6 +32,7 @@ class AdministraPropiedad {
         void agregarPublicacion(Publicacion* p);
         TipoInmueble getTipoInmueble();
         Inmobiliaria* getInmobiliaria();
+        bool inmobiliariaAsociada(Inmobiliaria i);
 
         ~AdministraPropiedad();
         Inmueble* getInmueble();

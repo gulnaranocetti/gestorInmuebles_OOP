@@ -227,7 +227,7 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
-                        int codigo;
+                        int codigo; 
                         controlador->altaCasa(codigo, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                     }else{
                         int piso;
@@ -345,9 +345,9 @@ void consultaPublicaciones(){
     std::cin.ignore();
     TipoInmueble tipoInmueble = Todos;
     if(inTipoInmueble == 1){
-        tipoInmueble = Casa;
+        tipoInmueble = CasaEnum;
     }else if(inTipoInmueble == 2){
-        tipoInmueble = Apartamento;
+        tipoInmueble = ApartamentoEnum;
     }
     std::cout << "Publicaciones encontradas:\n";
     //TODO: Coleccion de DTPublicacion = Controlador->listarPublicacion(tipoPublicacion, precionMinimo, precioMaximo, tipoInmueble);
@@ -375,14 +375,14 @@ void consultaPublicaciones(){
         // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
         // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
         DTInmueble* in = Controlador->detalleInmueblePublicacion(codigoPublicacion);
-        if (tipoInmueble == TipoInmueble::Apartamento){
+        if (tipoInmueble == TipoInmueble::ApartamentoEnum){
                 DTApartamento* ap = dynamic_cast<DTApartamento*>(in);
                 std::cout << "Codigo :" << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta()
                           << ", superficie: " << ap->getSuperficie() << " m2, construccion: " << ap->getAnioConstruccion()
                           << ", piso: " << ap->getPiso() << ", ascensor: " << (ap->getTieneAscensor() ? "Si" : "No")
                           << ", gastos comunes: " << ap->getGastosComunes() << std::endl;      
         }
-        if (tipoInmueble == TipoInmueble::Casa){
+        if (tipoInmueble == TipoInmueble::CasaEnum){
                 DTCasa* casa = dynamic_cast<DTCasa*>(in);
                 std::cout << "Codigo :" << casa->getCodigo() << ", direccion: " << casa->getDireccion() << ", nro. puerta: " << casa->getNumeroPuerta()
                           << ", superficie: " << casa->getSuperficie() << " m2, construccion: " << casa->getAnioConstruccion()
@@ -506,11 +506,11 @@ void consultaNotificaciones(){
                 << "-Codigo Publicacion: " << noti->getCodigoPublicacion() << std::endl 
                 << "-Texto: " << noti->getTextoPublicacion() << std::endl 
                 << "-Tipo Publicacion: " << (noti->getTipoPublicacion() == Venta ? "Ven ta" : "Alquiler") << std::endl 
-                << "-Tipo Inmueble: " << (noti->getTipoInmueble() == Casa ? "Casa" : "Apartamento") << std::endl; 
+                << "-Tipo Inmueble: " << (noti->getTipoInmueble() == CasaEnum ? "Casa" : "Apartamento") << std::endl; 
         std::cout <<"----------------------------------------------------" << std::endl;
         std::cout << std::endl;
     }
-    controlador->eliminarNotificaciones(nickNameUsuario);
+    controlador->eliminarNotificaciones(nicknameUsuario);
 }
 
 void eliminarSuscripciones(){

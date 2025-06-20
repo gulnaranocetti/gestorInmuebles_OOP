@@ -13,12 +13,11 @@ Propietario::Propietario(std::string nickname, std::string contrasena, std::stri
 }
 
 void Propietario::recibirNotificacion(Notificacion* n){
-    Notificacion _n(n->getFecha(), n->getTextoPublicacion(), n->getInmobiliaria(), n->getCodigoPublicacion(), n->getTipoPublicacion(), n->getTipoInmueble());
-    this->notificaciones.insert(_n);
+    this->notificaciones.insert(n);
 }
         
 std::set<Notificacion*> Propietario::consultarNotificaciones() const {
-    return this->notificaciones;
+    return notificaciones;
 }
 
 void Propietario::eliminarNotificaciones(){
@@ -38,21 +37,11 @@ void Propietario::unlinkInmueble(int codigoInmueble) {
     this->inmuebles.erase((*it)); //asumo que el inmueble con ese código existe. 
 }
 
-bool inmobiliariaAsociada(Inmobiliaria i, Inmueble inm) {
-    bool resultado = false;
-    
-    for (std::set<AdministraPropiedad*>::iterator ap = i.getAdministrados().begin(); ap == i.getAdministrados().end(); ap++) {
-        resultado = (*ap)->administra(i);
-    }
-
-    return resultado;
-}
-
 std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(Inmobiliaria thisI) {
     std::set<DTInmuebleListado*> resultado;
     
     for(std::set<Inmueble*>::iterator inm = this->inmuebles.begin(); inm != this->inmuebles.end(); inm++) {
-        if (inmobiliariaAsociada(thisI, **inm) == false) {
+        if (!(*inm)->esAdministrado(thisI)) {
             DTInmuebleListado* insertarInmueble = new DTInmuebleListado((*inm)->getCodigo(), (*inm)->getDireccion(), this->getNickname());
             resultado.insert(insertarInmueble);
         }
@@ -63,7 +52,7 @@ std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(Inmobiliaria thisI
 
 void Propietario::agregarInmueble(Inmueble* i){
     this->inmuebles.insert(i);
-    i->setPropietario(this);
+    i->setPropietario(this->getNickname());
 }
 
 Propietario* Propietario::getPropietario() {

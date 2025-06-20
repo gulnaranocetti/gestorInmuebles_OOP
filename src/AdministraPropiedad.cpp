@@ -63,3 +63,15 @@ AdministraPropiedad::~AdministraPropiedad() {
 Inmueble* AdministraPropiedad::getInmueble(){
     return inmueble;
 }
+
+bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria i) {
+    bool resultado = false;
+    
+    for (std::set<AdministraPropiedad*>::iterator ap = i.getAdministrados().begin(); ap == i.getAdministrados().end(); ap++) {
+        resultado = (*ap)->administra(i);
+        if (resultado) {
+            return true;
+        }
+    }
+    return resultado;
+}

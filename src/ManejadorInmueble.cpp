@@ -3,8 +3,6 @@
 
 ManejadorInmueble* ManejadorInmueble::instancia = NULL;
 
-ManejadorInmueble::ultimoCodigo = 0;
-
 ManejadorInmueble::ManejadorInmueble(){}
 
 ManejadorInmueble* ManejadorInmueble::getInstance(){

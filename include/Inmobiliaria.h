@@ -37,7 +37,6 @@ class Inmobiliaria : public Usuario {
         void unlinkAP(AdministraPropiedad* ap);
 
         std::string getNickname() const;
-        
 
         DTUsuario getDTUsuario() const; //altaAdministraPropiedad
 

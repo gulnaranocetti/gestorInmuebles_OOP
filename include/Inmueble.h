@@ -13,7 +13,7 @@ class Inmueble {
     private:
         int codigo;
         std::string direccion;
-        std::string numeroPuerta;
+        int numeroPuerta;
         int superficie;
         int anoConstruccion;
         std::string propietario; 
@@ -21,7 +21,7 @@ class Inmueble {
 
 
     public:
-        Inmueble(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anoConstruccion);
+        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
         void setPropietario(std::string propietario);
         bool es_Igual(int codigoInmueble);
         int getCodigo();
@@ -32,6 +32,7 @@ class Inmueble {
         void destroyIn();
         std::string getStringPropietario();
 
+        bool esAdministrado(Inmobiliaria i);
         void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
 
         virtual TipoInmueble getTipo() = 0;

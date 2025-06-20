@@ -139,6 +139,6 @@ std::string Inmobiliaria::getNickname() const {
     return Usuario::getNickname();
 }
 
-std::string getTipoUsuario() const {
+std::string getTipoUsuario() {
     return "Inmobiliaria";
 }

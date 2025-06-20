@@ -185,7 +185,7 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
     return (u != NULL);
 }
 
-void ControladorSistema::altaCasa(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, bool esPH, TipoTecho techo) {
+void ControladorSistema::altaCasa(std::string direccion, int numPuerta, int mCuadrados, int anioConstruccion, bool esPH, TipoTecho techo) {
     ManejadorInmueble* mi = ManejadorInmueble::getInstance();
     mi->aumentarUltimoCodigo(); // Aumentar el último código para el próximo inmueble
     int codigo = mi->getUltimoCodigoInmueble();
@@ -195,13 +195,14 @@ void ControladorSistema::altaCasa(std::string direccion, std::string numPuerta, 
     ultimoPropietario->agregarInmueble(inm);
 }
 
-void ControladorSistema::altaApartamento(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes) {
+void ControladorSistema::altaApartamento(std::string direccion, int numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes) {
     ManejadorInmueble* mi = ManejadorInmueble::getInstance();
     mi->aumentarUltimoCodigo();
     int codigo = mi->getUltimoCodigoInmueble(); // Asignar un nuevo código
-    Apartamento* inmueble = new Apartamento(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, piso, tieneAscensor);
+    Apartamento* inmueble = new Apartamento(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, piso, tieneAscensor,gastosComunes );
     mi->agregarInmueble(inmueble);
-    ultimoUsuario->agregarInmueble(inmueble);
+    Propietario* ultimoPropietario = ultimoUsuario->getPropietario();
+    ultimoPropietario->agregarInmueble(inmueble);
 }
 
 /*void ControladorSistema::altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario, std::string nicknameInmobiliaria) {
@@ -264,12 +265,12 @@ DTInmueble ControladorSistema::detalleInmueble(int codigoInmueble) {
 }
 
 
-DTInmueble ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion) {
+DTInmueble* ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion) {
     ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
     Inmueble* inm = mp->detalleInmueblePublicacion(codigoPublicacion);
-    DTInmueble dtInmueble;
+    DTInmueble* dtInmueble;
     if (inm != NULL) {
-        dtInmueble = DTInmueble(inm->getCodigo(), inm->getDireccion(), inm->getNumeroPuerta(), inm->getSuperficie(), inm->getAnioConstruccion());
+        dtInmueble = new DTInmueble(inm->getCodigo(), inm->getDireccion(), inm->getNumeroPuerta(), inm->getSuperficie(), inm->getAnioConstruccion());
     }
     return dtInmueble;
 }
