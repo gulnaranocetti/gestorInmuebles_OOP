@@ -227,8 +227,7 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
-                        int codigo; 
-                        controlador->altaCasa(codigo, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
+                        controlador->altaCasa(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                     }else{
                         int piso;
                         std::cout << "Piso: ";
@@ -244,8 +243,7 @@ void altaUsuario(){
                         std::cin >> gastosComunes;
                         std::cin.ignore();
                         //TODO: controlador->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes)
-                        int codigo;
-                        controlador->altaApartamento(codigo, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
+                        controlador->altaApartamento(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
             }
@@ -309,7 +307,8 @@ void altaPublicacion(){
     std::cin >> precio;
     std::cin.ignore();
     //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)
-    bool alta = controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
+    bool activa = true;
+    bool alta = controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio, activa);
     if (alta){
         std::cout << "Alta exitosa" << std::endl;
     }else{
