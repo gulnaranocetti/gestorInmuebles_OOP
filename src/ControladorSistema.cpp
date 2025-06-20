@@ -67,7 +67,7 @@ std::set<DTInmuebleAdministrado*> ControladorSistema::listarInmueblesAdministrad
 }
 
 
-bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa) {
+bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inmo = m->getInmobiliaria(nicknameInmobiliaria);
@@ -215,11 +215,10 @@ void ControladorSistema::altaApartamento(std::string direccion, int numPuerta, i
 }*/
 
 void ControladorSistema::finalizarAltaUsuario() {
-    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
-    if (ultimoUsuario != NULL) {
+        ultimoInmobiliaria = NULL; // Resetear la última inmobiliaria después de agregarla
         ultimoUsuario = NULL; // Resetear el último usuario después de agregarlo
-    }
 }
+
 
 
 std::set<DTUsuario> ControladorSistema::listarPropietarios() {
@@ -273,4 +272,13 @@ DTInmueble* ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion
         dtInmueble = new DTInmueble(inm->getCodigo(), inm->getDireccion(), inm->getNumeroPuerta(), inm->getSuperficie(), inm->getAnioConstruccion());
     }
     return dtInmueble;
+}
+
+ControladorSistema::~ControladorSistema(){
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+    ultimoUsuario = NULL;
+    ultimoInmobiliaria = NULL;
 }

@@ -32,9 +32,9 @@ class IControladorSistema {
         
         virtual void altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) = 0; //CU alta de administra propiedad    
         
-        virtual std::set<DTUsuario> newSetUsuario() = 0;
+        //virtual std::set<DTUsuario> newSetUsuario() = 0;
         
-        virtual std::set<DTPublicacion> newSetPublicaciones() = 0;
+        //virtual std::set<DTPublicacion> newSetPublicaciones() = 0;
         
         //Caso de uso: Suscribirse a Notificaciones
         
@@ -60,7 +60,7 @@ class IControladorSistema {
         
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nicknameInmobiliaria) = 0;
         
-        virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa) = 0;  
+        virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) = 0;  
         
         virtual DTInmueble* detalleInmueblePublicacion(int codigoPublicacion) = 0;
         
@@ -81,6 +81,8 @@ class IControladorSistema {
         virtual void representarPropietario(std::string nicknamePropietario); // que devuelve??? // CU altaUsuario
 
         virtual void finalizarAltaUsuario() = 0;
+
+        virtual ~IControladorSistema() = default;
         
     };
     

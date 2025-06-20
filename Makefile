@@ -10,7 +10,7 @@ CPPS = $(MODULOS:%=$(CPPDIR)/%.cpp)
 OS   = $(MODULOS:%=$(ODIR)/%.o)
 
 CC = g++
-OPCIONES = -std=c++98 -Wall -Wextra -I$(HDIR)
+OPCIONES = -std=c++11 -Wall -Wextra -I$(HDIR)
 
 all: programa
 

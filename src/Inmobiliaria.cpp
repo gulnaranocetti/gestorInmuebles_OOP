@@ -77,7 +77,7 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
     }
     Publicacion* p = NULL;
     bool res = true;
-    if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion, texto, precio); }
+    if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion); }
     
     if(!res){
 

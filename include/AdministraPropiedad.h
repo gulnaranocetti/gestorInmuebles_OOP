@@ -24,7 +24,7 @@ class AdministraPropiedad {
         DTFecha* getFecha();
         DTInmuebleAdministrado* obtenerDatos();
         bool es_Igual(int CodigoInmueble);
-        bool es_tipo(TipoPublicacion tipo, std::string texto, float precio);
+        bool es_tipo(TipoPublicacion tipo);
         bool administra(Inmobiliaria &i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
         void destroyAP();
 
