@@ -2,8 +2,8 @@
 #define PROPIETARIO_H
 #include "ISuscriptor.h"
 #include "Usuario.h"
-#include "DTInmuebleListado.h"
 #include "Inmueble.h"
+#include "DTInmuebleListado.h"
 #include <list>
 #include <string>
 #include <vector>
@@ -11,6 +11,8 @@
 
 class Notificacion;
 class Inmobiliaria;
+class Inmueble;
+
 
 
 class Propietario : public Usuario, public ISuscriptor {

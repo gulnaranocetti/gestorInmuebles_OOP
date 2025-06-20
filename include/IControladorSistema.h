@@ -3,29 +3,24 @@
 
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
 #include "DTInmueble.h"
 #include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "TipoTecho.h"
-#include "Inmueble.h"
-#include "Casa.h"
-#include "Apartamento.h"
-#include "ManejadorPublicacion.h"
-#include "ManejadorInmobiliaria.h"
-#include "ManejadorInmueble.h"
-#include "ManejadorUsuario.h"
-#include "DTInmuebleListado.h"
-#include "Inmobiliaria.h"
-#include "Notificacion.h"
-#include "ControladorFechaActual.h"
-#include "AdministraPropiedad.h"
 #include "Factory.h"
-#include "Publicacion.h"
-#include "Cliente.h"
-#include "Propietario.h"
 #include <set>
 #include <string>
+
+class Inmobiliaria;
+class Notificacion;
+class Inmueble;
+class Publicacion;
+class ISuscriptor;
+class AdministraPropiedad;
+class Usuario;
+class ControladorFechaActual;
 
 class IControladorSistema {
     public:

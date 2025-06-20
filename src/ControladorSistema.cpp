@@ -195,7 +195,7 @@ void ControladorSistema::altaCasa(std::string direccion, std::string numPuerta, 
     ultimoPropietario->agregarInmueble(inm);
 }
 
-void ControladorSistema::altaApartamento(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor) {
+void ControladorSistema::altaApartamento(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes) {
     ManejadorInmueble* mi = ManejadorInmueble::getInstance();
     mi->aumentarUltimoCodigo();
     int codigo = mi->getUltimoCodigoInmueble(); // Asignar un nuevo código

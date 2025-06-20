@@ -1,6 +1,6 @@
-#include "Casa.h"
-#include "TipoTecho.h"
-#include "Inmueble.h"   
+#include "../include/Casa.h"
+#include "../include/TipoTecho.h"
+#include "../include/Inmueble.h"   
 
 Casa::Casa(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo) : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion){
     this->esPH = esPH;
@@ -17,7 +17,7 @@ TipoTecho Casa::getTecho(){
 };
 
 TipoInmueble Casa::getTipo(){
-    return ::Casa;
+    return ::CasaEnum;
 }
 
 Casa::~Casa(){}

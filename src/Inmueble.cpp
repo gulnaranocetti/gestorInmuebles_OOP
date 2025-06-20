@@ -7,7 +7,7 @@ Inmueble::Inmueble(int codigo, std::string direccion, std::string numeroPuerta, 
     this->superficie = superficie;
     this->anoConstruccion = anioConstruccion;
 }
-void Inmueble::setPropietario(Propietario* propietario) {
+void Inmueble::setPropietario(std::string propietario) {
     this->propietario = propietario;
 }   
 
@@ -43,7 +43,7 @@ void Inmueble::destroyIn() {
 }
 
 std::string Inmueble::getStringPropietario() {
-    return this->propietario->getNombre();
+    return this->propietario();
 }
 
 

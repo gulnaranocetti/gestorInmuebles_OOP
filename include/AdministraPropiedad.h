@@ -2,18 +2,13 @@
 #define ADMINISTRAPROPIEDAD_H
 #include "DTFecha.h"
 #include "Inmobiliaria.h"
-#include "Publicacion.h"
 #include "DTInmuebleAdministrado.h"
 #include "TipoPublicacion.h"
 #include <set>
 #include <string>
 
-
-// Forward declarations
-class Inmobiliaria; 
-class Publicacion; 
+class Publicacion;
 class Inmueble;
-
 
 class AdministraPropiedad {
     private:

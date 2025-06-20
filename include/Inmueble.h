@@ -3,8 +3,9 @@
 #include <string>
 #include <set>
 #include "TipoInmueble.h"
+#include "Propietario.h"
+#include "ManejadorUsuario.h"
 
-class Propietario;
 class AdministraPropiedad;
 
 
@@ -15,13 +16,13 @@ class Inmueble {
         std::string numeroPuerta;
         int superficie;
         int anoConstruccion;
-        Propietario* propietario; 
+        std::string propietario; 
         std::set<AdministraPropiedad*> administradores;
 
 
     public:
         Inmueble(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anoConstruccion);
-        void setPropietario(Propietario* propietario);
+        void setPropietario(std::string propietario);
         bool es_Igual(int codigoInmueble);
         int getCodigo();
         std::string getDireccion();
