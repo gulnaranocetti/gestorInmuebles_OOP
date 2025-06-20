@@ -19,18 +19,18 @@ CargaDatos::CargaDatos() {
 
     //Carga los Propietarios
     controladorSistema->altaPropietario("marcelom","banco123","Marcelo","marcelo.m@gmail.com","099876543", "123456789012");
-    controladorSistema->altaCasa("Av. Rivera", "1011", 120, 1995, true, Plano);
-    controladorSistema->altaApartamento("Av. Brasil", "2031", 75, 1980, 5, true, 3500);
+    controladorSistema->altaCasa("Av. Rivera", 1011, 120, 1995, true, Plano);
+    controladorSistema->altaApartamento("Av. Brasil", 2031, 75, 1980, 5, true, 3500);
     controladorSistema->altaPropietario("robertarce","pass456","Roberto","roberto.a@yahoo.com","091234567", "987654321001");
-    controladorSistema->altaCasa("Camino Maldonado", "1540", 95, 1988, true, Plano);
+    controladorSistema->altaCasa("Camino Maldonado", 1540, 95, 1988, true, Plano);
     controladorSistema->altaPropietario("soledadf","sole789","Soledad","soledad.f@gmail.com","092345678", "654321987654");
-    controladorSistema->altaApartamento("Colonia", "1542", 60, 1978, 12, true, 2800);
+    controladorSistema->altaApartamento("Colonia", 1542, 60, 1978, 12, true, 2800);
     controladorSistema->altaPropietario("martagal","martA01","Marta","marta.galvez@outlook.com","098765432", "321098765432");
-    controladorSistema->altaCasa("Juan Paullier", "801", 110, 2000, true, Liviano);
+    controladorSistema->altaCasa("Juan Paullier", 801, 110, 2000, true, Liviano);
     controladorSistema->altaPropietario("jorge88","jorgepass88","Jorge","jorge.rivera@uy.com","097654321", "890123456789");
-    controladorSistema->altaApartamento("Bulevar Artigas", "871", 68, 2002, 3, false, 2200);
-    controladorSistema->altaApartamento("Sarmiento", "1476", 80, 2008, 6, true, 3100);
-    controladorSistema->altaCasa("Cno. Carrasco", "1576", 140, 2007, true, Plano);
+    controladorSistema->altaApartamento("Bulevar Artigas", 871, 68, 2002, 3, false, 2200);
+    controladorSistema->altaApartamento("Sarmiento", 1476, 80, 2008, 6, true, 3100);
+    controladorSistema->altaCasa("Cno. Carrasco", 1576, 140, 2007, true, Plano);
 
     //Carga las Inmobiliarias
     controladorSistema->altaInmobiliaria("casasur123","casasur99","Casa Sur","contacto@casasur.com","Canelones 2345","https://casasur.com.uy","24012345");
