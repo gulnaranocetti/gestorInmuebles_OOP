@@ -30,6 +30,7 @@ class Cliente : public Usuario, public ISuscriptor {
         std::set<Notificacion*> consultarNotificaciones()const;
 
         void recibirNotificacion(Notificacion* n);
+        void eliminarNotificaciones();
         void eliminarSuscripcion(Inmobiliaria* i);
 
         std::string getTipoUsuario() const;

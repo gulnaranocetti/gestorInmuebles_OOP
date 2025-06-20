@@ -60,7 +60,7 @@
     ISuscriptor* Cliente::buscarSuscriptor(const std::string& nicknameSuscriptor) {
         Usuario* u = ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
         ISuscriptor* s = dynamic_cast<ISuscriptor*>(u);
-        return s ? s : nullptr;
+        return s ? s : NULL;
     }
 
     std::string Cliente::getTipoUsuario() const {

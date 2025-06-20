@@ -8,6 +8,9 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "TipoTecho.h"
+#include "Casa.h"
+#include "Apartamento.h"
+#include "Inmueble.h"
 #include "ManejadorPublicacion.h"
 #include "ManejadorInmobiliaria.h"
 #include "ManejadorInmueble.h"
@@ -20,7 +23,6 @@
 #include "AdministraPropiedad.h"
 #include "Factory.h"
 #include "Publicacion.h"
-#include "Inmueble.h"
 #include "Cliente.h"
 #include "Propietario.h"
 #include <set>
@@ -30,8 +32,8 @@
 class ControladorSistema: public IControladorSistema {
     private:
         static ControladorSistema * instancia;
-        Usuario * ultimoUsuario = nullptr; //Ultimo usuario
-        Inmobiliaria * ultimoInmobiliaria = nullptr; //Ultima inmobiliaria
+        Usuario * ultimoUsuario = NULL; //Ultimo usuario
+        Inmobiliaria * ultimoInmobiliaria = NULL; //Ultima inmobiliaria
 
         ControladorSistema();
     public:
@@ -39,8 +41,6 @@ class ControladorSistema: public IControladorSistema {
         static ControladorSistema * getInstance();
 
         void eliminarInmueble(int codigoInmueble);
-
-        std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 
         std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria); //CU alta de administra propiedad
         

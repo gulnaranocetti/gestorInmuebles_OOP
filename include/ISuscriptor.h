@@ -1,11 +1,10 @@
 #ifndef ISUSCRIPTOR_H
 #define ISUSCRIPTOR_H
-
-#include "Notificacion.h"
-#include "Inmobiliaria.h"
+#include <string>
 #include <set>
 
-class Inmobiliaria; // Forward declaration
+class Inmobiliaria;
+class Notificacion;
 
 class ISuscriptor {
 public:
@@ -14,6 +13,8 @@ public:
     virtual void eliminarSuscripcion(Inmobiliaria* i) = 0;
 
     virtual ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) = 0;
+
+    virtual void eliminarNotificaciones() = 0;
 
     virtual std::string getNickname() const = 0; // Para poder buscar al suscriptor por su nickname
 

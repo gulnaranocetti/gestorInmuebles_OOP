@@ -1,6 +1,6 @@
 #include "Inmueble.h"
 
-Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion) {
+Inmueble::Inmueble(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion) {
     this->codigo = codigo;
     this->direccion = direccion;
     this->numeroPuerta = numeroPuerta;

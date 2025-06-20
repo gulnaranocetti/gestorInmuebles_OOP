@@ -7,12 +7,12 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Publicacion.h"
-#include "Inmueble.h"
 #include "DTInmueble.h"
 #include "AdministraPropiedad.h"
 #include <set>
+#include "Inmueble.h"
 
-class Inmueble;
+
 
 class ManejadorPublicacion {
 private:

@@ -121,21 +121,41 @@ CargaDatos::CargaDatos() {
 
 
     //Carga los Suscripcion_Inmobiliaria
-    controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome"}, "luisito23");
 
-    controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome", "vivaurbana"}, "anarojo88");
+    std::set<std::string> inmobiliariasLuis;
+    inmobiliariasLuis.insert("casasur123");
+    inmobiliariasLuis.insert("idealhome");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasLuis, "luisito23");
 
-    controladorSistema->suscribirseAInmobiliarias({"idealhome"}, "marcelom");
+    std::set<std::string> inmobiliariasAna;
+    inmobiliariasAna.insert("casasur123");
+    inmobiliariasAna.insert("idealhome");
+    inmobiliariasAna.insert("vivaurbana");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasAna, "anarojo88");
 
-    controladorSistema->suscribirseAInmobiliarias({"idealhome"}, "robertarce");
+    std::set<std::string> inmobiliariasMarcelo;
+    inmobiliariasMarcelo.insert("idealhome");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasMarcelo, "marcelom");
 
-    controladorSistema->suscribirseAInmobiliarias({"vivaurbana"}, "soledadf");
-    
-    controladorSistema->suscribirseAInmobiliarias({"vivaurbana"}, "martagal");
-    
-    controladorSistema->suscribirseAInmobiliarias({"casasur123", "idealhome", "vivaurbana"}, "jorge88");
+    std::set<std::string> inmobiliariasRobert;
+    inmobiliariasRobert.insert("idealhome");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasRobert, "robertarce");
 
-    controladorSistema->finAltaUsuario();
+    std::set<std::string> inmobiliariasSoledad;
+    inmobiliariasSoledad.insert("vivaurbana");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasSoledad, "soledadf");
+
+    std::set<std::string> inmobiliariasMarta;
+    inmobiliariasMarta.insert("vivaurbana");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasMarta, "martagal");
+
+    std::set<std::string> inmobiliariasJorge;
+    inmobiliariasJorge.insert("casasur123");
+    inmobiliariasJorge.insert("idealhome");
+    inmobiliariasJorge.insert("vivaurbana");
+    controladorSistema->suscribirseAInmobiliarias(inmobiliariasJorge, "jorge88");
+
+    controladorSistema->finalizarAltaUsuario();
 }
 
 CargaDatos* CargaDatos::getInstance() {

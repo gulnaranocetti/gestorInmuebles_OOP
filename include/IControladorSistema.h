@@ -8,6 +8,9 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "TipoTecho.h"
+#include "Inmueble.h"
+#include "Casa.h"
+#include "Apartamento.h"
 #include "ManejadorPublicacion.h"
 #include "ManejadorInmobiliaria.h"
 #include "ManejadorInmueble.h"
@@ -19,7 +22,6 @@
 #include "AdministraPropiedad.h"
 #include "Factory.h"
 #include "Publicacion.h"
-#include "Inmueble.h"
 #include "Cliente.h"
 #include "Propietario.h"
 #include <set>
@@ -65,7 +67,7 @@ class IControladorSistema {
         
         virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa) = 0;  
         
-        virtual DTInmueble detalleInmueblePublicacion(int codigoPublicacion) = 0;
+        virtual DTInmueble* detalleInmueblePublicacion(int codigoPublicacion) = 0;
         
         virtual std::set<DTUsuario> listarPropietarios() = 0; //CU altaUsuario
 

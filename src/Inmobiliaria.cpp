@@ -36,7 +36,7 @@ void Inmobiliaria::unlinkAP(AdministraPropiedad* ap){
     this->administrados.erase((*it));
 }
 
-DTUsuario Inmobiliaria::getDTUsuario(){
+DTUsuario Inmobiliaria::getDTUsuario()const{
     return DTUsuario(this->getNickname(), this->getNombre());
 } //altaAdministraPropiedad
 
@@ -137,4 +137,8 @@ Inmobiliaria::~Inmobiliaria(){}
 
 std::string Inmobiliaria::getNickname() const {
     return Usuario::getNickname();
+}
+
+std::string getTipoUsuario() const {
+    return "Inmobiliaria";
 }

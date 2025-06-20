@@ -12,11 +12,11 @@ class Apartamento : public Inmueble {
         float gastosComunes;
 
     public:
-        Apartamento(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes);
+        Apartamento(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes);
         int getPiso();
         bool getTieneAscensor();
         float getGastosComunes();
-        TipoInmueble getTipo() override;
+        TipoInmueble getTipo();
         virtual ~Apartamento();
 };
 

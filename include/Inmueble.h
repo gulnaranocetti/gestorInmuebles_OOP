@@ -1,13 +1,18 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 #include <string>
-#include "Propietario.h"
+#include <set>
+#include "TipoInmueble.h"
+
+class Propietario;
+class AdministraPropiedad;
+
 
 class Inmueble {
     private:
         int codigo;
         std::string direccion;
-        int numeroPuerta;
+        std::string numeroPuerta;
         int superficie;
         int anoConstruccion;
         Propietario* propietario; 
@@ -15,7 +20,7 @@ class Inmueble {
 
 
     public:
-        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
+        Inmueble(int codigo, std::string direccion, std::string numeroPuerta, int superficie, int anoConstruccion);
         void setPropietario(Propietario* propietario);
         bool es_Igual(int codigoInmueble);
         int getCodigo();
@@ -28,8 +33,8 @@ class Inmueble {
 
         void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
 
-        virtual TipoInmueble getTipo();
-        virtual ~Inmueble();
+        virtual TipoInmueble getTipo() = 0;
+        ~Inmueble();
 };
 
 #endif

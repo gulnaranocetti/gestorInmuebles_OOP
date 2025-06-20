@@ -1,12 +1,13 @@
 #include "ControladorSistema.h"
 #include "ControladorFechaActual.h"
+
 #include <set>
 
 
-ControladorSistema* ControladorSistema::instancia = nullptr;
+ControladorSistema* ControladorSistema::instancia = NULL;
 
 ControladorSistema* ControladorSistema::getInstance() {
-    if (instancia == nullptr) {
+    if (instancia == NULL) {
         instancia = new ControladorSistema();
     }
 
@@ -174,6 +175,7 @@ bool ControladorSistema::altaPropietario(std::string nickname, std::string contr
 bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Usuario* u = m->getUsuario(nickname);
+    Inmobiliaria* i = NULL;
     if (u == NULL) {
         Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
         m->addInmobiliaria(i);
@@ -187,9 +189,10 @@ void ControladorSistema::altaCasa(std::string direccion, std::string numPuerta, 
     ManejadorInmueble* mi = ManejadorInmueble::getInstance();
     mi->aumentarUltimoCodigo(); // Aumentar el último código para el próximo inmueble
     int codigo = mi->getUltimoCodigoInmueble();
-    Casa* inmueble = new Casa(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, esPH, techo);
-    mi->addInmueble(inmueble);
-    ultimoUsuario->agregarInmueble(inmueble);
+    Casa* inm = new Casa(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, esPH, techo);
+    mi->agregarInmueble(inm);
+    Propietario* ultimoPropietario = ultimoUsuario->getPropietario();
+    ultimoPropietario->agregarInmueble(inm);
 }
 
 void ControladorSistema::altaApartamento(std::string direccion, std::string numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor) {
@@ -265,7 +268,7 @@ DTInmueble ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion)
     ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
     Inmueble* inm = mp->detalleInmueblePublicacion(codigoPublicacion);
     DTInmueble dtInmueble;
-    if (inm != nullptr) {
+    if (inm != NULL) {
         dtInmueble = DTInmueble(inm->getCodigo(), inm->getDireccion(), inm->getNumeroPuerta(), inm->getSuperficie(), inm->getAnioConstruccion());
     }
     return dtInmueble;

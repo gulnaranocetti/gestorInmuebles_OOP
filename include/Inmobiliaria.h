@@ -37,8 +37,9 @@ class Inmobiliaria : public Usuario {
         void unlinkAP(AdministraPropiedad* ap);
 
         std::string getNickname() const;
+        
 
-        DTUsuario getDTUsuario(); //altaAdministraPropiedad
+        DTUsuario getDTUsuario() const; //altaAdministraPropiedad
 
         std::set<DTInmuebleListado*> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 
@@ -57,7 +58,7 @@ class Inmobiliaria : public Usuario {
 
         bool es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio);
 
-        
+        std::string getTipoUsuario() const;
 
         ~Inmobiliaria();
 };

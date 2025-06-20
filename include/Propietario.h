@@ -1,15 +1,17 @@
 #ifndef PROPIETARIO_H
 #define PROPIETARIO_H
-#include "Usuario.h"
-#include "Notificacion.h"
-#include "Inmobiliaria.h"
-#include "Inmueble.h"
-#include "DTInmuebleListado.h"
 #include "ISuscriptor.h"
+#include "Usuario.h"
+#include "DTInmuebleListado.h"
+#include "Inmueble.h"
 #include <list>
 #include <string>
 #include <vector>
 #include <set>
+
+class Notificacion;
+class Inmobiliaria;
+
 
 class Propietario : public Usuario, public ISuscriptor {
     private:
@@ -22,21 +24,23 @@ class Propietario : public Usuario, public ISuscriptor {
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
 
-        void recibirNotificacion(Notificacion* n) override;
+        void recibirNotificacion(Notificacion* n);
         
         std::set<Notificacion*> consultarNotificaciones() const;
 
         void agregarInmueble(Inmueble* i);
 
-        void eliminarSuscripcion(Inmobiliaria* i) override;
+        void eliminarSuscripcion(Inmobiliaria* i);
 
         void unlinkInmueble(int codigoInmueble);
+
+        void eliminarNotificaciones();
 
         std::string getNickname() const;
 
         Propietario* getPropietario() override;
 
-        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
+        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor);
 
         std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
 
