@@ -15,6 +15,8 @@
 class ISuscriptor;
 class Propietario;
 class Inmueble;
+class AdministraPropiedad;
+class Publicacion;
 
 class Inmobiliaria : public Usuario {
     private:

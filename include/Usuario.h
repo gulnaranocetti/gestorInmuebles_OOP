@@ -2,8 +2,8 @@
 #define USUARIO_H
 #include <string>
 #include "DTUsuario.h"
-#include "Propietario.h"
 
+class Propietario;
 class ISuscriptor;
 
 class Usuario {

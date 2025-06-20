@@ -10,6 +10,12 @@
 #include <string>
 
 
+// Forward declarations
+class Inmobiliaria; 
+class Publicacion; 
+class Inmueble;
+
+
 class AdministraPropiedad {
     private:
         DTFecha* fecha;

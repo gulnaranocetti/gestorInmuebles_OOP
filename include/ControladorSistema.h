@@ -50,7 +50,7 @@ class ControladorSistema: public IControladorSistema {
         
         void altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble); //CU alta de administra propiedad
 
-        bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
+        bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa);
 
         bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento);
 
@@ -87,9 +87,9 @@ class ControladorSistema: public IControladorSistema {
 
         DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
 
-        void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes);
+        void altaApartamento(std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes);
 
-        void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
+        void altaCasa(std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
 
         void finalizarAltaUsuario();
 

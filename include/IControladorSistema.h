@@ -63,7 +63,7 @@ class IControladorSistema {
         
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nicknameInmobiliaria) = 0;
         
-        virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) = 0;  
+        virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa) = 0;  
         
         virtual DTInmueble detalleInmueblePublicacion(int codigoPublicacion) = 0;
         
@@ -77,9 +77,9 @@ class IControladorSistema {
         
         virtual bool altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) = 0;
         
-        virtual void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes) = 0;
+        virtual void altaApartamento(std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes) = 0;
         
-        virtual void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho) = 0;
+        virtual void altaCasa(std::string direccion, std::string numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho) = 0;
         
         virtual void representarPropietario(std::string nicknamePropietario); // que devuelve??? // CU altaUsuario
 

@@ -48,54 +48,54 @@ CargaDatos::CargaDatos() {
     //Carga los Inmobiliaria_AdministraPropiedad
     controladorFechaActual->setNewFechaActual(12, 12, 2015); 
     controladorSistema->altaAdministraPropiedad("casasur123", 2);
-    controladorFechaActual->setNewFechaActual(25, 09, 2023); 
+    controladorFechaActual->setNewFechaActual(25, 9, 2023); 
     controladorSistema->altaAdministraPropiedad("idealhome", 1);
-    controladorFechaActual->setNewFechaActual(20, 07, 2022); 
+    controladorFechaActual->setNewFechaActual(20, 7, 2022); 
     controladorSistema->altaAdministraPropiedad("vivaurbana", 3);
-    controladorFechaActual->setNewFechaActual(01, 01, 2022); 
+    controladorFechaActual->setNewFechaActual(1, 1, 2022); 
     controladorSistema->altaAdministraPropiedad("vivaurbana", 4);
-    controladorFechaActual->setNewFechaActual(03, 07, 2010); 
+    controladorFechaActual->setNewFechaActual(3, 7, 2010); 
     controladorSistema->altaAdministraPropiedad("idealhome", 5);
-    controladorFechaActual->setNewFechaActual(04, 11, 2019); 
+    controladorFechaActual->setNewFechaActual(4, 11, 2019); 
     controladorSistema->altaAdministraPropiedad("casasur123", 6);
-    controladorFechaActual->setNewFechaActual(19, 05, 2020); 
+    controladorFechaActual->setNewFechaActual(19, 5, 2020); 
     controladorSistema->altaAdministraPropiedad("vivaurbana", 6);
-    controladorFechaActual->setNewFechaActual(19, 07, 2024); 
+    controladorFechaActual->setNewFechaActual(19, 7, 2024); 
     controladorSistema->altaAdministraPropiedad("idealhome", 6);
-    controladorFechaActual->setNewFechaActual(18, 09, 2023); 
+    controladorFechaActual->setNewFechaActual(18, 9, 2023); 
     controladorSistema->altaAdministraPropiedad("idealhome", 7);
-    controladorFechaActual->setNewFechaActual(19, 05, 2022); 
+    controladorFechaActual->setNewFechaActual(19, 5, 2022); 
     controladorSistema->altaAdministraPropiedad("vivaurbana", 8);
 
     //Carga los AdministraPropiedad_Genera_Publicacion
-    controladorFechaActual->setNewFechaActual(09, 10, 2011);
+    controladorFechaActual->setNewFechaActual(9, 10, 2011);
     controladorSistema->altaPublicacion("idealhome", 5, Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000, true);
 
-    controladorFechaActual->setNewFechaActual(15, 01, 2016);
+    controladorFechaActual->setNewFechaActual(15, 1, 2016);
     controladorSistema->altaPublicacion("casasur123", 2, Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000, true);
 
-    controladorFechaActual->setNewFechaActual(05, 03, 2019);
+    controladorFechaActual->setNewFechaActual(5, 3, 2019);
     controladorSistema->altaPublicacion("casasur123", 2, Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500, true);
 
-    controladorFechaActual->setNewFechaActual(03, 04, 2019);
+    controladorFechaActual->setNewFechaActual(3, 4, 2019);
     controladorSistema->altaPublicacion("idealhome", 5, Alquiler, "Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500, true);
     
     controladorFechaActual->setNewFechaActual(12, 12, 2019);
     controladorSistema->altaPublicacion("casasur123", 6, Venta, "Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000, true);
     
-    controladorFechaActual->setNewFechaActual(12, 06, 2020);
+    controladorFechaActual->setNewFechaActual(12, 6, 2020);
     controladorSistema->altaPublicacion("casasur123", 2, Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 39000, true);
     
-    controladorFechaActual->setNewFechaActual(20, 07, 2020);
+    controladorFechaActual->setNewFechaActual(20, 7, 2020);
     controladorSistema->altaPublicacion("vivaurbana", 6, Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000, true);
     
-    controladorFechaActual->setNewFechaActual(04, 03, 2022);
+    controladorFechaActual->setNewFechaActual(4, 3, 2022);
     controladorSistema->altaPublicacion("vivaurbana", 4, Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000, true);
     
-    controladorFechaActual->setNewFechaActual(12, 09, 2022);
+    controladorFechaActual->setNewFechaActual(12, 9, 2022);
     controladorSistema->altaPublicacion("vivaurbana", 3, Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000, true);
     
-    controladorFechaActual->setNewFechaActual(01, 10, 2023);
+    controladorFechaActual->setNewFechaActual(1, 10, 2023);
     controladorSistema->altaPublicacion("idealhome", 1, Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000, true);
     
     controladorFechaActual->setNewFechaActual(18, 10, 2023);
@@ -110,13 +110,13 @@ CargaDatos::CargaDatos() {
     controladorFechaActual->setNewFechaActual(20, 11, 2023);
     controladorSistema->altaPublicacion("idealhome", 7, Venta, "Aprtamente en excelentes condiciones de 80 m", 450000, true);
 
-    controladorFechaActual->setNewFechaActual(08, 03, 2024);
+    controladorFechaActual->setNewFechaActual(8, 03, 2024);
     controladorSistema->altaPublicacion("vivaurbana", 3, Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000, true);
 
-    controladorFechaActual->setNewFechaActual(05, 05, 2024);
+    controladorFechaActual->setNewFechaActual(5, 5, 2024);
     controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000, true);
 
-    controladorFechaActual->setNewFechaActual(01, 08, 2024);
+    controladorFechaActual->setNewFechaActual(1, 8, 2024);
     controladorSistema->altaPublicacion("idealhome", 6, Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000, true);
 
 

@@ -5,6 +5,8 @@
 #include "Inmobiliaria.h"
 #include <set>
 
+class Inmobiliaria; // Forward declaration
+
 class ISuscriptor {
 public:
     virtual void recibirNotificacion(Notificacion* n) = 0;

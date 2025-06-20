@@ -17,7 +17,7 @@ TipoTecho Casa::getTecho(){
 };
 
 TipoInmueble Casa::getTipo(){
-    return TipoInmueble::Casa;
+    return ::Casa;
 }
 
 Casa::~Casa(){}
