@@ -67,7 +67,7 @@ std::set<DTInmuebleAdministrado*> ControladorSistema::listarInmueblesAdministrad
 }
 
 
-bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) {
+bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa) {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inmo = m->getInmobiliaria(nicknameInmobiliaria);

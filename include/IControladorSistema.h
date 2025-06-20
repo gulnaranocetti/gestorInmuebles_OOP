@@ -60,7 +60,7 @@ class IControladorSistema {
         
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nicknameInmobiliaria) = 0;
         
-        virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) = 0;  
+        virtual bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio, bool activa) = 0;  
         
         virtual DTInmueble* detalleInmueblePublicacion(int codigoPublicacion) = 0;
         
