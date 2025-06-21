@@ -32,6 +32,7 @@ class Cliente : public Usuario, public ISuscriptor {
         void recibirNotificacion(Notificacion* n);
         void eliminarNotificaciones();
         void eliminarSuscripcion(Inmobiliaria* i);
+        Propietario* getTipoPropietario();
 
         std::string getTipoUsuario() const;
         DTUsuario getDTUsuario(); 

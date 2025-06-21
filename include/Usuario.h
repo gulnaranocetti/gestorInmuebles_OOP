@@ -24,9 +24,9 @@ class Usuario {
         std::string getNickname() const;
         std::string getNombre() const;
         
-        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor); // NO implementar
+        virtual ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) = 0; // NO implementar
 
-        virtual Propietario* getPropietario();
+        virtual Propietario* getTipoPropietario()=0;
 
         virtual std::string getTipoUsuario() const = 0;
         virtual DTUsuario getDTUsuario() = 0; 
@@ -34,6 +34,6 @@ class Usuario {
         bool operator<(Usuario& other);
         bool esIgual(Usuario& other);
 
-        virtual ~Usuario() {}
+        virtual ~Usuario();
 };
 #endif

@@ -40,8 +40,11 @@ void Publicacion::setActiva(bool activa){ this->activa = activa; }
 
 Publicacion::~Publicacion(){}
 
-Propietario* Propietario::getPropietario(){
-    return this;
+int Publicacion::getCodigo(){
+    return codigo;
+}
+float Publicacion::getPrecio(){
+    return precio;
 }
 
 AdministraPropiedad* Publicacion::getAdministraPropiedad(){

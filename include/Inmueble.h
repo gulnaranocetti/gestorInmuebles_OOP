@@ -36,7 +36,7 @@ class Inmueble {
         void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
 
         virtual TipoInmueble getTipo() = 0;
-        ~Inmueble();
+        virtual ~Inmueble();
 };
 
 #endif

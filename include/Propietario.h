@@ -40,7 +40,7 @@ class Propietario : public Usuario, public ISuscriptor {
 
         std::string getNickname() const;
 
-        Propietario* getPropietario() override;
+        Propietario* getTipoPropietario();
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor);
 

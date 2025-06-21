@@ -37,7 +37,7 @@ int Inmueble::getAnioConstruccion() {
 
 void Inmueble::destroyIn() {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
-    Propietario* prop = mu->getUsuario(this->propietario)->getPropietario();
+    Propietario* prop = mu->getUsuario(this->propietario)->getTipoPropietario();
     prop->unlinkInmueble(this->codigo);
     for(std::set<AdministraPropiedad*>::iterator ap = this->administradores.begin(); ap != this->administradores.end(); ap++) {
         this->administradores.erase((*ap));
@@ -48,6 +48,9 @@ std::string Inmueble::getStringPropietario() {
     return propietario;
 }
 
+void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* ap) {
+    this->administradores.insert(ap);
+}
 
 Inmueble::~Inmueble(){
     

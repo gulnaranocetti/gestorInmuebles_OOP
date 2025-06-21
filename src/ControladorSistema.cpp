@@ -3,8 +3,13 @@
 
 #include <set>
 
-
 ControladorSistema* ControladorSistema::instancia = NULL;
+
+ControladorSistema::ControladorSistema(){
+    ultimoUsuario = NULL;
+    ultimoInmobiliaria = NULL;
+
+}
 
 ControladorSistema* ControladorSistema::getInstance() {
     if (instancia == NULL) {
@@ -191,7 +196,7 @@ void ControladorSistema::altaCasa(std::string direccion, int numPuerta, int mCua
     int codigo = mi->getUltimoCodigoInmueble();
     Casa* inm = new Casa(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, esPH, techo);
     mi->agregarInmueble(inm);
-    Propietario* ultimoPropietario = ultimoUsuario->getPropietario();
+    Propietario* ultimoPropietario = ultimoUsuario->getTipoPropietario();
     ultimoPropietario->agregarInmueble(inm);
 }
 
@@ -201,7 +206,7 @@ void ControladorSistema::altaApartamento(std::string direccion, int numPuerta, i
     int codigo = mi->getUltimoCodigoInmueble(); // Asignar un nuevo código
     Apartamento* inmueble = new Apartamento(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, piso, tieneAscensor,gastosComunes );
     mi->agregarInmueble(inmueble);
-    Propietario* ultimoPropietario = ultimoUsuario->getPropietario();
+    Propietario* ultimoPropietario = ultimoUsuario->getTipoPropietario();
     ultimoPropietario->agregarInmueble(inmueble);
 }
 
@@ -237,7 +242,7 @@ std::set<DTUsuario> ControladorSistema::listarPropietarios() {
 
 void ControladorSistema::representarPropietario(std::string nicknamePropietario) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
-    Propietario* p = mu->getUsuario(nicknamePropietario)->getPropietario();
+    Propietario* p = mu->getUsuario(nicknamePropietario)->getTipoPropietario();
     Inmobiliaria* i = ultimoInmobiliaria; // Asumimos que la última inmobiliaria es la que se está representando
     if (p != NULL && i != NULL) {
         i->altaRepresentaPropietario(p);
@@ -275,10 +280,7 @@ DTInmueble* ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion
 }
 
 ControladorSistema::~ControladorSistema(){
-    if (instancia != NULL) {
-        delete instancia;
-        instancia = NULL;
-    }
+    instancia = NULL;
     ultimoUsuario = NULL;
     ultimoInmobiliaria = NULL;
 }

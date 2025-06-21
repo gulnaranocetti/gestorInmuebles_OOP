@@ -55,7 +55,7 @@ void Propietario::agregarInmueble(Inmueble* i){
     i->setPropietario(this->getNickname());
 }
 
-Propietario* Propietario::getPropietario() {
+Propietario* Propietario::getTipoPropietario() {
     return this;
 }
 
@@ -71,3 +71,6 @@ DTUsuario Propietario::getDTUsuario() {
     return DTUsuario(this->getNickname(), this->getNombre());
 }
 
+ISuscriptor* Propietario::buscarSuscriptor(const std::string& nicknameSuscriptor) {
+    return (this->getNickname() == nicknameSuscriptor)? this:NULL;
+}

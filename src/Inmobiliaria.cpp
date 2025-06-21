@@ -137,6 +137,20 @@ std::string Inmobiliaria::getNickname() const {
     return Usuario::getNickname();
 }
 
-std::string getTipoUsuario() {
+std::string Inmobiliaria::getTipoUsuario() const{
     return "Inmobiliaria";
+}
+
+ISuscriptor* Inmobiliaria::buscarSuscriptor(const std::string& nicknameSuscriptor) {
+    for (std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it) {
+        if ((*it)->getNickname() == nicknameSuscriptor) {
+            return *it;
+        }
+    }
+    return NULL;
+}
+
+
+Propietario* Inmobiliaria::getTipoPropietario() {
+    return NULL;
 }

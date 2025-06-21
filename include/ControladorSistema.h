@@ -32,8 +32,8 @@
 class ControladorSistema: public IControladorSistema {
     private:
         static ControladorSistema * instancia;
-        Usuario * ultimoUsuario = NULL; //Ultimo usuario
-        Inmobiliaria * ultimoInmobiliaria = NULL; //Ultima inmobiliaria
+        Usuario * ultimoUsuario; //Ultimo usuario
+        Inmobiliaria * ultimoInmobiliaria; //Ultima inmobiliaria
 
         ControladorSistema();
     public:

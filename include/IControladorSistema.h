@@ -46,9 +46,9 @@ class IControladorSistema {
         
         virtual void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar) = 0;
            
-        virtual std::set<DTInmuebleListado> listarInmuebles(); // CU eliminarInmueble
+        virtual std::set<DTInmuebleListado> listarInmuebles()=0; // CU eliminarInmueble
         
-        virtual DTInmueble detalleInmueble(int codigoInmueble); // CU eliminarInmueble
+        virtual DTInmueble detalleInmueble(int codigoInmueble)=0; // CU eliminarInmueble
         
         virtual std::set<Notificacion*> consultarNotificaciones(std::string nicknameSuscriptor) = 0; // CU consultarNotificaciones
 
@@ -78,12 +78,9 @@ class IControladorSistema {
         
         virtual void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho) = 0;
         
-        virtual void representarPropietario(std::string nicknamePropietario); // que devuelve??? // CU altaUsuario
+        virtual void representarPropietario(std::string nicknamePropietario)=0; // que devuelve??? // CU altaUsuario
 
         virtual void finalizarAltaUsuario() = 0;
 
-        virtual ~IControladorSistema() = default;
-        
     };
-    
     #endif

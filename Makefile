@@ -2,7 +2,7 @@ HDIR = include
 CPPDIR = src
 ODIR = obj
 
-ARCHIVOS = main AdministraPropiedad Apartamento CargaDatos Casa Cliente ControladorFechaActual ControladorSistema DTApartamento DTCasa DTInmueble DTInmueble DTInmuebleAdministrado DTInmuebleListado DTPublicacion DTUsuario Factory Inmobiliaria Inmueble ManejadorInmobiliaria ManejadorInmueble ManejadorPublicacion ManejadorUsuario Menu Notificacion Propietario DTFecha Publicacion Propietario Usuario 
+ARCHIVOS = AdministraPropiedad Apartamento CargaDatos Casa Cliente ControladorFechaActual ControladorSistema DTApartamento DTCasa DTInmueble DTInmuebleAdministrado DTInmuebleListado DTPublicacion DTUsuario Factory Inmobiliaria Inmueble ManejadorInmobiliaria ManejadorInmueble ManejadorPublicacion ManejadorUsuario Menu Notificacion Propietario DTFecha Publicacion Usuario 
 MODULOS = $(ARCHIVOS)
 
 HS   = $(MODULOS:%=$(HDIR)/%.h)

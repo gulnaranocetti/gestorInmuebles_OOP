@@ -70,3 +70,7 @@
     DTUsuario Cliente::getDTUsuario() {
         return DTUsuario(getNickname(), getNombre());
     }
+
+    Propietario* Cliente::getTipoPropietario() {
+    return NULL;
+}

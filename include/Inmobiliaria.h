@@ -54,9 +54,13 @@ class Inmobiliaria : public Usuario {
         ISuscriptor* buscarSuscriptor(std::string nicknameSuscriptor);
         std::set<ISuscriptor*> getSuscriptores();
 
+        Propietario* getTipoPropietario();
+
         bool es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio);
 
         std::string getTipoUsuario() const;
+
+        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor); 
 
         ~Inmobiliaria();
 };

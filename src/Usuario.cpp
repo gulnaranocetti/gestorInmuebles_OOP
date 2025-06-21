@@ -42,3 +42,7 @@ void Usuario::setNickname(std::string _nickname){
     bool Usuario::esIgual(Usuario& other){
         return getNickname() == other.getNickname();
     }
+
+    Usuario::~Usuario() {
+        // Destructor vacío, ya que no hay recursos dinámicos que liberar
+    }

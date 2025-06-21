@@ -28,3 +28,14 @@ Inmueble* ManejadorInmueble::getInmueble(int codigo){
     }
     return inmuBuscado;
 }
+
+int ManejadorInmueble::getUltimoCodigoInmueble(){
+    return ultimoCodigo;
+}
+void ManejadorInmueble::aumentarUltimoCodigo(){
+    ultimoCodigo++;
+}
+
+void ManejadorInmueble::agregarInmueble(Inmueble* in) {
+    inmuebles.insert(in);
+}
