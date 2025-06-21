@@ -274,11 +274,11 @@ std::set<DTInmuebleListado> ControladorSistema::listarInmuebles() {
     return inmList;
 }
 
-DTInmueble ControladorSistema::detalleInmueble(int codigoInmueble) {
+DTInmueble* ControladorSistema::detalleInmueble(int codigoInmueble) {
     ManejadorInmueble* m = ManejadorInmueble::getInstance();
     std::set<Inmueble*> inmuebles = m->getInmuebles();
     Inmueble* inm = m->getInmueble(codigoInmueble);
-    DTInmueble resultado = DTInmueble(codigoInmueble, (inm)->getDireccion(), (inm)->getNumeroPuerta(), (inm)->getSuperficie(), (inm)->getAnioConstruccion());
+    DTInmueble* resultado = new DTInmueble(codigoInmueble, (inm)->getDireccion(), (inm)->getNumeroPuerta(), (inm)->getSuperficie(), (inm)->getAnioConstruccion());
     return resultado;
 }
 

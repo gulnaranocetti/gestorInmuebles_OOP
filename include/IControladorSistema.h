@@ -48,7 +48,7 @@ class IControladorSistema {
            
         virtual std::set<DTInmuebleListado> listarInmuebles()=0; // CU eliminarInmueble
         
-        virtual DTInmueble detalleInmueble(int codigoInmueble)=0; // CU eliminarInmueble
+        virtual DTInmueble* detalleInmueble(int codigoInmueble)=0; // CU eliminarInmueble
         
         virtual std::set<Notificacion*> consultarNotificaciones(std::string nicknameSuscriptor) = 0; // CU consultarNotificaciones
 

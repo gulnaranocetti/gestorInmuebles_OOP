@@ -427,21 +427,19 @@ void eliminarInmueble(){
     std::cin.ignore();
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble)
-    DTInmueble inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
+    DTInmueble* inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
     ManejadorInmueble* m = ManejadorInmueble::getInstance();
-    Inmueble* inm = m->getInmueble(inmuebleElegido.getCodigo());
+    Inmueble* inm = m->getInmueble(inmuebleElegido->getCodigo());
     TipoInmueble tipo = inm->getTipo();
 
     if (tipo == TipoInmueble::CasaEnum) {
-
-        // std::cout << "Codigo: " << inmuebleElegido.getCodigo() << ", direccion: " << inmuebleElegido.getDireccion() << ", nro. puerta: " << inmuebleElegido.getNumeroPuerta() << ", superficie: " << inmuebleElegido.getSuperficie() << " m2, construccion " << inmuebleElegido.getAnioConstruccion() << ", PH: " << 
+        DTCasa* casa = dynamic_cast<DTCasa*>(inmuebleElegido);
+        std::cout << "Codigo: " << inmuebleElegido->getCodigo() << ", direccion: " << inmuebleElegido->getDireccion() << ", nro. puerta: " << inmuebleElegido->getNumeroPuerta() << ", superficie: " << inmuebleElegido->getSuperficie() << " m2, construccion " << inmuebleElegido->getAnioConstruccion() << ", PH: " << (casa->getEsPH() ? "Si" : "No") << "Tipo de techo: " << casa->getTecho() << std::endl;
 
     } else if (tipo == TipoInmueble::ApartamentoEnum) {
-
-       // std::cout << "Codigo: " << inmuebleElegido.getCodigo() << ", direccion: " << inmuebleElegido.getDireccion() << ", nro. puerta: " << inmuebleElegido.getNumeroPuerta() << ", superficie: " << inmuebleElegido.getSuperficie() << " m2, construccion " << inmuebleElegido.getAnioConstruccion() << ", piso: " << inmuebleElegido.get
-
+        DTApartamento* ap = dynamic_cast<DTApartamento*>(inmuebleElegido);
+       std::cout << "Codigo: " << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta() << ", superficie: " << ap->getSuperficie() << " m2, construccion " << ap->getAnioConstruccion() << ", piso: " << ap->getPiso() << ", ascensor: " << ((ap->getTieneAscensor() ? "Si" : "No")) << ", gastos comunes: " << ap->getGastosComunes() << std::endl;
     }
-    
     /*No me doy cuenta como identificar si es Apto o Casa*/    
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
