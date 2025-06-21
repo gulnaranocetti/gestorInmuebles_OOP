@@ -67,6 +67,6 @@
         return "Cliente";
     }
 
-    DTUsuario Cliente::getDTUsuario() const {
+    DTUsuario Cliente::getDTUsuario() {
         return DTUsuario(getNickname(), getNombre());
     }

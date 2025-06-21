@@ -20,7 +20,7 @@ Inmueble* ManejadorPublicacion::detalleInmueblePublicacion(int codigoPublicacion
         Publicacion* p = *it;
         if (p->getCodigo() == codigoPublicacion){
             AdministraPropiedad* ap = p->getAdministraPropiedad();
-            Inmueble* in = ap->getInmueble();
+            in = ap->getInmueble();
         }
     }
     return in;

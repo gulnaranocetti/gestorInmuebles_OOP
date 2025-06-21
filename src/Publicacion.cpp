@@ -15,7 +15,7 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::
     administraPropiedad = administraPropiedad;
 }
 
-void Publicacion::datosInmueble(TipoInmueble tipoInmueble){} // tendria que retornar algo o es un void?
+//void Publicacion::datosInmueble(TipoInmueble tipoInmueble){} // tendria que retornar algo o es un void?
 
 bool Publicacion::es_tipo(TipoPublicacion tipoPublicacion){
     Factory* fabrica = Factory::getInstance();

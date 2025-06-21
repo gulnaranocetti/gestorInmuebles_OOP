@@ -18,6 +18,7 @@ class DTPublicacion {
         std::string getTexto();
         std::string getPrecio();
         std::string getInmobiliaria();
+        bool operator<(const DTPublicacion other) const;
         ~DTPublicacion();
 };
 

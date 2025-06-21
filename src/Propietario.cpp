@@ -67,7 +67,7 @@ std::string Propietario::getTipoUsuario() const {
     return "Propietario";
 }
 
-DTUsuario Propietario::getDTUsuario() const {
+DTUsuario Propietario::getDTUsuario() {
     return DTUsuario(this->getNickname(), this->getNombre());
 }
 

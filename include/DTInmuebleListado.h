@@ -13,6 +13,7 @@ class DTInmuebleListado {
         int getCodigo();
         std::string getDireccion();
         std::string getPropietario();
+        bool operator<(const DTInmuebleListado& other) const ;
 };
 
 #endif

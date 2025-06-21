@@ -23,7 +23,7 @@ private:
 public:
     Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa, AdministraPropiedad* administraPropiedad);
 
-    void datosInmueble(TipoInmueble tipoInmueble); // tendria que retornar algo o es un void?
+    //void datosInmueble(TipoInmueble tipoInmueble); // tendria que retornar algo o es un void?
 
     bool es_tipo(TipoPublicacion tipoPublicacion);
     bool existe(TipoPublicacion TipoPublicacion);

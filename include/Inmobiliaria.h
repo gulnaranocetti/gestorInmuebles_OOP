@@ -4,7 +4,6 @@
 #include "Usuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "ManejadorPublicacion.h"
-#include "AdministraPropiedad.h"
 #include "DTUsuario.h"
 #include "ISuscriptor.h"
 #include "DTInmuebleListado.h"
@@ -15,8 +14,8 @@
 class ISuscriptor;
 class Propietario;
 class Inmueble;
-class AdministraPropiedad;
 class Publicacion;
+class AdministraPropiedad;
 
 class Inmobiliaria : public Usuario {
     private:
@@ -38,7 +37,7 @@ class Inmobiliaria : public Usuario {
 
         std::string getNickname() const;
 
-        DTUsuario getDTUsuario() const; //altaAdministraPropiedad
+        DTUsuario getDTUsuario(); //altaAdministraPropiedad
 
         std::set<DTInmuebleListado*> getInmueblesNoAdminPropietario(); //altaAdministraPropiedad
 

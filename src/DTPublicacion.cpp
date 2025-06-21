@@ -31,3 +31,7 @@ std::string DTPublicacion::getInmobiliaria() {
 DTPublicacion::~DTPublicacion(){
     delete fecha;
 }
+
+bool DTPublicacion::operator<(const DTPublicacion other) const {
+    return fecha < other.fecha; // Comparar directamente los campo
+}

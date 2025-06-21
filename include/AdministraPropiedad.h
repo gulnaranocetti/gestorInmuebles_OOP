@@ -7,6 +7,7 @@
 #include <set>
 #include <string>
 
+class Inmobiliaria;
 class Publicacion;
 class Inmueble;
 

@@ -34,7 +34,7 @@ class Cliente : public Usuario, public ISuscriptor {
         void eliminarSuscripcion(Inmobiliaria* i);
 
         std::string getTipoUsuario() const;
-        DTUsuario getDTUsuario() const; 
+        DTUsuario getDTUsuario(); 
 
         Cliente(std::string _nickname, std::string _contrasena, std::string _nombre, std::string _email, std::string _apellido, std::string _documento);
         ~Cliente();

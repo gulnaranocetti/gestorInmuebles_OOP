@@ -1,7 +1,5 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/DTUsuario.h"
-#include "../include/Publicacion.h"
-#include "../include/AdministraPropiedad.h"
 #include <set>
 
 
@@ -36,7 +34,7 @@ void Inmobiliaria::unlinkAP(AdministraPropiedad* ap){
     this->administrados.erase((*it));
 }
 
-DTUsuario Inmobiliaria::getDTUsuario()const{
+DTUsuario Inmobiliaria::getDTUsuario(){
     return DTUsuario(this->getNickname(), this->getNombre());
 } //altaAdministraPropiedad
 
@@ -97,7 +95,7 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
         }
 
         (*itAP)->agregarPublicacion(p);
-        ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
+        m = ManejadorPublicacion::getInstance();
         m->agregarPublicacion(p);
         notificarPublicacion(p, codigoInmueble);
     
