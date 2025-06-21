@@ -1,5 +1,5 @@
-#include "../include/ManejadorInmobiliaria.h"
 
+#include "../include/ManejadorInmobiliaria.h"
 
 
 ManejadorInmobiliaria* ManejadorInmobiliaria::instancia = NULL;
@@ -34,3 +34,6 @@ Inmobiliaria* ManejadorInmobiliaria::getInmobiliaria(std::string nicknameInmobil
 
 }
 
+void ManejadorInmobiliaria::agregarInmobiliaria(Inmobiliaria *in){
+    this->inmobiliarias.insert(in);
+}

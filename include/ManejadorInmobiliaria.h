@@ -22,7 +22,7 @@ class ManejadorInmobiliaria{
 
         static ManejadorInmobiliaria* getInstance();
         
-        void agregarInmobiliaria(Inmueble *in);
+        void agregarInmobiliaria(Inmobiliaria *in);
 
         std::set<Inmobiliaria*> getInmobiliarias();
 

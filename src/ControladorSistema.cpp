@@ -184,6 +184,8 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
     if (u == NULL) {
         i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
         m->addInmobiliaria(i);
+        ManejadorInmobiliaria* mi = ManejadorInmobiliaria::getInstance();
+        mi->agregarInmobiliaria(i); // Agregar la inmobiliaria al manejador de inmobiliarias
     }
     u = m->getUsuario(nickname);
     ultimoInmobiliaria = i;

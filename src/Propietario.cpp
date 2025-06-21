@@ -40,7 +40,7 @@ void Propietario::unlinkInmueble(int codigoInmueble) {
 std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(Inmobiliaria thisI) {
     std::set<DTInmuebleListado*> resultado;
     
-    for(std::set<Inmueble*>::iterator inm = this->inmuebles.begin(); inm != this->inmuebles.end(); inm++) {
+    for(std::set<Inmueble*>::iterator inm = this->inmuebles.begin(); inm != this->inmuebles.end(); ++) {
         if (!(*inm)->esAdministrado(thisI)) {
             DTInmuebleListado* insertarInmueble = new DTInmuebleListado((*inm)->getCodigo(), (*inm)->getDireccion(), this->getNickname());
             resultado.insert(insertarInmueble);

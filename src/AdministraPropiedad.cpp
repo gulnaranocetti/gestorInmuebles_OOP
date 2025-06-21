@@ -33,7 +33,7 @@ bool AdministraPropiedad::es_tipo(TipoPublicacion tipo){ //(TipoPublicacion tipo
     return res;
 }
 
-bool AdministraPropiedad::administra(Inmobiliaria &i){
+bool AdministraPropiedad::administra(Inmobiliaria i){
     return (this->inmobiliaria->getNickname() == i.getNickname());
 }
 

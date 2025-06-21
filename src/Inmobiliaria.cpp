@@ -13,7 +13,7 @@ Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::st
     suscriptores = std::set<ISuscriptor*>();
 }
 
-std::set<AdministraPropiedad*> Inmobiliaria::getAdministrados() const {
+std::set<AdministraPropiedad*> Inmobiliaria::getAdministrados() {
     return this->administrados;
 }
 
@@ -41,7 +41,7 @@ DTUsuario Inmobiliaria::getDTUsuario(){
 std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario(){
     std::set<DTInmuebleListado*> resultado;
 
-    for(std::set<Propietario*>::iterator  p = this->propietarios.begin(); p != this->propietarios.end(); p++) {
+    for(std::set<Propietario*>::iterator  p = this->propietarios.begin(); p != this->propietarios.end(); ++p) {
         resultado.insert((*p)->getInmueblesNoAdmin(*this).begin(), (*p)->getInmueblesNoAdmin(*this).end());
     }
 
@@ -69,9 +69,8 @@ void Inmobiliaria::agregarSuscriptor(ISuscriptor* s) {
 bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio){
     std::set<AdministraPropiedad*>::iterator itAP = this->administrados.begin();
     bool igualInmueble = false;
-    while(itAP != this->administrados.end() && !igualInmueble){
+    for (itAP; itAP != this->administrados.end() && !igualInmueble; ++itAP){
         igualInmueble = (*itAP)->es_Igual(codigoInmueble);
-        ++itAP;
     }
     Publicacion* p = NULL;
     bool res = true;

@@ -29,8 +29,7 @@ class Inmobiliaria : public Usuario {
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
 
-        std::set<AdministraPropiedad*> getAdministrados() const;
-
+        std::set<AdministraPropiedad*> getAdministrados() ;
         std::set<DTInmuebleAdministrado*> listarInmueble(); 
         
         void unlinkAP(AdministraPropiedad* ap);
