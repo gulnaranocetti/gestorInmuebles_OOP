@@ -71,7 +71,7 @@ void Inmobiliaria::agregarSuscriptor(ISuscriptor* s) {
 bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio){
     std::set<AdministraPropiedad*>::iterator itAP = this->administrados.begin();
     bool igualInmueble = false;
-    for (itAP; itAP != this->administrados.end() && !igualInmueble; ++itAP){
+    for (itAP = this->administrados.begin(); itAP != this->administrados.end() && !igualInmueble; ++itAP){
         igualInmueble = (*itAP)->es_Igual(codigoInmueble);
     }
     Publicacion* p = NULL;

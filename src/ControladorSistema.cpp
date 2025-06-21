@@ -156,25 +156,33 @@ std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion ti
 bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Usuario* u = m->getUsuario(nickname);
+    Cliente* c = NULL;
     if (u == NULL) {
-        Cliente* c =  new Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        c =  new Cliente(nickname, contrasena, nombre, email, apellido, documento);
         m->addCliente(c);
     }
-    u = m->getUsuario(nickname);
-    ultimoUsuario = u;
-    return (u != NULL);
+    if (c != NULL) {
+      u = m->getUsuario(nickname);
+      ultimoUsuario = u; // Guardar el último usuario creado
+    }
+
+    return (c != NULL);
 }
 
 bool ControladorSistema::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Usuario* u = m->getUsuario(nickname);
+    Propietario* p = NULL;
     if (u == NULL) {
-        Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
         m->addPropietario(p);
     }
-    u = m->getUsuario(nickname);
-    ultimoUsuario = u;
-    return (u != NULL);
+    if (p != NULL) {
+        u = m->getUsuario(nickname);
+        ultimoUsuario = u; // Guardar el último usuario creado
+    }
+    
+    return (p != NULL);
 }
 
 bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
@@ -187,9 +195,13 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
         ManejadorInmobiliaria* mi = ManejadorInmobiliaria::getInstance();
         mi->agregarInmobiliaria(i); // Agregar la inmobiliaria al manejador de inmobiliarias
     }
-    u = m->getUsuario(nickname);
-    ultimoInmobiliaria = i;
-    return (u != NULL);
+    if (i != NULL) {
+        u = m->getUsuario(nickname);
+        ultimoUsuario = u; // Guardar el último usuario creado
+        ultimoInmobiliaria = i;
+    }
+
+    return (i != NULL);
 }
 
 void ControladorSistema::altaCasa(std::string direccion, int numPuerta, int mCuadrados, int anioConstruccion, bool esPH, TipoTecho techo) {

@@ -280,6 +280,11 @@ void altaPublicacion(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Propietario: zzz"
 
     std::set<DTInmuebleAdministrado*> administrados = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);
+    if (administrados.empty()) {
+        std::cout << "No hay inmuebles administrados por la inmobiliaria." << std::endl;
+        return;
+    }
+    
     for (std::set<DTInmuebleAdministrado*>::iterator it = administrados.begin(); it != administrados.end(); ++it){
         DTInmuebleAdministrado* in = *it;
         std::cout << "- Codigo: " << in->getCodigo() << ", Direccion: " << in->getDireccion()
