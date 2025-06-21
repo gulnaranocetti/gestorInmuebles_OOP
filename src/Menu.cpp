@@ -246,10 +246,10 @@ void altaUsuario(){
                         controlador->altaApartamento(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
+                std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
+                std::cin >> salir;
+                std::cin.ignore();
             }
-            std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
-            std::cin >> salir;
-            std::cin.ignore();
         }
         //TODO: controlador->finalizarAltaUsuario();
         controlador->finalizarAltaUsuario(); 
