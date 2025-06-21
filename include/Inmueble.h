@@ -32,7 +32,7 @@ class Inmueble {
         void destroyIn();
         std::string getStringPropietario();
 
-        bool esAdministrado(Inmobiliaria i);
+        bool esAdministrado(Inmobiliaria* i);
         void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
 
         virtual TipoInmueble getTipo() = 0;

@@ -56,7 +56,7 @@ Inmueble::~Inmueble(){
     
 }
 
-bool Inmueble::esAdministrado(Inmobiliaria i) {
+bool Inmueble::esAdministrado(Inmobiliaria* i) {
     for (std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it) {
         if ((*it)->inmobiliariaAsociada(i)) {
             return true;

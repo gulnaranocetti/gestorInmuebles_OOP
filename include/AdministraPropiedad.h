@@ -26,14 +26,14 @@ class AdministraPropiedad {
         DTInmuebleAdministrado* obtenerDatos();
         bool es_Igual(int CodigoInmueble);
         bool es_tipo(TipoPublicacion tipo);
-        bool administra(Inmobiliaria i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
+        bool administra(Inmobiliaria* i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
         void destroyAP();
 
         std::set<Publicacion*> getPublicaciones();
         void agregarPublicacion(Publicacion* p);
         TipoInmueble getTipoInmueble();
         Inmobiliaria* getInmobiliaria();
-        bool inmobiliariaAsociada(Inmobiliaria i);
+        bool inmobiliariaAsociada(Inmobiliaria* i);
 
         ~AdministraPropiedad();
         Inmueble* getInmueble();

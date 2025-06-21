@@ -1,7 +1,7 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/DTUsuario.h"
 #include <set>
-
+#include <iostream>
 
 
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) :Usuario(nickname, nombre, contrasena, email) {
@@ -40,11 +40,13 @@ DTUsuario Inmobiliaria::getDTUsuario(){
 
 std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario(){
     std::set<DTInmuebleListado*> resultado;
-
     for(std::set<Propietario*>::iterator  p = this->propietarios.begin(); p != this->propietarios.end(); ++p) {
-        resultado.insert((*p)->getInmueblesNoAdmin(*this).begin(), (*p)->getInmueblesNoAdmin(*this).end());
+        std::set<DTInmuebleListado*> inmNoAdmin = (*p)->getInmueblesNoAdmin(this);
+        for(std::set<DTInmuebleListado*>::iterator it = inmNoAdmin.begin(); it != inmNoAdmin.end(); ++it) {
+            DTInmuebleListado* inmoNoAdmin = *it;
+            resultado.insert(inmoNoAdmin);
+        }
     }
-
     return resultado;
 } //altaAdministraPropiedad
 

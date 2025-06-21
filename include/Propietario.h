@@ -44,7 +44,7 @@ class Propietario : public Usuario, public ISuscriptor {
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor);
 
-        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria thisI);
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria* thisI);
 
         std::string getTipoUsuario() const;
         DTUsuario getDTUsuario(); 
