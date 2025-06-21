@@ -182,7 +182,7 @@ bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string cont
     Usuario* u = m->getUsuario(nickname);
     Inmobiliaria* i = NULL;
     if (u == NULL) {
-        Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
         m->addInmobiliaria(i);
     }
     u = m->getUsuario(nickname);

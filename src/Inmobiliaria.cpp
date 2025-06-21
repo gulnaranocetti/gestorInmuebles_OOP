@@ -49,7 +49,7 @@ std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario(){
 } //altaAdministraPropiedad
 
 void Inmobiliaria::altaAdministracionPropiedad(Inmueble* cin, DTFecha* fechaActual){ 
-    AdministraPropiedad* ap =  new AdministraPropiedad(fechaActual, this, cin);
+    AdministraPropiedad* ap = new AdministraPropiedad(fechaActual, this, cin);
     this->administrados.insert(ap);
     cin->asociarAdministracionPropiedad(ap);
 } //altaAdministraPropiedad
