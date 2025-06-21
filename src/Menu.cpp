@@ -428,6 +428,7 @@ void eliminarInmueble(){
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble)
     DTInmueble* inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
+    DTInmueble* inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
     ManejadorInmueble* m = ManejadorInmueble::getInstance();
     Inmueble* inm = m->getInmueble(inmuebleElegido->getCodigo());
     TipoInmueble tipo = inm->getTipo();
@@ -438,8 +439,10 @@ void eliminarInmueble(){
 
     } else if (tipo == TipoInmueble::ApartamentoEnum) {
         DTApartamento* ap = dynamic_cast<DTApartamento*>(inmuebleElegido);
-       std::cout << "Codigo: " << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta() << ", superficie: " << ap->getSuperficie() << " m2, construccion " << ap->getAnioConstruccion() << ", piso: " << ap->getPiso() << ", ascensor: " << ((ap->getTieneAscensor() ? "Si" : "No")) << ", gastos comunes: " << ap->getGastosComunes() << std::endl;
+        std::cout << "Codigo: " << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta() << ", superficie: " << ap->getSuperficie() << " m2, construccion " << ap->getAnioConstruccion() << ", piso: " << ap->getPiso() << ", ascensor: " << ((ap->getTieneAscensor() ? "Si" : "No")) << ", gastos comunes: " << ap->getGastosComunes() << std::endl;
     }
+
+    
     /*No me doy cuenta como identificar si es Apto o Casa*/    
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
