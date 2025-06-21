@@ -428,11 +428,21 @@ void eliminarInmueble(){
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble)
     DTInmueble inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
-    
-    /*No me doy cuenta como identificar si es Apto o Casa*/
+    ManejadorInmueble* m = ManejadorInmueble::getInstance();
+    Inmueble* inm = m->getInmueble(inmuebleElegido.getCodigo());
+    TipoInmueble tipo = inm->getTipo();
 
-    //std::cout << "Codigo: " << inmuebleElegido.getCodigo() << ", direccion: " << inmuebleElegido.getDireccion() << ", nro. puerta: " << inmuebleElegido.getNumeroPuerta() << ", superficie: " << inmuebleElegido.getSuperficie() << " m2, construccion " << inmuebleElegido.getAnioConstruccion() << ", piso: " << inmuebleElegido.get
+    if (tipo == TipoInmueble::CasaEnum) {
+
+        // std::cout << "Codigo: " << inmuebleElegido.getCodigo() << ", direccion: " << inmuebleElegido.getDireccion() << ", nro. puerta: " << inmuebleElegido.getNumeroPuerta() << ", superficie: " << inmuebleElegido.getSuperficie() << " m2, construccion " << inmuebleElegido.getAnioConstruccion() << ", PH: " << 
+
+    } else if (tipo == TipoInmueble::ApartamentoEnum) {
+
+       // std::cout << "Codigo: " << inmuebleElegido.getCodigo() << ", direccion: " << inmuebleElegido.getDireccion() << ", nro. puerta: " << inmuebleElegido.getNumeroPuerta() << ", superficie: " << inmuebleElegido.getSuperficie() << " m2, construccion " << inmuebleElegido.getAnioConstruccion() << ", piso: " << inmuebleElegido.get
+
+    }
     
+    /*No me doy cuenta como identificar si es Apto o Casa*/    
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
     // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
