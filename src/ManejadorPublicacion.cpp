@@ -60,7 +60,6 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
             }
             // Si llega aquí, la publicación cumple con los criterios
         Publicacion* p = *it;
-        std::cout << "Cantidad de publicaciones encontradas: " << devolver.size() << std::endl;
         if (p->getPrecio() > precioMinimo && p->getPrecio() < precioMaximo && p->getTipoPublicacion() == tipoPublicacion){
             Inmueble* in = this->detalleInmueblePublicacion(p->getCodigo());
             if(in == NULL){
@@ -70,7 +69,6 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
             if (tipoInmueble == TipoInmueble::Todos || in->getTipo() == tipoInmueble){
                 DTPublicacion pu = p->createDTP(p->getCodigo(), p->getFecha(), p->getTexto(), p->getPrecio(), p->getAdministraPropiedad()->getInmobiliaria()->getNickname());
                 devolver.insert(pu);
-                std::cout << "Cantidad de publicaciones encontradas: " << devolver.size() << std::endl;
             }
 
        }
