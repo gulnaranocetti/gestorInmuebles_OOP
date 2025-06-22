@@ -13,7 +13,7 @@ Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::st
     suscriptores = std::set<ISuscriptor*>();
 }
 
-std::set<AdministraPropiedad*> Inmobiliaria::getAdministrados() {
+const std::set<AdministraPropiedad*>& Inmobiliaria::getAdministrados()const {
     return this->administrados;
 }
 

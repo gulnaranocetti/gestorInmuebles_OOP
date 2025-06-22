@@ -87,7 +87,7 @@ std::set<Inmobiliaria*> ControladorSistema::listarInmobiliariasNoSuscripto(std::
     std::set<Inmobiliaria*> li = m->getInmobiliarias();
     std::set<Inmobiliaria*> result;
     for (std::set<Inmobiliaria*>::iterator it = li.begin(); it != li.end(); ++it) {
-        if (!(*it)->suscrito(nicknameSuscriptor)) {
+        if (*it != NULL && !(*it)->suscrito(nicknameSuscriptor)) {
             result.insert(*it);
         }
     }    

@@ -39,8 +39,11 @@ void Inmueble::destroyIn() {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     Propietario* prop = mu->getUsuario(this->propietario)->getTipoPropietario();
     prop->unlinkInmueble(this->codigo);
-    for(std::set<AdministraPropiedad*>::iterator ap = this->administradores.begin(); ap != this->administradores.end(); ap++) {
-        this->administradores.erase((*ap));
+
+    auto ap = this->administradores.begin();
+    while (ap != this->administradores.end()) {
+       delete *ap; // si corresponde
+       ap = this->administradores.erase(ap); 
     }
 }
 
@@ -58,7 +61,7 @@ Inmueble::~Inmueble(){
 
 bool Inmueble::esAdministrado(Inmobiliaria* i) {
     for (std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it) {
-        if ((*it)->inmobiliariaAsociada(i)) {
+        if (*it != NULL && (*it)->inmobiliariaAsociada(i)) {
             return true;
         }
     }

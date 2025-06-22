@@ -41,6 +41,9 @@ bool AdministraPropiedad::es_tipo(TipoPublicacion tipo){ //(TipoPublicacion tipo
 }
 
 bool AdministraPropiedad::administra(Inmobiliaria* i){
+    if(this->inmobiliaria == nullptr) {
+        return false; 
+    } 
     return (this->inmobiliaria->getNickname() == i->getNickname());
 }
 
@@ -72,13 +75,15 @@ Inmueble* AdministraPropiedad::getInmueble(){
 }
 
 bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria* i) {
-    bool resultado = false;
-    
-    for (std::set<AdministraPropiedad*>::iterator ap = i->getAdministrados().begin(); ap == i->getAdministrados().end(); ap++) {
-        resultado = (*ap)->administra(i);
-        if (resultado) {
-            return true;
+    if (i == nullptr) return false;
+    bool resultado = false; 
+
+    const std::set<AdministraPropiedad*>& administrados = i->getAdministrados();
+    for (auto ap = administrados.begin(); ap != administrados.end(); ++ap) {
+       if ((*ap)->administra(i)) {
+        return true;
         }
     }
+
     return resultado;
 }

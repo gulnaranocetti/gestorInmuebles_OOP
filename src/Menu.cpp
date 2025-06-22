@@ -88,7 +88,7 @@ void ejecutarOpcion(int opcion) {
             std::cout << " - ASIGNAR FECHA ACTUAL - " << std::endl;
             asignarFechaActual();
             break;
-        case 0:
+        case 0:  
             std::cout << "Saliendo del programa..." << std::endl;
             exit(0);
         default:
@@ -464,6 +464,7 @@ void eliminarInmueble(){
     if (deseaEliminar == 1){
         //TODO: Controlador->eliminarInmueble(codigoInmueble)
         controlador->eliminarInmueble(codigoInmueble);
+        std::cout << "Inmueble eliminado correctamente." << std::endl;
     }
 
 }
