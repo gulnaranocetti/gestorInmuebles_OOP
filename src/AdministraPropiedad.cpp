@@ -25,6 +25,10 @@ bool AdministraPropiedad::es_Igual(int CodigoInmueble) {
 
 bool AdministraPropiedad::es_tipo(TipoPublicacion tipo){ //(TipoPublicacion tipo, std::string texto, float precio)
     bool res = false;
+    if (this->publicaciones.empty()){
+        //no hay, retorna false
+        return false;
+    }
     for (std::set<Publicacion*>::iterator it = this->publicaciones.begin(); it != this->publicaciones.end(); ++it) {
         if ((*it)->es_tipo(tipo)) {
             res = true;
