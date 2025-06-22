@@ -385,14 +385,14 @@ void consultaPublicaciones(){
         Inmueble* inm = m->getInmueble(in->getCodigo());
         TipoInmueble tipo = inm->getTipo();
 
-        if (tipoInmueble == TipoInmueble::ApartamentoEnum){
+        if (tipo == TipoInmueble::ApartamentoEnum){
                 Apartamento* ap = inm->getApto();
                 std::cout << "Codigo :" << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta()
                           << ", superficie: " << ap->getSuperficie() << " m2, construccion: " << ap->getAnioConstruccion()
                           << ", piso: " << ap->getPiso() << ", ascensor: " << (ap->getTieneAscensor() ? "Si" : "No")
                           << ", gastos comunes: " << ap->getGastosComunes() << std::endl;      
         }
-        if (tipoInmueble == TipoInmueble::CasaEnum){
+        if (tipo == TipoInmueble::CasaEnum){
                 Casa* casa = inm->getCasa();
                 std::cout << "Codigo :" << casa->getCodigo() << ", direccion: " << casa->getDireccion() << ", nro. puerta: " << casa->getNumeroPuerta()
                           << ", superficie: " << casa->getSuperficie() << " m2, construccion: " << casa->getAnioConstruccion()
