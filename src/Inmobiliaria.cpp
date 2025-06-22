@@ -73,33 +73,40 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
     bool res = true;
     if (mp->getUltimoCodigoPublicacion() == 0) {
         res = false;
+
+        
     }else{
-    std::set<AdministraPropiedad*>::iterator itAP = this->administrados.begin();
+    std::set<AdministraPropiedad*>::iterator itAP = this->administrados.end();
     bool igualInmueble = false;
-    for (itAP = this->administrados.begin(); itAP != this->administrados.end() && !igualInmueble; ++itAP){
-        igualInmueble = (*itAP)->es_Igual(codigoInmueble);
-    }
-    if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion); }
-    if(!res){
-        mp->aumentarUltimoCodigo();
-        int ultimoCodigoPublicacion = mp->getUltimoCodigoPublicacion();
-        DTFecha* fecha = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
-        Publicacion* p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, false, (*itAP));
-        bool existePublicacion = false;
-        for(std::set<Publicacion*>::iterator itP = (*itAP)->getPublicaciones().begin(); itP != (*itAP)->getPublicaciones().end(); ++itP){
-            existePublicacion = (*itP)->existe(tipoPublicacion);
-            if (existePublicacion && p->getFecha() > (*itP)->getFecha()){
-                (*itP)->setActiva(false);
-                p->setActiva(true);
-            }
+    for (std::set<AdministraPropiedad*>::iterator it = this->administrados.begin(); it != this->administrados.end() && !igualInmueble; ++it){
+        igualInmueble = (*it)->es_Igual(codigoInmueble);
+        if (igualInmueble) {
+            itAP = it;
         }
+    }
+    if(itAP != this->administrados.end()){ 
+        res = (*itAP)->es_tipo(tipoPublicacion);
+        if(!res){
+            mp->aumentarUltimoCodigo();
+            int ultimoCodigoPublicacion = mp->getUltimoCodigoPublicacion();
+            DTFecha* fecha = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
+            Publicacion* p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, false, (*itAP));
+            bool existePublicacion = false;
+            for(std::set<Publicacion*>::iterator itP = (*itAP)->getPublicaciones().begin(); itP != (*itAP)->getPublicaciones().end(); ++itP){
+                existePublicacion = (*itP)->existe(tipoPublicacion);
+                if (existePublicacion && p->getFecha() > (*itP)->getFecha()){
+                    (*itP)->setActiva(false);
+                    p->setActiva(true);
+                }
+            }
 
         (*itAP)->agregarPublicacion(p);
         mp->agregarPublicacion(p);
         notificarPublicacion(p, codigoInmueble);
     
+        }
     }
-    }
+}
     return (!res);
 }
 
