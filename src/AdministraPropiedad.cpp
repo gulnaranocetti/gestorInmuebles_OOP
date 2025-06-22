@@ -2,10 +2,12 @@
 
 
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha, Inmobiliaria* inmobiliaria, Inmueble* inmueble) {
+    this->publicaciones = std::set<Publicacion*>();
     this->fecha = fecha;
     this->inmobiliaria = inmobiliaria;
     this->inmueble = inmueble;
 }
+
 DTFecha* AdministraPropiedad::getFecha() {
     return fecha;
 }    
@@ -18,6 +20,7 @@ DTInmuebleAdministrado* AdministraPropiedad::obtenerDatos() {
     DTInmuebleAdministrado* res = new DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(), fecha);
     return res;
 }
+
 
 bool AdministraPropiedad::es_Igual(int CodigoInmueble) {
     return inmueble->es_Igual(CodigoInmueble);

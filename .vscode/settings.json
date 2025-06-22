@@ -65,7 +65,8 @@
     "ostream": "cpp",
     "format": "cpp",
     "span": "cpp",
-    "text_encoding": "cpp"
+    "text_encoding": "cpp",
+    "charconv": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

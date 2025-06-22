@@ -69,24 +69,23 @@ void Inmobiliaria::agregarSuscriptor(ISuscriptor* s) {
     this->suscriptores.insert(s);
 } 
 bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio){
+    ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
+    bool res = true;
+    if (mp->getUltimoCodigoPublicacion() == 0) {
+        res = false;
+    }else{
     std::set<AdministraPropiedad*>::iterator itAP = this->administrados.begin();
     bool igualInmueble = false;
     for (itAP = this->administrados.begin(); itAP != this->administrados.end() && !igualInmueble; ++itAP){
         igualInmueble = (*itAP)->es_Igual(codigoInmueble);
     }
-    Publicacion* p = NULL;
-    bool res = true;
     if(igualInmueble){ res = (*itAP)->es_tipo(tipoPublicacion); }
-    
     if(!res){
-
-        ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
-        m->aumentarUltimoCodigo();
-        int ultimoCodigoPublicacion = m->getUltimoCodigoPublicacion();
+        mp->aumentarUltimoCodigo();
+        int ultimoCodigoPublicacion = mp->getUltimoCodigoPublicacion();
         DTFecha* fecha = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
-        p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, false, (*itAP));
+        Publicacion* p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, false, (*itAP));
         bool existePublicacion = false;
-
         for(std::set<Publicacion*>::iterator itP = (*itAP)->getPublicaciones().begin(); itP != (*itAP)->getPublicaciones().end(); ++itP){
             existePublicacion = (*itP)->existe(tipoPublicacion);
             if (existePublicacion && p->getFecha() > (*itP)->getFecha()){
@@ -96,12 +95,11 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
         }
 
         (*itAP)->agregarPublicacion(p);
-        m = ManejadorPublicacion::getInstance();
-        m->agregarPublicacion(p);
+        mp->agregarPublicacion(p);
         notificarPublicacion(p, codigoInmueble);
     
     }
-
+    }
     return (!res);
 }
 
