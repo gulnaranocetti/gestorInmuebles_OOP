@@ -12,7 +12,7 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::
     this->texto = texto;
     this->precio = precio;
     this->activa = activa;
-    administraPropiedad = administraPropiedad;
+    this->administraPropiedad = administraPropiedad;
 }
 
 //void Publicacion::datosInmueble(TipoInmueble tipoInmueble){} // tendria que retornar algo o es un void?
