@@ -57,6 +57,7 @@ std::set<DTInmuebleListado*> ControladorSistema::listarInmueblesNoAdministradosI
 void ControladorSistema::eliminarInmueble(int codigoInmueble) {
     ManejadorInmueble* inm = ManejadorInmueble::getInstance();
     Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
+    inm->desvincularInmueble(codigoInmueble); // lo elimino del manejador de inmuebles
     in->destroyIn();
 }
 

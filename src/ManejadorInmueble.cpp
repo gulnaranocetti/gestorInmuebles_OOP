@@ -39,3 +39,10 @@ void ManejadorInmueble::aumentarUltimoCodigo(){
 void ManejadorInmueble::agregarInmueble(Inmueble* in) {
     inmuebles.insert(in);
 }
+
+void ManejadorInmueble::desvincularInmueble(int codigoInmueble) {
+    Inmueble* inmuBuscado = getInmueble(codigoInmueble);
+    if (inmuBuscado != NULL) {
+        inmuebles.erase(inmuBuscado);
+    }
+}

@@ -21,6 +21,7 @@ public:
 
     void agregarInmueble(Inmueble* in);
     Inmueble* getInmueble(int codigo);
+    void desvincularInmueble(int codigoInmueble);
     std::set<Inmueble*> getInmuebles(); 
     int getUltimoCodigoInmueble();
     void aumentarUltimoCodigo();
