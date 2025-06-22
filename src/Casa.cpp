@@ -20,4 +20,8 @@ TipoInmueble Casa::getTipo(){
     return ::CasaEnum;
 }
 
+Casa* Casa::getCasa(){
+    return this;
+}
+
 Casa::~Casa(){}

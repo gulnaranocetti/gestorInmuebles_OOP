@@ -428,7 +428,6 @@ void eliminarInmueble(){
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble)
     DTInmueble* inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
-    DTInmueble* inmuebleElegido = controlador->detalleInmueble(codigoInmueble);
     ManejadorInmueble* m = ManejadorInmueble::getInstance();
     Inmueble* inm = m->getInmueble(inmuebleElegido->getCodigo());
     TipoInmueble tipo = inm->getTipo();

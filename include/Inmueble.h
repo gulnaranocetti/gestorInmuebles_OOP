@@ -5,10 +5,10 @@
 #include "TipoInmueble.h"
 #include "Propietario.h"
 #include "ManejadorUsuario.h"
-#include "Casa.h"
+
 
 class AdministraPropiedad;
-
+class Casa;
 
 class Inmueble {
     private:
@@ -40,7 +40,7 @@ class Inmueble {
 
 
         virtual TipoInmueble getTipo() = 0;
-        virtual Casa getCasa();
+        virtual Casa* getCasa() = 0;
         virtual ~Inmueble();
 };
 

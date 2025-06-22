@@ -23,6 +23,10 @@ TipoInmueble Apartamento::getTipo(){
     return ::ApartamentoEnum;
 }
 
+Casa* Apartamento::getCasa(){
+    return NULL;
+}
+
 Apartamento::~Apartamento(){
 
 }
