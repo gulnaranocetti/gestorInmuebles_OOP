@@ -97,10 +97,7 @@ class ControladorSistema: public IControladorSistema {
 
         std::set<DTUsuario> listarPropietarios();
 
-        void representarPropietario(std::string nicknamePropietario); // que devuelve???
-
-            //void finalizarAltaUsuario();
-
+        void representarPropietario(std::string nicknamePropietario); 
 
         // Caso de uso: Eliminar Inmuebles
 

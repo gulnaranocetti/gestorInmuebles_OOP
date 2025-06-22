@@ -355,10 +355,14 @@ void consultaPublicaciones(){
     }else if(inTipoInmueble == 2){
         tipoInmueble = ApartamentoEnum;
     }
-    std::cout << "Publicaciones encontradas:\n";
     //TODO: Coleccion de DTPublicacion = Controlador->listarPublicacion(tipoPublicacion, precionMinimo, precioMaximo, tipoInmueble);
     //Recorrer la coleccion Mostrar "- Codigo: xx, fecha: dd/mm/yyyy, texto: zzz, precio: aaa, inmobiliaria: bbb";
     std::set<DTPublicacion> publicaciones = Controlador->listarPublicacion(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+    if(publicaciones.empty()) {
+        std::cout << "No se encontraron publicaciones con los criterios especificados." << std::endl;
+        return;
+    }
+    std::cout << "Publicaciones encontradas:\n";
     for (std::set<DTPublicacion>::iterator it = publicaciones.begin(); it !=  publicaciones.end(); ++it){
         DTPublicacion p = *it;
         std::cout << "- Codigo: " << p.getCodigo() << ", fecha: " << p.getFecha() << ", texto: " << p.getTexto()
