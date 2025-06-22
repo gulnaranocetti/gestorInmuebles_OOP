@@ -13,6 +13,8 @@
 #include "../include/DTInmuebleListado.h"
 #include "../include/DTPublicacion.h"
 #include "../include/DTUsuario.h"
+#include "../include/Casa.h"
+#include "../include/Apartamento.h"
 #include <string>
 #include <set>
 
@@ -432,14 +434,14 @@ void eliminarInmueble(){
     Inmueble* inm = m->getInmueble(inmuebleElegido->getCodigo());
     TipoInmueble tipo = inm->getTipo();
 
-    /*if (tipo == TipoInmueble::CasaEnum) {
-        DTCasa* casa = dynamic_cast<DTCasa*>(inmuebleElegido);
+    if (tipo == TipoInmueble::CasaEnum) {
+        Casa* casa = inm->getCasa();
         std::cout << "Codigo: " << inmuebleElegido->getCodigo() << ", direccion: " << inmuebleElegido->getDireccion() << ", nro. puerta: " << inmuebleElegido->getNumeroPuerta() << ", superficie: " << inmuebleElegido->getSuperficie() << " m2, construccion " << inmuebleElegido->getAnioConstruccion() << ", PH: " << (casa->getEsPH() ? "Si" : "No") << "Tipo de techo: " << casa->getTecho() << std::endl;
 
     } else if (tipo == TipoInmueble::ApartamentoEnum) {
-        DTApartamento* ap = dynamic_cast<DTApartamento*>(inmuebleElegido);
+        Apartamento* ap = inm->getApto();
         std::cout << "Codigo: " << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta() << ", superficie: " << ap->getSuperficie() << " m2, construccion " << ap->getAnioConstruccion() << ", piso: " << ap->getPiso() << ", ascensor: " << ((ap->getTieneAscensor() ? "Si" : "No")) << ", gastos comunes: " << ap->getGastosComunes() << std::endl;
-    }*/
+    }
 
     
     /*No me doy cuenta como identificar si es Apto o Casa*/    

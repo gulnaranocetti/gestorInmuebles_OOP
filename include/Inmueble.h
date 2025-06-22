@@ -6,9 +6,9 @@
 #include "Propietario.h"
 #include "ManejadorUsuario.h"
 
-
 class AdministraPropiedad;
 class Casa;
+class Apartamento;
 
 class Inmueble {
     private:
@@ -41,6 +41,7 @@ class Inmueble {
 
         virtual TipoInmueble getTipo() = 0;
         virtual Casa* getCasa() = 0;
+        virtual Apartamento* getApto() = 0;
         virtual ~Inmueble();
 };
 

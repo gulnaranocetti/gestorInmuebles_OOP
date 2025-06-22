@@ -1,6 +1,4 @@
 #include "../include/Casa.h"
-#include "../include/TipoTecho.h"
-#include "../include/Inmueble.h"   
 
 Casa::Casa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo) : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion){
     this->esPH = esPH;
@@ -22,6 +20,10 @@ TipoInmueble Casa::getTipo(){
 
 Casa* Casa::getCasa(){
     return this;
+}
+
+Apartamento* Casa::getApto(){
+    return NULL;
 }
 
 Casa::~Casa(){}

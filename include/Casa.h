@@ -16,6 +16,7 @@ class Casa : public Inmueble {
         TipoTecho getTecho();
         TipoInmueble getTipo();
         Casa* getCasa();
+        Apartamento* getApto();
         ~Casa();
 };
 

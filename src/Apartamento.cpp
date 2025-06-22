@@ -27,6 +27,10 @@ Casa* Apartamento::getCasa(){
     return NULL;
 }
 
+Apartamento* Apartamento::getApto() {
+    return this;
+}
+
 Apartamento::~Apartamento(){
 
 }

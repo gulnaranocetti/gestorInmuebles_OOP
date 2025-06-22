@@ -17,8 +17,9 @@ class Apartamento : public Inmueble {
         bool getTieneAscensor();
         float getGastosComunes();
         Casa* getCasa();
+        Apartamento* getApto();
         TipoInmueble getTipo();
-        virtual ~Apartamento();
+        ~Apartamento();
 };
 
 #endif
