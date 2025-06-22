@@ -381,15 +381,19 @@ void consultaPublicaciones(){
         // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
         // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
         DTInmueble* in = Controlador->detalleInmueblePublicacion(codigoPublicacion);
+        ManejadorInmueble* m = ManejadorInmueble::getInstance();
+        Inmueble* inm = m->getInmueble(in->getCodigo());
+        TipoInmueble tipo = inm->getTipo();
+
         if (tipoInmueble == TipoInmueble::ApartamentoEnum){
-                DTApartamento* ap = dynamic_cast<DTApartamento*>(in);
+                Apartamento* ap = inm->getApto();
                 std::cout << "Codigo :" << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta()
                           << ", superficie: " << ap->getSuperficie() << " m2, construccion: " << ap->getAnioConstruccion()
                           << ", piso: " << ap->getPiso() << ", ascensor: " << (ap->getTieneAscensor() ? "Si" : "No")
                           << ", gastos comunes: " << ap->getGastosComunes() << std::endl;      
         }
         if (tipoInmueble == TipoInmueble::CasaEnum){
-                DTCasa* casa = dynamic_cast<DTCasa*>(in);
+                Casa* casa = inm->getCasa();
                 std::cout << "Codigo :" << casa->getCodigo() << ", direccion: " << casa->getDireccion() << ", nro. puerta: " << casa->getNumeroPuerta()
                           << ", superficie: " << casa->getSuperficie() << " m2, construccion: " << casa->getAnioConstruccion()
                           << ", PH: " << (casa->getEsPH() ? "Si" : "No")
