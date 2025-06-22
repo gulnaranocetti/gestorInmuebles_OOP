@@ -1,7 +1,7 @@
 #include "../include/ManejadorPublicacion.h"
 #include "../include/Publicacion.h"
 #include "../include/DTPublicacion.h"
-
+#include <iostream>
 
 
 ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
@@ -31,11 +31,13 @@ std::set<DTPublicacion> ManejadorPublicacion::getPublicaciones(TipoPublicacion t
     std::set<DTPublicacion> devolver;
     for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
         Publicacion* p = *it;
+            std::cout << "Cantidad de publicaciones encontradas: " << devolver.size() << std::endl;
         if (p->getPrecio() > precioMinimo && p->getPrecio() < precioMaximo && p->getTipoPublicacion() == tipoPublicacion){
-            Inmueble* in = detalleInmueblePublicacion(p->getCodigo());
+            Inmueble* in = this->detalleInmueblePublicacion(p->getCodigo());
             if (tipoInmueble == TipoInmueble::Todos || in->getTipo() == tipoInmueble){
                 DTPublicacion pu = p->createDTP(p->getCodigo(), p->getFecha(), p->getTexto(), p->getPrecio(), p->getAdministraPropiedad()->getInmobiliaria()->getNickname());
                 devolver.insert(pu);
+                std::cout << "Cantidad de publicaciones encontradas: " << devolver.size() << std::endl;
             }
 
        }

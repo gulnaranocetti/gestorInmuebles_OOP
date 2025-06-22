@@ -68,14 +68,10 @@ bool Inmobiliaria::suscrito(std::string nicknameUsuario) {
 void Inmobiliaria::agregarSuscriptor(ISuscriptor* s) {
     this->suscriptores.insert(s);
 } 
+
 bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, std::string texto, float precio){
     ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
     bool res = true;
-    if (mp->getUltimoCodigoPublicacion() == 0) {
-        res = false;
-
-        
-    }else{
     std::set<AdministraPropiedad*>::iterator itAP = this->administrados.end();
     bool igualInmueble = false;
     for (std::set<AdministraPropiedad*>::iterator it = this->administrados.begin(); it != this->administrados.end() && !igualInmueble; ++it){
@@ -84,6 +80,18 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
             itAP = it;
         }
     }
+    if (mp->getUltimoCodigoPublicacion() == 0 || !igualInmueble) {
+        res = false;
+        mp->aumentarUltimoCodigo();
+        int ultimoCodigoPublicacion = mp->getUltimoCodigoPublicacion();
+        DTFecha* fecha = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
+        Publicacion* p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, true, (*itAP));
+        std::cout << "Publicacion creada con codigo: " << ultimoCodigoPublicacion << std::endl;
+        (*itAP)->agregarPublicacion(p);
+        mp->agregarPublicacion(p);
+        notificarPublicacion(p, codigoInmueble);
+        
+    }else{
     if(itAP != this->administrados.end()){ 
         res = (*itAP)->es_tipo(tipoPublicacion);
         if(!res){
@@ -99,10 +107,10 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
                     p->setActiva(true);
                 }
             }
-
-        (*itAP)->agregarPublicacion(p);
-        mp->agregarPublicacion(p);
-        notificarPublicacion(p, codigoInmueble);
+            std::cout << "Publicacion creada con codigo: " << ultimoCodigoPublicacion << std::endl;
+            (*itAP)->agregarPublicacion(p);
+            mp->agregarPublicacion(p);
+            notificarPublicacion(p, codigoInmueble);
     
         }
     }
@@ -112,18 +120,23 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
 
 void Inmobiliaria::notificarPublicacion(Publicacion* p, int codigoInmueble){
     if(p != NULL){
+        
         bool igualInmueble = false;
-        std::set<AdministraPropiedad*>::iterator itAP = this->administrados.begin();
-        while(itAP != this->administrados.end() && !igualInmueble){
-            igualInmueble = (*itAP)->es_Igual(codigoInmueble);
-            ++itAP;
+        std::set<AdministraPropiedad*>::iterator itAP = this->administrados.end();
+        for(std::set<AdministraPropiedad*>::iterator it = this->administrados.begin(); it != this->administrados.end() && !igualInmueble; ++it){
+            igualInmueble = (*it)->es_Igual(codigoInmueble);
+            if(igualInmueble) {
+                itAP = it;
+            }
         }
-        TipoInmueble tipoInmueble = (*itAP)->getTipoInmueble();
-        Notificacion* n = new Notificacion(p->getFecha(), p->getTexto(), this->getNickname(), p->getCodigo(), p->getTipoPublicacion(), tipoInmueble);
-        for(std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it){
-            (*it)->recibirNotificacion(n);
+        if(itAP != this->administrados.end()){
+            TipoInmueble tipoInmueble = (*itAP)->getTipoInmueble();
+            Notificacion* n = new Notificacion(p->getFecha(), p->getTexto(), this->getNickname(), p->getCodigo(), p->getTipoPublicacion(), tipoInmueble);
+            for(std::set<ISuscriptor*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it){
+                (*it)->recibirNotificacion(n);
         }
     }
+    } 
 }
 
 void Inmobiliaria::eliminarSuscripcion(ISuscriptor* s) {

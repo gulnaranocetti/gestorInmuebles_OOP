@@ -151,7 +151,8 @@ void ControladorSistema::eliminarSuscripcionAInmobiliarias(std::string nicknameU
 
 std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
     ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
-    return mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+    std::set<DTPublicacion> res = mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+    return res;
 }
 
 bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
