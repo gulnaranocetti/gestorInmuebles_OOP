@@ -258,7 +258,9 @@ void ControladorSistema::representarPropietario(std::string nicknamePropietario)
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     Propietario* p = mu->getUsuario(nicknamePropietario)->getTipoPropietario();
     Inmobiliaria* i = ultimoInmobiliaria; // Asumimos que la última inmobiliaria es la que se está representando
-    if (p != NULL && i != NULL) {
+    std::set<Propietario*> propietarios = i->getPropietarios();
+    bool existe = propietarios.find(p) != propietarios.end();
+    if (!existe && p != NULL && i != NULL) {
         i->altaRepresentaPropietario(p);
     }
 }

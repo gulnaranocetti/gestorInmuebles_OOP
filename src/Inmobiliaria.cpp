@@ -155,3 +155,7 @@ ISuscriptor* Inmobiliaria::buscarSuscriptor(const std::string& nicknameSuscripto
 Propietario* Inmobiliaria::getTipoPropietario() {
     return NULL;
 }
+
+std::set<Propietario*> Inmobiliaria::getPropietarios() {
+    return this->propietarios;
+}

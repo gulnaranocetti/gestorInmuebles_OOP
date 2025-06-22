@@ -61,6 +61,8 @@ class Inmobiliaria : public Usuario {
 
         ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor); 
 
+        std::set<Propietario*> getPropietarios();
+
         ~Inmobiliaria();
 };
 

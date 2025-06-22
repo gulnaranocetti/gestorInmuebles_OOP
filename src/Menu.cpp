@@ -192,7 +192,8 @@ void altaUsuario(){
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
                     //TODO: controlador->representarPropietario(nicknamePropietario)
-                    controlador->representarPropietario(nicknamePropietario); // qué hace esta funcion?
+                    controlador->representarPropietario(nicknamePropietario); 
+
 
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
