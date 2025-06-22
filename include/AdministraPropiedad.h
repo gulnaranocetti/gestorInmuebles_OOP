@@ -29,7 +29,7 @@ class AdministraPropiedad {
         bool administra(Inmobiliaria* i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
         void destroyAP();
 
-        std::set<Publicacion*> getPublicaciones();
+        const std::set<Publicacion*>& getPublicaciones() const;
         void agregarPublicacion(Publicacion* p);
         TipoInmueble getTipoInmueble();
         Inmobiliaria* getInmobiliaria();

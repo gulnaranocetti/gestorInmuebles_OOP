@@ -52,7 +52,7 @@ void AdministraPropiedad::destroyAP() {
 }
 
 
-std::set<Publicacion*> AdministraPropiedad::getPublicaciones(){ return this->publicaciones; }
+const std::set<Publicacion*>& AdministraPropiedad::getPublicaciones()const{ return this->publicaciones; }
 
 void AdministraPropiedad::agregarPublicacion(Publicacion* p){
     if(p != NULL){ this->publicaciones.insert(p); }
