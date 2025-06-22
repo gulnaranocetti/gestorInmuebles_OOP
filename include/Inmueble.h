@@ -5,6 +5,7 @@
 #include "TipoInmueble.h"
 #include "Propietario.h"
 #include "ManejadorUsuario.h"
+#include "Casa.h"
 
 class AdministraPropiedad;
 
@@ -32,10 +33,14 @@ class Inmueble {
         void destroyIn();
         std::string getStringPropietario();
 
+        //Casa getCasa(int codigoInmueble);
+
         bool esAdministrado(Inmobiliaria* i);
         void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
 
+
         virtual TipoInmueble getTipo() = 0;
+        virtual Casa getCasa();
         virtual ~Inmueble();
 };
 
