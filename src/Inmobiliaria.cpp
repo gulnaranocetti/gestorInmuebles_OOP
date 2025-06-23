@@ -86,7 +86,6 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
         int ultimoCodigoPublicacion = mp->getUltimoCodigoPublicacion();
         DTFecha* fecha = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
         Publicacion* p = new Publicacion(ultimoCodigoPublicacion, fecha, tipoPublicacion, texto, precio, true, (*itAP));
-        std::cout << "Publicacion creada con codigo: " << ultimoCodigoPublicacion << std::endl;
         (*itAP)->agregarPublicacion(p);
         mp->agregarPublicacion(p);
         notificarPublicacion(p, codigoInmueble);
@@ -107,7 +106,7 @@ bool Inmobiliaria::es_tipo(TipoPublicacion tipoPublicacion, int codigoInmueble, 
                     p->setActiva(true);
                 }
             }
-            std::cout << "Publicacion creada con codigo: " << ultimoCodigoPublicacion << std::endl;
+            
             (*itAP)->agregarPublicacion(p);
             mp->agregarPublicacion(p);
             notificarPublicacion(p, codigoInmueble);
@@ -150,7 +149,11 @@ void Inmobiliaria::altaRepresentaPropietario(Propietario* propietario) {
     this->propietarios.insert(propietario);
 }
 
-Inmobiliaria::~Inmobiliaria(){}
+Inmobiliaria::~Inmobiliaria(){
+    administrados.clear();  
+    propietarios.clear();
+    suscriptores.clear();
+}
 
 std::string Inmobiliaria::getNickname() const {
     return Usuario::getNickname();

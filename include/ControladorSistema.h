@@ -79,7 +79,7 @@ class ControladorSistema: public IControladorSistema {
 
         void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar); //Elimina las suscripciones del usuario indicado (nicknameUsuario) a las inmobiliarias contenidas en inmobiliariasAEliminar
 
-        ~ControladorSistema();
+        virtual ~ControladorSistema();
 
         //Caso de uso: Consulta de Publicaciones
 
@@ -104,6 +104,8 @@ class ControladorSistema: public IControladorSistema {
         std::set<DTInmuebleListado> listarInmuebles();
 
         DTInmueble* detalleInmueble(int codigoInmueble);
+
+        static void destroyInstance();
 
 
 };

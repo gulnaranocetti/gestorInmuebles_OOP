@@ -23,9 +23,10 @@ IControladorSistema* Factory::getControladorSistema(){
     return ControladorSistema::getInstance();
 }
 
-Factory::~Factory() {
+void Factory::destroyInstance() {
     if (instance != NULL) {
         delete instance;
         instance = NULL;
     }
 }
+Factory::~Factory() {}

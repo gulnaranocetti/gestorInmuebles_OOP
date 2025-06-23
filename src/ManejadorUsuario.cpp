@@ -35,4 +35,17 @@ void ManejadorUsuario::addInmobiliaria(Inmobiliaria* i) {
 
 std::set<Usuario*> ManejadorUsuario::getUsuarios(){ return this->usuarios; }
 
-ManejadorUsuario::~ManejadorUsuario(){}
+void ManejadorUsuario::destroyInstance(){
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
+ManejadorUsuario::~ManejadorUsuario(){
+    for (std::set<Usuario*>::iterator it = this->usuarios.begin(); it != this->usuarios.end(); ++it) {
+        delete *it; 
+    }
+    this->usuarios.clear(); 
+    instancia = NULL; 
+}

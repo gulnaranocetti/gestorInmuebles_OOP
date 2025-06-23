@@ -35,6 +35,8 @@ public:
 
     void agregarPublicacion(Publicacion* p);
 
+    static void destroyInstance();
+
     ~ManejadorPublicacion();
 };
 

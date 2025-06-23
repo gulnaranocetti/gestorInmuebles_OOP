@@ -49,6 +49,8 @@ class Propietario : public Usuario, public ISuscriptor {
         std::string getTipoUsuario() const;
         DTUsuario getDTUsuario(); 
 
+        virtual ~Propietario();
+
 };
 
 #endif

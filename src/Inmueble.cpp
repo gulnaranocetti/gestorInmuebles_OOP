@@ -56,7 +56,8 @@ void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* ap) {
 }
 
 Inmueble::~Inmueble(){
-    
+    this->destroyIn();
+    administradores.clear();
 }
 
 bool Inmueble::esAdministrado(Inmobiliaria* i) {

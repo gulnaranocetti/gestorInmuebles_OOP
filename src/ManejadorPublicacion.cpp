@@ -84,4 +84,18 @@ int ManejadorPublicacion::getUltimoCodigoPublicacion(){ return this->ultimoCodig
 
 void ManejadorPublicacion::aumentarUltimoCodigo(){ this->ultimoCodigo++; }
 
-ManejadorPublicacion::~ManejadorPublicacion(){}
+void ManejadorPublicacion::destroyInstance(){
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL; 
+    }
+}
+
+ManejadorPublicacion::~ManejadorPublicacion(){
+    for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
+        delete *it; 
+    }
+    publicaciones.clear(); 
+    instancia = NULL; 
+}
+

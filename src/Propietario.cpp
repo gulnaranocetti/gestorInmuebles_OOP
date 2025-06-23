@@ -74,3 +74,9 @@ DTUsuario Propietario::getDTUsuario() {
 ISuscriptor* Propietario::buscarSuscriptor(const std::string& nicknameSuscriptor) {
     return (this->getNickname() == nicknameSuscriptor)? this:NULL;
 }
+
+Propietario::~Propietario() {
+    notificaciones.clear();
+    suscripciones.clear();
+    inmuebles.clear();
+}

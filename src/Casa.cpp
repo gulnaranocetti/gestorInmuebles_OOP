@@ -26,4 +26,6 @@ Apartamento* Casa::getApto(){
     return NULL;
 }
 
-Casa::~Casa(){}
+Casa::~Casa(){
+    
+}

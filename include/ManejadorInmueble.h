@@ -25,6 +25,7 @@ public:
     std::set<Inmueble*> getInmuebles(); 
     int getUltimoCodigoInmueble();
     void aumentarUltimoCodigo();
+    static void destroyInstance();
     ~ManejadorInmueble();
 };
 

@@ -82,5 +82,6 @@ class IControladorSistema {
 
         virtual void finalizarAltaUsuario() = 0;
 
+
     };
     #endif

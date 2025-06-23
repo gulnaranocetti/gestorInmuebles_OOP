@@ -54,7 +54,8 @@
     }
 
     Cliente::~Cliente(){
-        // Destructor vacio, no hay recursos que liberar
+        suscripciones.clear();
+        notificaciones.clear();
     }
 
     ISuscriptor* Cliente::buscarSuscriptor(const std::string& nicknameSuscriptor) {

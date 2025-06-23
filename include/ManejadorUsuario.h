@@ -36,6 +36,8 @@ public:
     void addInmobiliaria(Inmobiliaria* i);
 
     std::set<Usuario*> getUsuarios();
+    
+    static void destroyInstance();
 
     ~ManejadorUsuario();
 };

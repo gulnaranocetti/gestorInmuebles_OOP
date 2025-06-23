@@ -46,3 +46,18 @@ void ManejadorInmueble::desvincularInmueble(int codigoInmueble) {
         inmuebles.erase(inmuBuscado);
     }
 }
+
+void ManejadorInmueble::destroyInstance(){
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
+ManejadorInmueble::~ManejadorInmueble() {
+    for (std::set<Inmueble*>::iterator it = this->inmuebles.begin(); it != this->inmuebles.end(); ++it) {
+        delete *it; 
+    }
+    this->inmuebles.clear();
+    instancia = NULL;
+}

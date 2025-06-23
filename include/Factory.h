@@ -15,6 +15,7 @@ class Factory {
         IControladorFechaActual* getControladorFechaActual();
         //TODO: Get interfaces de controladores
         IControladorSistema* getControladorSistema();
+        static void destroyInstance();
         ~Factory();
 };
 

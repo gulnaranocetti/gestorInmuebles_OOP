@@ -297,6 +297,13 @@ DTInmueble* ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion
     return dtInmueble;
 }
 
+void ControladorSistema::destroyInstance() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
 ControladorSistema::~ControladorSistema(){
     instancia = NULL;
     ultimoUsuario = NULL;

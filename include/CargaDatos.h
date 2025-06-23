@@ -13,6 +13,7 @@ class CargaDatos {
 
     public:
         static CargaDatos* getInstance();
+        static void destroyInstance();
         ~CargaDatos();
 };
 

@@ -15,6 +15,8 @@
 #include "../include/DTUsuario.h"
 #include "../include/Casa.h"
 #include "../include/Apartamento.h"
+#include "../include/ControladorFechaActual.h"
+#include "../include/ControladorSistema.h"
 #include <string>
 #include <set>
 
@@ -90,6 +92,14 @@ void ejecutarOpcion(int opcion) {
             break;
         case 0:  
             std::cout << "Saliendo del programa..." << std::endl;
+            CargaDatos::destroyInstance();
+            Factory::destroyInstance();
+            ManejadorInmueble::destroyInstance();
+            ManejadorInmobiliaria::destroyInstance();
+            ManejadorUsuario::destroyInstance();   
+            ManejadorPublicacion::destroyInstance();
+            ControladorFechaActual::destroyInstance();
+            ControladorSistema::destroyInstance();
             exit(0);
         default:
             std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
@@ -473,10 +483,17 @@ void suscribirseNotificaciones(){
     // 0. Inicializar controlador
     Factory* factory = Factory::getInstance();
     IControladorSistema* controlador = factory->getControladorSistema();
+    ManejadorInmobiliaria* manejadorInmobiliaria = ManejadorInmobiliaria::getInstance();
     // 0.1. Ingresar el nickname del usuario que se quiere suscribir
     std::cout << "Nickname del usuario: ";
     std::string nicknameSuscriptor;
     std::getline(std::cin, nicknameSuscriptor);
+
+    if( manejadorInmobiliaria->existeInmobiliaria(nicknameSuscriptor)) {
+        std::cout << "Una inmobiliaria no puede suscribirse a notificaciones" << std::endl;
+        return;
+    }
+
     //1. Mostrar lista de inmobiliarias a las que no esta suscrito
     std::set<Inmobiliaria*> inmobiliariasNoSuscripto = controlador->listarInmobiliariasNoSuscripto(nicknameSuscriptor);
     if(inmobiliariasNoSuscripto.empty()){

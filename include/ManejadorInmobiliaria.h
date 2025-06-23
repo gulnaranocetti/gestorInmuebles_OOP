@@ -28,6 +28,10 @@ class ManejadorInmobiliaria{
 
         Inmobiliaria* getInmobiliaria(std::string nicknameInmobiliaria);
 
+        bool existeInmobiliaria(std::string nicknameInmobiliaria);
+
+        static void destroyInstance();
+
         ~ManejadorInmobiliaria();
 };
 
