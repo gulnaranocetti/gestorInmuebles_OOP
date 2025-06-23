@@ -76,6 +76,9 @@ ISuscriptor* Propietario::buscarSuscriptor(const std::string& nicknameSuscriptor
 }
 
 Propietario::~Propietario() {
+    for(std::set<Notificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) 
+        delete *it; 
+        
     notificaciones.clear();
     suscripciones.clear();
     inmuebles.clear();

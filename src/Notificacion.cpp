@@ -23,4 +23,6 @@ TipoInmueble Notificacion::getTipoInmueble() const {
     return tipoInmueble;
 }
 
-Notificacion::~Notificacion() {}
+Notificacion::~Notificacion() {
+    delete fecha;
+}

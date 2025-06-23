@@ -68,6 +68,7 @@ TipoInmueble AdministraPropiedad::getTipoInmueble(){
 AdministraPropiedad::~AdministraPropiedad() {
     delete fecha;
     fecha = NULL;
+    publicaciones.clear();
 }
 
 Inmueble* AdministraPropiedad::getInmueble(){

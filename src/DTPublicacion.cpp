@@ -40,6 +40,7 @@ std::string DTPublicacion::getInmobiliaria() {
 
 DTPublicacion::~DTPublicacion(){
     delete fecha;
+    fecha = NULL;
 }
 
 // Corrige el operador <

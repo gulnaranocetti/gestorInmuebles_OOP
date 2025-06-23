@@ -303,7 +303,12 @@ void altaPublicacion(){
         std::cout << "- Codigo: " << in->getCodigo() << ", Direccion: " << in->getDireccion()
                   << ", Fecha comienzo " << in->getFechaComienzo() << std::endl;
     }
-
+    
+    for (std::set<DTInmuebleAdministrado*>::iterator it = administrados.begin(); it != administrados.end(); ++it){
+    delete *it;
+    }
+    
+    administrados.clear();
 
     int codigoInmueble;
     std::cout << "Inmueble: ";
@@ -399,6 +404,8 @@ void consultaPublicaciones(){
         Inmueble* inm = m->getInmueble(in->getCodigo());
         TipoInmueble tipo = inm->getTipo();
 
+        delete in;
+
         if (tipo == TipoInmueble::ApartamentoEnum){
                 Apartamento* ap = inm->getApto();
                 std::cout << "Codigo :" << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta()
@@ -442,6 +449,7 @@ void eliminarInmueble(){
             std::cout << "- Codigo: " << inmueble.getCodigo() << ", direccion: " << inmueble.getDireccion() << ", propietario: " << inmueble.getPropietario()  <<std::endl;
         }
     }
+    
     std::cout << "Codigo del inmueble a eliminar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;
@@ -461,6 +469,8 @@ void eliminarInmueble(){
         Apartamento* ap = inm->getApto();
         std::cout << "Codigo: " << ap->getCodigo() << ", direccion: " << ap->getDireccion() << ", nro. puerta: " << ap->getNumeroPuerta() << ", superficie: " << ap->getSuperficie() << " m2, construccion " << ap->getAnioConstruccion() << ", piso: " << ap->getPiso() << ", ascensor: " << ((ap->getTieneAscensor() ? "Si" : "No")) << ", gastos comunes: " << ap->getGastosComunes() << std::endl;
     }
+
+    delete inmuebleElegido; 
 
     
     /*No me doy cuenta como identificar si es Apto o Casa*/    

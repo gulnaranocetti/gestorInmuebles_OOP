@@ -54,6 +54,9 @@
     }
 
     Cliente::~Cliente(){
+        for(std::set<Notificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) {
+            delete *it; //  
+        }
         suscripciones.clear();
         notificaciones.clear();
     }

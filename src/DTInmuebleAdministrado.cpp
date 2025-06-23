@@ -20,4 +20,5 @@ DTFecha* DTInmuebleAdministrado::getFechaComienzo() {
 
 DTInmuebleAdministrado::~DTInmuebleAdministrado(){
     delete fechaComienzo;
+    fechaComienzo = NULL;
 }
