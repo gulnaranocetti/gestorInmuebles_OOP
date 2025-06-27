@@ -75,16 +75,15 @@ Inmueble* AdministraPropiedad::getInmueble(){
     return inmueble;
 }
 
-bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria* i) {
-    if (i == nullptr) return false;
-    bool resultado = false; 
+// bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria* i) {
+//     if (i == nullptr) return false; 
 
-    const std::set<AdministraPropiedad*>& administrados = i->getAdministrados();
-    for (auto ap = administrados.begin(); ap != administrados.end(); ++ap) {
-       if ((*ap)->administra(i)) {
-        return true;
-        }
-    }
+//     const std::set<AdministraPropiedad*>& administrados = i->getAdministrados();
+//     for (auto ap = administrados.begin(); ap != administrados.end(); ++ap) {
+//        if ((*ap)->administra(i)) {
+//         return true;
+//         }
+//     }
 
-    return resultado;
-}
+//     return false;
+// }

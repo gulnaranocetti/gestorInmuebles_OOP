@@ -66,55 +66,55 @@ CargaDatos::CargaDatos() {
 
     //Carga los AdministraPropiedad_Genera_Publicacion
     controladorFechaActual->setNewFechaActual(9, 10, 2011);
-    controladorSistema->altaPublicacion("idealhome", 5, Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000);
+    controladorSistema->altaPublicacion("idealhome", 5, Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000);//1
 
     controladorFechaActual->setNewFechaActual(15, 1, 2016);
-    controladorSistema->altaPublicacion("casasur123", 2, Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000);
+    controladorSistema->altaPublicacion("casasur123", 2, Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000);//2
 
     controladorFechaActual->setNewFechaActual(5, 3, 2019);
-    controladorSistema->altaPublicacion("casasur123", 2, Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500);
+    controladorSistema->altaPublicacion("casasur123", 2, Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500);//3
 
     controladorFechaActual->setNewFechaActual(3, 4, 2019);
-    controladorSistema->altaPublicacion("idealhome", 5, Alquiler, "Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500);
+    controladorSistema->altaPublicacion("idealhome", 5, Alquiler, "Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500);//4
     
     controladorFechaActual->setNewFechaActual(12, 12, 2019);
-    controladorSistema->altaPublicacion("casasur123", 6, Venta, "Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000);
+    controladorSistema->altaPublicacion("casasur123", 6, Venta, "Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000);//5
     
     controladorFechaActual->setNewFechaActual(12, 6, 2020);
-    controladorSistema->altaPublicacion("casasur123", 2, Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 39000);
+    controladorSistema->altaPublicacion("casasur123", 2, Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 39000);//6
     
     controladorFechaActual->setNewFechaActual(20, 7, 2020);
-    controladorSistema->altaPublicacion("vivaurbana", 6, Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000);
+    controladorSistema->altaPublicacion("vivaurbana", 6, Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000);//7
     
     controladorFechaActual->setNewFechaActual(4, 3, 2022);
-    controladorSistema->altaPublicacion("vivaurbana", 4, Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000);
+    controladorSistema->altaPublicacion("vivaurbana", 4, Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000);//8
     
     controladorFechaActual->setNewFechaActual(12, 9, 2022);
-    controladorSistema->altaPublicacion("vivaurbana", 3, Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000);
+    controladorSistema->altaPublicacion("vivaurbana", 3, Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000);//9
     
     controladorFechaActual->setNewFechaActual(1, 10, 2023);
-    controladorSistema->altaPublicacion("idealhome", 1, Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000);
+    controladorSistema->altaPublicacion("idealhome", 1, Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000);//10
     
     controladorFechaActual->setNewFechaActual(18, 10, 2023);
-    controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000);
+    controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000);//11
     
     controladorFechaActual->setNewFechaActual(19, 10, 2023);
-    controladorSistema->altaPublicacion("idealhome", 7, Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000);
+    controladorSistema->altaPublicacion("idealhome", 7, Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000);//12
     
     controladorFechaActual->setNewFechaActual(20, 11, 2023);
-    controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Apartamento con gran vista a la rambla", 31000);
+    controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Apartamento con gran vista a la rambla", 31000);//13
     
     controladorFechaActual->setNewFechaActual(20, 11, 2023);
-    controladorSistema->altaPublicacion("idealhome", 7, Venta, "Aprtamente en excelentes condiciones de 80 m", 450000);
+    controladorSistema->altaPublicacion("idealhome", 7, Venta, "Apartamento en excelentes condiciones de 80 m", 450000);//14
 
     controladorFechaActual->setNewFechaActual(8, 03, 2024);
-    controladorSistema->altaPublicacion("vivaurbana", 3, Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000);
+    controladorSistema->altaPublicacion("vivaurbana", 3, Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000);//15
 
     controladorFechaActual->setNewFechaActual(5, 5, 2024);
-    controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000);
+    controladorSistema->altaPublicacion("idealhome", 7, Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000);//16
 
     controladorFechaActual->setNewFechaActual(1, 8, 2024);
-    controladorSistema->altaPublicacion("idealhome", 6, Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000);
+    controladorSistema->altaPublicacion("idealhome", 6, Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000);//17
 
 
     //Carga los Suscripcion_Inmobiliaria

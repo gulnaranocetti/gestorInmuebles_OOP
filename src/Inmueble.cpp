@@ -1,5 +1,5 @@
 #include "Inmueble.h"
-
+#include <iostream>
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion) {
     this->codigo = codigo;
     this->direccion = direccion;
@@ -62,7 +62,7 @@ Inmueble::~Inmueble(){
 
 bool Inmueble::esAdministrado(Inmobiliaria* i) {
     for (std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it) {
-        if (*it != NULL && (*it)->inmobiliariaAsociada(i)) {
+        if (*it != NULL && (*it)->administra(i)) {
             return true;
         }
     }

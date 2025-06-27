@@ -47,6 +47,7 @@ std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario(){
             resultado.insert(inmoNoAdmin);
         }
     }
+
     return resultado;
 } //altaAdministraPropiedad
 

@@ -21,7 +21,7 @@ bool Publicacion::es_tipo(TipoPublicacion tipoPublicacion){
     Factory* fabrica = Factory::getInstance();
     IControladorFechaActual* controlador = fabrica->getControladorFechaActual();
     DTFecha* fechaActual = controlador->getFechaActual();
-    return (this->fecha->operator==(fechaActual) && this->tipo == tipoPublicacion);
+    return (this->fecha->operator==(fechaActual) && (this->tipo == tipoPublicacion));
 }
 
 bool Publicacion::existe(TipoPublicacion tipoPublicacion){ return(this->tipo == tipoPublicacion && this->activa); }
@@ -52,4 +52,8 @@ float Publicacion::getPrecio(){
 
 AdministraPropiedad* Publicacion::getAdministraPropiedad(){
     return administraPropiedad;
+}
+
+bool Publicacion::es_tipoPublicacion(TipoPublicacion tipoPublicacion) {
+    return this->tipo == tipoPublicacion;
 }

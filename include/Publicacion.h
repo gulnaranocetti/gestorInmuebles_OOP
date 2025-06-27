@@ -26,6 +26,7 @@ public:
     //void datosInmueble(TipoInmueble tipoInmueble); // tendria que retornar algo o es un void?
 
     bool es_tipo(TipoPublicacion tipoPublicacion);
+    bool es_tipoPublicacion(TipoPublicacion tipoPublicacion);
     bool existe(TipoPublicacion TipoPublicacion);
 
     AdministraPropiedad* getAdministraPropiedad();

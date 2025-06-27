@@ -1,5 +1,6 @@
 #include "../include/Propietario.h"
 #include <set>
+#include <iostream>
 
 //#include "../include/Notificacion.h"
 
