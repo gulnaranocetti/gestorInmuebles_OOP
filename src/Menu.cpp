@@ -392,9 +392,21 @@ void consultaPublicaciones(){
         std::cout << "Codigo de publicacion: ";
         int codigoPublicacion;
         std::cin >> codigoPublicacion;
+
         std::cin.ignore();
         std::cout << "Detalle del inmueble:\n";
-
+        bool esta = false;
+        for (std::set<DTPublicacion>::iterator it = publicaciones.begin(); it !=  publicaciones.end(); ++it){
+            DTPublicacion p = *it;
+            if (p.getCodigo() == codigoPublicacion){
+               esta = true;
+            }
+        }
+        if (!esta){
+            std::cout << "No existe una publicacion con ese codigo" << std::endl;
+            return;
+        }
+        
         //TODO: DTInmueble = Controlador->detalleInmueblePublicacion(codigoPublicacion): DTInmueble
         //Mostrarlo:
         // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
