@@ -16,6 +16,8 @@
 #include "ManejadorInmueble.h"
 #include "ManejadorUsuario.h"
 #include "DTInmuebleListado.h"
+ Altausuario
+#include "Usuario.h"
 #include "Inmobiliaria.h"
 #include "Notificacion.h"
 #include "IControladorSistema.h"
@@ -25,6 +27,7 @@
 #include "Publicacion.h"
 #include "Cliente.h"
 #include "Propietario.h"
+main
 #include <set>
 #include <string>
 
@@ -79,33 +82,13 @@ class ControladorSistema: public IControladorSistema {
 
         void eliminarSuscripcionAInmobiliarias(std::string nicknameUsuario, std::set<DTUsuario> InmobiliariasAEliminar); //Elimina las suscripciones del usuario indicado (nicknameUsuario) a las inmobiliarias contenidas en inmobiliariasAEliminar
 
-        virtual ~ControladorSistema();
+        //caso de uso: alta de usuario
 
-        //Caso de uso: Consulta de Publicaciones
+        bool altaCliente(std::string nickname,std::string contrasena,std::string nombre,std::string email,std::string apellido,std::string documento);
 
-        std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
+        bool altaPropietario(std::string nickname,std::string contrasena,std::string nombre,std::string email,std::string cuentaBancaria,std::string telefono);
 
-        DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
-
-        void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, int piso, bool ascensor, float gastosComunes);
-
-        void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool ph, TipoTecho tipoTecho);
-
-        void finalizarAltaUsuario();
-
-        //Caso de uso: Alta Usuario
-
-        std::set<DTUsuario> listarPropietarios();
-
-        void representarPropietario(std::string nicknamePropietario); 
-
-        // Caso de uso: Eliminar Inmuebles
-
-        std::set<DTInmuebleListado> listarInmuebles();
-
-        DTInmueble* detalleInmueble(int codigoInmueble);
-
-        static void destroyInstance();
+        bool altaInmobiliaria(std::string nickname,std::string contrasena,std::string nombre,std::string email,std::string direccion,std::string url,std::string telefono);
 
 
 };

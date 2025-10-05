@@ -149,163 +149,37 @@ void ControladorSistema::eliminarSuscripcionAInmobiliarias(std::string nicknameU
     }
 }
 
-std::set<DTPublicacion> ControladorSistema::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
-    ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
-    std::set<DTPublicacion> res = mp->getPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
-    return res;
-}
+// Caso de uso: alta de usuario
 
 bool ControladorSistema::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
-    ManejadorUsuario* m = ManejadorUsuario::getInstance();
-    Usuario* u = m->getUsuario(nickname);
-    Cliente* c = NULL;
-    if (u == NULL) {
-        c =  new Cliente(nickname, contrasena, nombre, email, apellido, documento);
-        m->addCliente(c);
-    }
-    if (c != NULL) {
-      u = m->getUsuario(nickname);
-      ultimoUsuario = u; // Guardar el último usuario creado
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    if(!mu->existeUsuario(nickname)) {
+        Cliente* nuevoCliente = new Cliente(nickname, contrasena, nombre, email, apellido, documento);
+        mu->agregarUsuario(nuevoCliente);
+        return true;
     }
 
-    return (c != NULL);
+    return false; // El usuario ya existe
+        
+
 }
-
 bool ControladorSistema::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono) {
-    ManejadorUsuario* m = ManejadorUsuario::getInstance();
-    Usuario* u = m->getUsuario(nickname);
-    Propietario* p = NULL;
-    if (u == NULL) {
-        p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
-        m->addPropietario(p);
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    if(!mu->existeUsuario(nickname)) {
+        Propietario* nuevoPropietario = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        mu->agregarUsuario(nuevoPropietario);
+        return true;
     }
-    if (p != NULL) {
-        u = m->getUsuario(nickname);
-        ultimoUsuario = u; // Guardar el último usuario creado
-    }
-    
-    return (p != NULL);
-}
 
+    return false; // El usuario ya existe
+}
 bool ControladorSistema::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
-    ManejadorUsuario* m = ManejadorUsuario::getInstance();
-    Usuario* u = m->getUsuario(nickname);
-    Inmobiliaria* i = NULL;
-    if (u == NULL) {
-        i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
-        m->addInmobiliaria(i);
-        ManejadorInmobiliaria* mi = ManejadorInmobiliaria::getInstance();
-        mi->agregarInmobiliaria(i); // Agregar la inmobiliaria al manejador de inmobiliarias
-    }
-    if (i != NULL) {
-        u = m->getUsuario(nickname);
-        ultimoUsuario = u; // Guardar el último usuario creado
-        ultimoInmobiliaria = i;
-    }
-
-    return (i != NULL);
-}
-
-void ControladorSistema::altaCasa(std::string direccion, int numPuerta, int mCuadrados, int anioConstruccion, bool esPH, TipoTecho techo) {
-    ManejadorInmueble* mi = ManejadorInmueble::getInstance();
-    mi->aumentarUltimoCodigo(); // Aumentar el último código para el próximo inmueble
-    int codigo = mi->getUltimoCodigoInmueble();
-    Casa* inm = new Casa(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, esPH, techo);
-    mi->agregarInmueble(inm);
-    Propietario* ultimoPropietario = ultimoUsuario->getTipoPropietario();
-    ultimoPropietario->agregarInmueble(inm);
-}
-
-void ControladorSistema::altaApartamento(std::string direccion, int numPuerta, int mCuadrados, int anioConstruccion, int piso, bool tieneAscensor, float gastosComunes) {
-    ManejadorInmueble* mi = ManejadorInmueble::getInstance();
-    mi->aumentarUltimoCodigo();
-    int codigo = mi->getUltimoCodigoInmueble(); // Asignar un nuevo código
-    Apartamento* inmueble = new Apartamento(codigo, direccion, numPuerta, mCuadrados, anioConstruccion, piso, tieneAscensor,gastosComunes );
-    mi->agregarInmueble(inmueble);
-    Propietario* ultimoPropietario = ultimoUsuario->getTipoPropietario();
-    ultimoPropietario->agregarInmueble(inmueble);
-}
-
-/*void ControladorSistema::altaRepresentaPropietarioInmobiliaria(std::string nicknamePropietario, std::string nicknameInmobiliaria) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
-    Propietario* p = mu->getUsuario(nicknamePropietario);
-    Inmobiliaria* i = mu->getUsuario(nicknameInmobiliaria);
-    if (p != NULL && i != NULL) {
-        i->altaRepresentaPropietario(p);
+    if(!mu->existeUsuario(nickname)) {
+        Inmobiliaria* nuevaInmobiliaria = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        mu->agregarUsuario(nuevaInmobiliaria);
+        return true;
     }
-}*/
 
-void ControladorSistema::finalizarAltaUsuario() {
-        ultimoInmobiliaria = NULL; // Resetear la última inmobiliaria después de agregarla
-        ultimoUsuario = NULL; // Resetear el último usuario después de agregarlo
-}
-
-
-
-std::set<DTUsuario> ControladorSistema::listarPropietarios() {
-    ManejadorUsuario* m = ManejadorUsuario::getInstance();
-    std::set<Usuario*> u = m->getUsuarios();
-    std::set<DTUsuario> dtUsuarios;
-    for(std::set<Usuario*>::iterator it = u.begin(); it != u.end(); ++it) {
-        if((*it)->getTipoUsuario() == "Propietario") {
-            DTUsuario dt = (*it)->getDTUsuario(); 
-            dtUsuarios.insert(dt);        
-        }
-    }
-    return dtUsuarios;
-
-}
-
-void ControladorSistema::representarPropietario(std::string nicknamePropietario) {
-    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
-    Propietario* p = mu->getUsuario(nicknamePropietario)->getTipoPropietario();
-    Inmobiliaria* i = ultimoInmobiliaria; // Asumimos que la última inmobiliaria es la que se está representando
-    std::set<Propietario*> propietarios = i->getPropietarios();
-    bool existe = propietarios.find(p) != propietarios.end();
-    if (!existe && p != NULL && i != NULL) {
-        i->altaRepresentaPropietario(p);
-    }
-}
-
-std::set<DTInmuebleListado> ControladorSistema::listarInmuebles() {
-    ManejadorInmueble* m = ManejadorInmueble::getInstance();
-    std::set<Inmueble*> inmuebles = m->getInmuebles();
-    std::set<DTInmuebleListado> inmList;
-    for(std::set<Inmueble*>::iterator it = inmuebles.begin(); it != inmuebles.end(); it++) {
-        DTInmuebleListado aux = DTInmuebleListado((*it)->getCodigo(), (*it)->getDireccion(), (*it)->getStringPropietario());
-        inmList.insert(aux);
-    }
-    return inmList;
-}
-
-DTInmueble* ControladorSistema::detalleInmueble(int codigoInmueble) {
-    ManejadorInmueble* m = ManejadorInmueble::getInstance();
-    std::set<Inmueble*> inmuebles = m->getInmuebles();
-    Inmueble* inm = m->getInmueble(codigoInmueble);
-    DTInmueble* resultado = new DTInmueble(codigoInmueble, (inm)->getDireccion(), (inm)->getNumeroPuerta(), (inm)->getSuperficie(), (inm)->getAnioConstruccion());
-    return resultado;
-}
-
-
-DTInmueble* ControladorSistema::detalleInmueblePublicacion(int codigoPublicacion) {
-    ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
-    Inmueble* inm = mp->detalleInmueblePublicacion(codigoPublicacion);
-    DTInmueble* dtInmueble;
-    if (inm != NULL) {
-        dtInmueble = new DTInmueble(inm->getCodigo(), inm->getDireccion(), inm->getNumeroPuerta(), inm->getSuperficie(), inm->getAnioConstruccion());
-    }
-    return dtInmueble;
-}
-
-void ControladorSistema::destroyInstance() {
-    if (instancia != NULL) {
-        delete instancia;
-        instancia = NULL;
-    }
-}
-
-ControladorSistema::~ControladorSistema(){
-    instancia = NULL;
-    ultimoUsuario = NULL;
-    ultimoInmobiliaria = NULL;
+    return false; // El usuario ya existe
 }

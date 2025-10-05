@@ -17,44 +17,16 @@ void Propietario::recibirNotificacion(Notificacion* n){
     this->notificaciones.insert(n);
 }
         
-std::set<Notificacion*> Propietario::consultarNotificaciones() const {
-    return notificaciones;
-}
-
-void Propietario::eliminarNotificaciones(){
-    this->notificaciones.clear(); // Elimina todas las notificaciones del propietario
-}
-
-void Propietario::eliminarSuscripcion(Inmobiliaria* i) {
-    suscripciones.erase(i); 
-}
-
-void Propietario::unlinkInmueble(int codigoInmueble) {
-    // tengo que eliminar el inmueble con el codigoInmueble
-    std::set<Inmueble*>::iterator it = this->inmuebles.begin();
-    while ((it != this->inmuebles.end()) && ((*it)->getCodigo() != codigoInmueble)) {
-        it++;
-    }
-    this->inmuebles.erase((*it)); //asumo que el inmueble con ese código existe. 
-}
-
-std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(Inmobiliaria* thisI) {
-    std::set<DTInmuebleListado*> resultado;
-    
-    for(std::set<Inmueble*>::iterator inm = this->inmuebles.begin(); inm != this->inmuebles.end(); ++inm) {
-        if (!(*inm)->esAdministrado(thisI)) {
-            DTInmuebleListado* insertarInmueble = new DTInmuebleListado((*inm)->getCodigo(), (*inm)->getDireccion(), this->getNickname());
-            resultado.insert(insertarInmueble);
-        }
+std::set<Notificacion> Propietario::consultarNotificaciones() const{
+    std::set<Notificacion> notificacionesSet;
+    for (const Notificacion& n : this->notificaciones) {
+        notificacionesSet.insert(n);
     }
 
     return resultado;
 }
 
-void Propietario::agregarInmueble(Inmueble* i){
-    this->inmuebles.insert(i);
-    i->setPropietario(this->getNickname());
-}
+void Propietario::eliminarSuscripcion(Inmobiliaria* i)const {}
 
 Propietario* Propietario::getTipoPropietario() {
     return this;
