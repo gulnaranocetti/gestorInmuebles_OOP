@@ -1,5 +1,5 @@
 #include "Inmueble.h"
-
+#include <iostream>
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion) {
     this->codigo = codigo;
     this->direccion = direccion;
@@ -7,7 +7,7 @@ Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int supe
     this->superficie = superficie;
     this->anoConstruccion = anioConstruccion;
 }
-void Inmueble::setPropietario(Propietario* propietario) {
+void Inmueble::setPropietario(std::string propietario) {
     this->propietario = propietario;
 }   
 
@@ -35,10 +35,36 @@ int Inmueble::getAnioConstruccion() {
     return anoConstruccion;
 }
 
-TipoInmueble Inmueble::getTipo(){
-    return TipoInmueble::Todos;
+void Inmueble::destroyIn() {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Propietario* prop = mu->getUsuario(this->propietario)->getTipoPropietario();
+    prop->unlinkInmueble(this->codigo);
+
+    auto ap = this->administradores.begin();
+    while (ap != this->administradores.end()) {
+       delete *ap; // si corresponde
+       ap = this->administradores.erase(ap); 
+    }
+}
+
+std::string Inmueble::getStringPropietario() {
+    return propietario;
+}
+
+void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* ap) {
+    this->administradores.insert(ap);
 }
 
 Inmueble::~Inmueble(){
-    
+    this->destroyIn();
+    administradores.clear();
+}
+
+bool Inmueble::esAdministrado(Inmobiliaria* i) {
+    for (std::set<AdministraPropiedad*>::iterator it = administradores.begin(); it != administradores.end(); ++it) {
+        if (*it != NULL && (*it)->administra(i)) {
+            return true;
+        }
+    }
+    return false;
 }

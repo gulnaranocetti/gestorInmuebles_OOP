@@ -1,22 +1,27 @@
 #ifndef PROPIETARIO_H
 #define PROPIETARIO_H
+#include "ISuscriptor.h"
 #include "Usuario.h"
-#include "Notificacion.h"
-#include "Inmobiliaria.h"
 #include "Inmueble.h"
 #include "DTInmuebleListado.h"
-#include "ISuscriptor.h"
 #include <list>
 #include <string>
 #include <vector>
 #include <set>
 
+class Notificacion;
+class Inmobiliaria;
+class Inmueble;
+
+
+
 class Propietario : public Usuario, public ISuscriptor {
     private:
         std::string cuentaBancaria;
         std::string telefono;
-        std::vector<Inmueble> inmuebles;
-        std::set<Notificacion> notificaciones;
+        std::set<Inmueble*> inmuebles;
+        std::set<Notificacion*> notificaciones;
+        std::set<Inmobiliaria*> suscripciones;
 
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
@@ -29,11 +34,20 @@ class Propietario : public Usuario, public ISuscriptor {
 
         void unlinkInmueble(int codigoInmueble);
 
-        std::string getNickname() const override;
+        void eliminarNotificaciones();
 
-        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor) override;
+        std::string getNickname() const;
 
-        std::vector<DTInmuebleListado> getInmueblesNoAdmin(Propietario thisProp);
+        Propietario* getTipoPropietario();
+
+        ISuscriptor* buscarSuscriptor(const std::string& nicknameSuscriptor);
+
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria* thisI);
+
+        std::string getTipoUsuario() const;
+        DTUsuario getDTUsuario(); 
+
+        virtual ~Propietario();
 
 };
 

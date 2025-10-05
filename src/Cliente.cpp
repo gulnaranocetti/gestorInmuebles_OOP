@@ -17,30 +17,33 @@
         return documento;
     }
 
-    std::set<Notificacion*> Cliente::consultarNotificaciones(){
+    std::set<Notificacion*> Cliente::consultarNotificaciones()const{
         return notificaciones;
     }
 
+    void Cliente::eliminarNotificaciones(){
+        this->notificaciones.clear(); // Elimina todas las notificaciones del cliente
+    }
+
+
     Cliente::Cliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, 
-            std::string apellido, std::string telefono): Usuario(nickname, nombre, contrasena, email){
-                apellido = apellido;
-                documento = documento;
+            std::string apellido, std::string documento): Usuario(nickname, nombre, contrasena, email){
+                this->apellido = apellido;
+                this->documento = documento;
             }
 
     void Cliente::recibirNotificacion(Notificacion* n){
-        Notificacion no(n->getFecha(), n->getTextoPublicacion(), n->getInmobiliaria(), 
-                        n->getCodigoPublicacion(), n->getTipoPublicacion(), n->getTipoInmueble());
-        notificaciones.insert(no);
+        notificaciones.insert(n);
     }
 
-    std::set<Notificacion> Cliente::consultarNotificaciones() {
-        std::set<Notificacion> notificacionesSet;
-        for (const Notificacion& n : notificaciones) {
-            notificacionesSet.insert(n);
-        }
-        notificacionesSet.clear(); // Limpiar el set antes de devolverlo
-        return notificacionesSet;
-    }
+    // std::set<Notificacion> Cliente::consultarNotificaciones() {
+    //     std::set<Notificacion> notificacionesSet;
+    //     for (const Notificacion& n : notificaciones) {
+    //         notificacionesSet.insert(n);
+    //     }
+    //     notificacionesSet.clear(); // Limpiar el set antes de devolverlo
+    //     return notificacionesSet;
+    // }
 
     void Cliente::eliminarSuscripcion(Inmobiliaria* i){
         suscripciones.erase(i);
@@ -51,13 +54,27 @@
     }
 
     Cliente::~Cliente(){
-        for (Notificacion* n : notificaciones){
-            delete n;
-        }//no se si esta bien
+        for(std::set<Notificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) {
+            delete *it; //  
+        }
+        suscripciones.clear();
+        notificaciones.clear();
     }
 
     ISuscriptor* Cliente::buscarSuscriptor(const std::string& nicknameSuscriptor) {
         Usuario* u = ManejadorUsuario::getInstance()->getUsuario(nicknameSuscriptor);
         ISuscriptor* s = dynamic_cast<ISuscriptor*>(u);
-        return s ? s : nullptr;
+        return s ? s : NULL;
     }
+
+    std::string Cliente::getTipoUsuario() const {
+        return "Cliente";
+    }
+
+    DTUsuario Cliente::getDTUsuario() {
+        return DTUsuario(getNickname(), getNombre());
+    }
+
+    Propietario* Cliente::getTipoPropietario() {
+    return NULL;
+}

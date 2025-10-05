@@ -1,6 +1,8 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
 #include "Inmueble.h"
+#include <string>
+#include "TipoInmueble.h"
 
 
 class Apartamento : public Inmueble {
@@ -14,7 +16,10 @@ class Apartamento : public Inmueble {
         int getPiso();
         bool getTieneAscensor();
         float getGastosComunes();
-        virtual ~Apartamento();
+        Casa* getCasa();
+        Apartamento* getApto();
+        TipoInmueble getTipo();
+        ~Apartamento();
 };
 
 #endif

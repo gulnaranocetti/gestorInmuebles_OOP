@@ -2,17 +2,21 @@
 #define CASA_H
 #include "Inmueble.h"
 #include "TipoTecho.h"
+#include <string>
+#include "TipoInmueble.h"
 
 class Casa : public Inmueble {
     private:
         bool esPH;
         TipoTecho techo;
 
-    public:
-        Casa(bool esPH, TipoTecho techo,int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
+    public: 
+        Casa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo);
         bool getEsPH();
         TipoTecho getTecho();
-        TipoInmueble getTipo() override;
+        TipoInmueble getTipo();
+        Casa* getCasa();
+        Apartamento* getApto();
         ~Casa();
 };
 

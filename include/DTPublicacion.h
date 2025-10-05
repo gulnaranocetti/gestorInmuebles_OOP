@@ -13,11 +13,13 @@ class DTPublicacion {
 
     public:
         DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std::string precio, std::string inmobiliaria);
+        DTPublicacion(const DTPublicacion& other);
         int getCodigo();
         DTFecha* getFecha();
         std::string getTexto();
         std::string getPrecio();
         std::string getInmobiliaria();
+        bool operator<(const DTPublicacion other) const;
         ~DTPublicacion();
 };
 

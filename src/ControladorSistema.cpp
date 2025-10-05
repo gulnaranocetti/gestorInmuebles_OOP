@@ -1,7 +1,23 @@
 #include "ControladorSistema.h"
 #include "ControladorFechaActual.h"
+
 #include <set>
 
+ControladorSistema* ControladorSistema::instancia = NULL;
+
+ControladorSistema::ControladorSistema(){
+    ultimoUsuario = NULL;
+    ultimoInmobiliaria = NULL;
+
+}
+
+ControladorSistema* ControladorSistema::getInstance() {
+    if (instancia == NULL) {
+        instancia = new ControladorSistema();
+    }
+
+    return instancia;
+}
 
 std::set<DTUsuario> ControladorSistema::listarInmobiliarias() {
 
@@ -30,26 +46,34 @@ void ControladorSistema::altaAdministraPropiedad(std::string nicknameInmobiliari
 
 }
 
-std::set<DTInmuebleListado> ControladorSistema::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
+std::set<DTInmuebleListado*> ControladorSistema::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* ci = m->getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
+    std::set<DTInmuebleListado*> listInmuebles = ci->getInmueblesNoAdminPropietario();
     return listInmuebles;
 }
 
+void ControladorSistema::eliminarInmueble(int codigoInmueble) {
+    ManejadorInmueble* inm = ManejadorInmueble::getInstance();
+    Inmueble* in = inm->getInmueble(codigoInmueble); // ya tengo el inmueble que quiero borrar. no preciso buscarlo
+    inm->desvincularInmueble(codigoInmueble); // lo elimino del manejador de inmuebles
+    in->destroyIn();
+}
 
-std::set<DTInmuebleAdministrado> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
+
+
+std::set<DTInmuebleAdministrado*> ControladorSistema::listarInmueblesAdministrados(std::string nicknameInmobiliaria){
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleAdministrado> lis = inm->listarInmuebles();
+    std::set<DTInmuebleAdministrado*> lis = inm->listarInmueble();
     return lis;
 
 }
 
 
-bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
+bool ControladorSistema::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) {
 
     ManejadorInmobiliaria* m = ManejadorInmobiliaria::getInstance();
     Inmobiliaria* inmo = m->getInmobiliaria(nicknameInmobiliaria);
@@ -63,7 +87,7 @@ std::set<Inmobiliaria*> ControladorSistema::listarInmobiliariasNoSuscripto(std::
     std::set<Inmobiliaria*> li = m->getInmobiliarias();
     std::set<Inmobiliaria*> result;
     for (std::set<Inmobiliaria*>::iterator it = li.begin(); it != li.end(); ++it) {
-        if (!(*it)->suscrito(nicknameSuscriptor)) {
+        if (*it != NULL && !(*it)->suscrito(nicknameSuscriptor)) {
             result.insert(*it);
         }
     }    
@@ -84,11 +108,18 @@ void ControladorSistema::suscribirseAInmobiliarias(std::set<std::string> nicknam
     }
 }
 
-std::set<Notificacion> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
+std::set<Notificacion*> ControladorSistema::consultarNotificaciones(std::string nicknameSuscriptor) {
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     Usuario* us = mu->getUsuario(nicknameSuscriptor);
     ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameSuscriptor);
     return suscriptor->consultarNotificaciones();
+}
+
+void ControladorSistema::eliminarNotificaciones(std::string nicknameUsuario) {
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Usuario* us = mu->getUsuario(nicknameUsuario);
+    ISuscriptor* suscriptor = us->buscarSuscriptor(nicknameUsuario);
+    suscriptor->eliminarNotificaciones();
 }
 
 std::set<DTUsuario> ControladorSistema::listarInmobiliariasSuscritas(std::string nicknameSuscriptor) {

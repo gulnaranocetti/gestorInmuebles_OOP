@@ -1,7 +1,14 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 #include <string>
+#include <set>
+#include "TipoInmueble.h"
 #include "Propietario.h"
+#include "ManejadorUsuario.h"
+
+class AdministraPropiedad;
+class Casa;
+class Apartamento;
 
 class Inmueble {
     private:
@@ -10,18 +17,31 @@ class Inmueble {
         int numeroPuerta;
         int superficie;
         int anoConstruccion;
-        Propietario* propietario; 
+        std::string propietario; 
+        std::set<AdministraPropiedad*> administradores;
+
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
-        void setPropietario(Propietario* propietario);
+        void setPropietario(std::string propietario);
         bool es_Igual(int codigoInmueble);
         int getCodigo();
         std::string getDireccion();
         int getNumeroPuerta();
         int getSuperficie();
         int getAnioConstruccion();
-        virtual TipoInmueble getTipo();
+        void destroyIn();
+        std::string getStringPropietario();
+
+        //Casa getCasa(int codigoInmueble);
+
+        bool esAdministrado(Inmobiliaria* i);
+        void asociarAdministracionPropiedad(AdministraPropiedad* ap); //falta implementar
+
+
+        virtual TipoInmueble getTipo() = 0;
+        virtual Casa* getCasa() = 0;
+        virtual Apartamento* getApto() = 0;
         virtual ~Inmueble();
 };
 

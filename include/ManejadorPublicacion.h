@@ -7,17 +7,24 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Publicacion.h"
+#include "DTInmueble.h"
+#include "AdministraPropiedad.h"
 #include <set>
+#include "Inmueble.h"
+
+
 
 class ManejadorPublicacion {
 private:
     std::set<Publicacion*> publicaciones; // Colección de punteros a Publicacion
     static ManejadorPublicacion* instancia;
-    int ultimoCodigo; // Para asignar códigos únicos a las publicaciones
+    int ultimoCodigo = 0; // Para asignar códigos únicos a las publicaciones
 
     ManejadorPublicacion(); // constructor privado
 
 public:
+    Inmueble* detalleInmueblePublicacion(int codigoPublicacion);
+
     static ManejadorPublicacion* getInstance();
 
     std::set<DTPublicacion> getPublicaciones(TipoPublicacion tipoPublicacion, int precioMinimo, int precioMaximo, TipoInmueble tipoInmueble);
@@ -27,6 +34,8 @@ public:
     void aumentarUltimoCodigo();
 
     void agregarPublicacion(Publicacion* p);
+
+    static void destroyInstance();
 
     ~ManejadorPublicacion();
 };

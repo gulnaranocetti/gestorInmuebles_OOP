@@ -10,6 +10,9 @@
 #include <string> 
 #include <set>
 
+class Inmobiliaria;
+class Inmueble;
+
 class ManejadorInmobiliaria{
     private: 
         std::set<Inmobiliaria*> inmobiliarias;
@@ -19,11 +22,15 @@ class ManejadorInmobiliaria{
 
         static ManejadorInmobiliaria* getInstance();
         
-        void agregarInmobiliaria(Inmueble *in);
+        void agregarInmobiliaria(Inmobiliaria *in);
 
         std::set<Inmobiliaria*> getInmobiliarias();
 
         Inmobiliaria* getInmobiliaria(std::string nicknameInmobiliaria);
+
+        bool existeInmobiliaria(std::string nicknameInmobiliaria);
+
+        static void destroyInstance();
 
         ~ManejadorInmobiliaria();
 };

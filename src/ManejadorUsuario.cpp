@@ -7,9 +7,9 @@ ManejadorUsuario* ManejadorUsuario::instancia = NULL;
 ManejadorUsuario::ManejadorUsuario(){}
 
 ManejadorUsuario* ManejadorUsuario::getInstance(){
-    if (this->instancia == NULL){this->instancia = new ManejadorUsuario();}
+    if (instancia == NULL){instancia = new ManejadorUsuario();}
 
-    return this->instancia;
+    return instancia;
 }
 
 Usuario* ManejadorUsuario::getUsuario(std::string nicknameUser){
@@ -21,6 +21,31 @@ Usuario* ManejadorUsuario::getUsuario(std::string nicknameUser){
     return NULL;
 }
 
+void ManejadorUsuario::addCliente(Cliente* c) {
+    this->usuarios.insert(c);
+}
+
+void ManejadorUsuario::addPropietario(Propietario* p) {
+    this->usuarios.insert(p);
+}
+
+void ManejadorUsuario::addInmobiliaria(Inmobiliaria* i) {
+    this->usuarios.insert(i);
+}
+
 std::set<Usuario*> ManejadorUsuario::getUsuarios(){ return this->usuarios; }
 
-ManejadorUsuario::~ManejadorUsuario(){}
+void ManejadorUsuario::destroyInstance(){
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
+ManejadorUsuario::~ManejadorUsuario(){
+    for (std::set<Usuario*>::iterator it = this->usuarios.begin(); it != this->usuarios.end(); ++it) {
+        delete *it; 
+    }
+    this->usuarios.clear(); 
+    instancia = NULL; 
+}

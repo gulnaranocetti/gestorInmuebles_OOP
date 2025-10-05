@@ -1,14 +1,15 @@
 #ifndef ADMINISTRAPROPIEDAD_H
 #define ADMINISTRAPROPIEDAD_H
 #include "DTFecha.h"
-#include "Inmueble.h"
+#include "Inmobiliaria.h"
+#include "DTInmuebleAdministrado.h"
+#include "TipoPublicacion.h"
 #include <set>
 #include <string>
 
 class Inmobiliaria;
-enum TipoPublicacion;
-class DTInmuebleAdministrado;
 class Publicacion;
+class Inmueble;
 
 class AdministraPropiedad {
     private:
@@ -22,12 +23,20 @@ class AdministraPropiedad {
         AdministraPropiedad(DTFecha* fecha, Inmobiliaria* inmobiliaria, Inmueble* inmueble);
 
         DTFecha* getFecha();
-        DTInmuebleAdministrado ObtenerDatos();
+        DTInmuebleAdministrado* obtenerDatos();
         bool es_Igual(int CodigoInmueble);
-        bool es_tipo(TipoPublicacion tipo, std::string texto, float precio);
-        bool administra(Inmobiliaria &i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
-    
+        bool es_tipo(TipoPublicacion tipo);
+        bool administra(Inmobiliaria* i); //  Retorna true si la inmboliaria "i" pasada por parámetro es la asociadaa la instancia
+        void destroyAP();
+
+        const std::set<Publicacion*>& getPublicaciones() const;
+        void agregarPublicacion(Publicacion* p);
+        TipoInmueble getTipoInmueble();
+        Inmobiliaria* getInmobiliaria();
+        bool inmobiliariaAsociada(Inmobiliaria* i);
+
         ~AdministraPropiedad();
+        Inmueble* getInmueble();
 };
 
 #endif

@@ -20,7 +20,15 @@ float Apartamento::getGastosComunes() {
 }
 
 TipoInmueble Apartamento::getTipo(){
-    return Apartamento;
+    return ::ApartamentoEnum;
+}
+
+Casa* Apartamento::getCasa(){
+    return NULL;
+}
+
+Apartamento* Apartamento::getApto() {
+    return this;
 }
 
 Apartamento::~Apartamento(){

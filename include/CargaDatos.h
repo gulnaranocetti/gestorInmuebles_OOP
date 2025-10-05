@@ -1,5 +1,10 @@
 #ifndef CARGADATOS_H
 #define CARGADATOS_H
+#include "Factory.h"
+#include "ManejadorInmobiliaria.h"
+#include "ManejadorInmueble.h"
+#include "ManejadorUsuario.h"
+#include "ManejadorPublicacion.h"
 
 class CargaDatos {
     private:
@@ -8,6 +13,7 @@ class CargaDatos {
 
     public:
         static CargaDatos* getInstance();
+        static void destroyInstance();
         ~CargaDatos();
 };
 

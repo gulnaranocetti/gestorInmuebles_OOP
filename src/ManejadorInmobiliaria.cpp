@@ -1,5 +1,5 @@
-#include "../include/ManejadorInmobiliaria.h"
 
+#include "../include/ManejadorInmobiliaria.h"
 
 
 ManejadorInmobiliaria* ManejadorInmobiliaria::instancia = NULL;
@@ -8,8 +8,8 @@ ManejadorInmobiliaria::ManejadorInmobiliaria(){}
 
 ManejadorInmobiliaria* ManejadorInmobiliaria::getInstance(){
 
-    if (this->instancia == NULL){this->instancia = new ManejadorInmobiliaria();}
-    return this->instancia;
+    if (instancia == NULL){instancia = new ManejadorInmobiliaria();}
+    return instancia;
 
 }
 
@@ -34,3 +34,23 @@ Inmobiliaria* ManejadorInmobiliaria::getInmobiliaria(std::string nicknameInmobil
 
 }
 
+void ManejadorInmobiliaria::agregarInmobiliaria(Inmobiliaria *in){
+    this->inmobiliarias.insert(in);
+}
+
+
+void ManejadorInmobiliaria::destroyInstance(){
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
+ManejadorInmobiliaria::~ManejadorInmobiliaria() {
+    this->inmobiliarias.clear(); // Limpiar el conjunto
+    instancia = NULL;
+}
+
+bool ManejadorInmobiliaria::existeInmobiliaria(std::string nicknameInmobiliaria) {
+    return getInmobiliaria(nicknameInmobiliaria) != NULL;
+}

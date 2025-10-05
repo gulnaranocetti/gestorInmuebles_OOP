@@ -8,9 +8,14 @@
 #include "TipoInmueble.h"
 #include "Inmueble.h"
 #include "Usuario.h"
+#include "Cliente.h"
 #include <string>
 #include <set>
 
+class Usuario;
+class Cliente;
+class Propietario;
+class Inmobiliaria;
 
 class ManejadorUsuario {
 private:
@@ -24,7 +29,15 @@ public:
 
     Usuario* getUsuario(std::string nicknameUser);
 
+    void addCliente(Cliente* c);
+
+    void addPropietario(Propietario* p);
+
+    void addInmobiliaria(Inmobiliaria* i);
+
     std::set<Usuario*> getUsuarios();
+    
+    static void destroyInstance();
 
     ~ManejadorUsuario();
 };

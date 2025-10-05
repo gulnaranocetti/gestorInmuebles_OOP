@@ -16,12 +16,12 @@ void Usuario::setNickname(std::string _nickname){
         email = _email;
     }
 
-    std::string Usuario::getNickname(){
+    std::string Usuario::getNickname() const{
         return nickname;
     }
 
 
-    std::string Usuario::getNombre(){
+    std::string Usuario::getNombre()const{
         return nombre;
     }
 
@@ -37,6 +37,12 @@ void Usuario::setNickname(std::string _nickname){
         return getNickname() < other.getNickname();
     }
 
+    
+
     bool Usuario::esIgual(Usuario& other){
         return getNickname() == other.getNickname();
+    }
+
+    Usuario::~Usuario() {
+        // Destructor vacío, ya que no hay recursos dinámicos que liberar
     }

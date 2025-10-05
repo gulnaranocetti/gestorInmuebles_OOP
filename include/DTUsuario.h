@@ -9,8 +9,8 @@ class DTUsuario {
 
     public:
         DTUsuario(std::string nickname, std::string nombre);
-        std::string getNickname();
+        std::string getNickname() const;
         std::string getNombre();
-        bool operator<(DTUsuario& other);
+        bool operator<(const DTUsuario other)const;
 };
 #endif

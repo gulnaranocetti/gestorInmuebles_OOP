@@ -15,6 +15,7 @@ class DTInmuebleAdministrado {
         std::string getDireccion();
         DTFecha* getFechaComienzo();
         ~DTInmuebleAdministrado();
+        
 };
 
 #endif

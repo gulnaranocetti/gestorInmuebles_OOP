@@ -22,6 +22,13 @@ void ControladorFechaActual::setNewFechaActual(int dia, int mes, int anio){
     fechaActual = new DTFecha(dia, mes, anio);
 }
 
+void ControladorFechaActual::destroyInstance() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
+
 ControladorFechaActual::~ControladorFechaActual(){
     delete fechaActual;
     instance = NULL;
